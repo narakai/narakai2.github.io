@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="经过前面的学习对FFmpeg的基本流程已经很熟悉了，现在到了掌握其中细节的时候了，用FFmpeg做播放器解码操作中，涉及到了一些结构体，这些结构之间到底有什么关系，它们是怎样协同工作的呢。文章 FFMPEG中最关键的结构体之间的关系 对这些结构间的关系进行了分析，详细内容如下： 　　FFMPEG中结构体很多。最关键的结构体可以分成以下几类：">
+<meta name="keywords" content="音视频处理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="笔谈FFmpeg（二）">
+<meta property="og:url" content="https://depthlove.github.io/2015/04/28/talk-about-FFmpeg-part2/index.html">
+<meta property="og:site_name" content="Minmin.Sun Blog">
+<meta property="og:description" content="经过前面的学习对FFmpeg的基本流程已经很熟悉了，现在到了掌握其中细节的时候了，用FFmpeg做播放器解码操作中，涉及到了一些结构体，这些结构之间到底有什么关系，它们是怎样协同工作的呢。文章 FFMPEG中最关键的结构体之间的关系 对这些结构间的关系进行了分析，详细内容如下： 　　FFMPEG中结构体很多。最关键的结构体可以分成以下几类：">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://img.blog.csdn.net/20130914204051125?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGVpeGlhb2h1YTEwMjA=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:updated_time" content="2019-03-29T04:10:03.091Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="笔谈FFmpeg（二）">
+<meta name="twitter:description" content="经过前面的学习对FFmpeg的基本流程已经很熟悉了，现在到了掌握其中细节的时候了，用FFmpeg做播放器解码操作中，涉及到了一些结构体，这些结构之间到底有什么关系，它们是怎样协同工作的呢。文章 FFMPEG中最关键的结构体之间的关系 对这些结构间的关系进行了分析，详细内容如下： 　　FFMPEG中结构体很多。最关键的结构体可以分成以下几类：">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20130914204051125?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGVpeGlhb2h1YTEwMjA=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+
+
+
+
+
+
+  <link rel="canonical" href="https://depthlove.github.io/2015/04/28/talk-about-FFmpeg-part2/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>笔谈FFmpeg（二） | Minmin.Sun Blog</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bb3cb1d5838b79bdd0bccc4f449418c6";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Minmin.Sun Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">计算机硕士，音视频，机器学习方向。GitHub：https://github.com/depthlove</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-messages">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/messages/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>留言板</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-top">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/top/" rel="section"><i class="menu-item-icon fa fa-fw fa-signal"></i> <br>阅读最多</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://depthlove.github.io/2015/04/28/talk-about-FFmpeg-part2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minmin.Sun">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Minmin.Sun Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">笔谈FFmpeg（二）
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-04-28 15:04:58" itemprop="dateCreated datePublished" datetime="2015-04-28T15:04:58+08:00">2015-04-28</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+            <span id="/2015/04/28/talk-about-FFmpeg-part2/" class="leancloud_visitors" data-flag-title="笔谈FFmpeg（二）">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>　　经过前面的学习对FFmpeg的基本流程已经很熟悉了，现在到了掌握其中细节的时候了，用FFmpeg做播放器解码操作中，涉及到了一些结构体，这些结构之间到底有什么关系，它们是怎样协同工作的呢。文章 FFMPEG中最关键的结构体之间的关系 对这些结构间的关系进行了分析，详细内容如下：</p>
+<p>　　FFMPEG中结构体很多。最关键的结构体可以分成以下几类：<br>　　<br><a id="more"></a></p>
+<h4 id="a-解协议（http-rtsp-rtmp-mms）"><a href="#a-解协议（http-rtsp-rtmp-mms）" class="headerlink" title="a) 解协议（http,rtsp,rtmp,mms）"></a>a) 解协议（http,rtsp,rtmp,mms）</h4><p>AVIOContext，URLProtocol，URLContext主要存储视音频使用的协议的类型以及状态。URLProtocol存储输入视音频使用的封装格式。每种协议都对应一个URLProtocol结构。（注意：FFMPEG中文件也被当做一种协议“file”）</p>
+<h4 id="b-解封装（flv-avi-rmvb-mp4）"><a href="#b-解封装（flv-avi-rmvb-mp4）" class="headerlink" title="b) 解封装（flv,avi,rmvb,mp4）"></a>b) 解封装（flv,avi,rmvb,mp4）</h4><p>AVFormatContext主要存储视音频封装格式中包含的信息；AVInputFormat存储输入视音频使用的封装格式。每种视音频封装格式都对应一个AVInputFormat 结构。</p>
+<h4 id="c-解码（h264-mpeg2-aac-mp3）"><a href="#c-解码（h264-mpeg2-aac-mp3）" class="headerlink" title="c) 解码（h264,mpeg2,aac,mp3）"></a>c) 解码（h264,mpeg2,aac,mp3）</h4><p>每个AVStream存储一个视频/音频流的相关数据；每个AVStream对应一个AVCodecContext，存储该视频/音频流使用解码方式的相关数据；每个AVCodecContext中对应一个AVCodec，包含该视频/音频对应的解码器。每种解码器都对应一个AVCodec结构。</p>
+<h4 id="d-存数据"><a href="#d-存数据" class="headerlink" title="d)存数据"></a>d)存数据</h4><p>视频的话，每个结构一般是存一帧；音频可能有好几帧</p>
+<p>解码前数据：AVPacket</p>
+<p>解码后数据：AVFrame</p>
+<p>　　他们之间的对应关系如下所示：</p>
+<p><img src="http://img.blog.csdn.net/20130914204051125?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGVpeGlhb2h1YTEwMjA=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="流程图"></p>
+<p>　　上面提到的这些结构到底是干嘛用的，中国传媒大学的一个博士写了一系列的结构体的分析的文章，在这里列一个列表，需要好好看下：</p>
+<h5 id="FFMPEG结构体分析：AVFrame"><a href="#FFMPEG结构体分析：AVFrame" class="headerlink" title="FFMPEG结构体分析：AVFrame"></a><a href="http://blog.csdn.net/leixiaohua1020/article/details/14214577" target="_blank" rel="noopener">FFMPEG结构体分析：AVFrame</a></h5><h5 id="FFMPEG结构体分析：AVFormatContext"><a href="#FFMPEG结构体分析：AVFormatContext" class="headerlink" title="FFMPEG结构体分析：AVFormatContext"></a><a href="http://blog.csdn.net/leixiaohua1020/article/details/14214705" target="_blank" rel="noopener">FFMPEG结构体分析：AVFormatContext</a></h5><h5 id="FFMPEG结构体分析：AVCodecContext"><a href="#FFMPEG结构体分析：AVCodecContext" class="headerlink" title="FFMPEG结构体分析：AVCodecContext"></a><a href="http://blog.csdn.net/leixiaohua1020/article/details/14214859" target="_blank" rel="noopener">FFMPEG结构体分析：AVCodecContext</a></h5><h5 id="FFMPEG结构体分析：AVIOContext"><a href="#FFMPEG结构体分析：AVIOContext" class="headerlink" title="FFMPEG结构体分析：AVIOContext"></a><a href="http://blog.csdn.net/leixiaohua1020/article/details/14215369" target="_blank" rel="noopener">FFMPEG结构体分析：AVIOContext</a></h5><h5 id="FFMPEG结构体分析：AVCodec"><a href="#FFMPEG结构体分析：AVCodec" class="headerlink" title="FFMPEG结构体分析：AVCodec"></a><a href="http://blog.csdn.net/leixiaohua1020/article/details/14215833" target="_blank" rel="noopener">FFMPEG结构体分析：AVCodec</a></h5><h5 id="FFMPEG结构体分析：AVStream"><a href="#FFMPEG结构体分析：AVStream" class="headerlink" title="FFMPEG结构体分析：AVStream"></a><a href="http://blog.csdn.net/leixiaohua1020/article/details/14215821" target="_blank" rel="noopener">FFMPEG结构体分析：AVStream</a></h5><h5 id="FFMPEG结构体分析：AVPacket"><a href="#FFMPEG结构体分析：AVPacket" class="headerlink" title="FFMPEG结构体分析：AVPacket"></a><a href="http://blog.csdn.net/leixiaohua1020/article/details/14215755" target="_blank" rel="noopener">FFMPEG结构体分析：AVPacket</a></h5>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+      <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Minmin.Sun wechat" style="width: 200px; max-width: 100%;">
+  <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/音视频处理/" rel="tag"># 音视频处理</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/04/27/talk-about-FFmpeg-part1/" rel="next" title="笔谈FFmpeg（一）">
+                <i class="fa fa-chevron-left"></i> 笔谈FFmpeg（一）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/05/11/talk-about-cocoapods-install-and-use/" rel="prev" title="笔谈cocoapods的安装与使用">
+                笔谈cocoapods的安装与使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Minmin.Sun">
+            
+              <p class="site-author-name" itemprop="name">Minmin.Sun</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">71</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/depthlove" title="GitHub &rarr; https://github.com/depthlove" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:suntongmian@163.com" title="E-Mail &rarr; mailto:suntongmian@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.csdn.net/leixiaohua1020" title="http://blog.csdn.net/leixiaohua1020" rel="noopener" target="_blank">leixiaohua1020</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://roxlu.com" title="http://roxlu.com" rel="noopener" target="_blank">roxlu.com</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.streamingmedia.com" title="http://www.streamingmedia.com" rel="noopener" target="_blank">streamingmedia.com</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://arxiv.org/list/cs/recent" title="https://arxiv.org/list/cs/recent" rel="noopener" target="_blank">arXiv.org</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://paperswithcode.com/sota" title="https://paperswithcode.com/sota" rel="noopener" target="_blank">paperswithcode.com</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/depthlove/depthlove.github.io/issues" title="https://github.com/depthlove/depthlove.github.io/issues" rel="noopener" target="_blank">BlogComment</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#a-解协议（http-rtsp-rtmp-mms）"><span class="nav-number">1.</span> <span class="nav-text">a) 解协议（http,rtsp,rtmp,mms）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#b-解封装（flv-avi-rmvb-mp4）"><span class="nav-number">2.</span> <span class="nav-text">b) 解封装（flv,avi,rmvb,mp4）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c-解码（h264-mpeg2-aac-mp3）"><span class="nav-number">3.</span> <span class="nav-text">c) 解码（h264,mpeg2,aac,mp3）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#d-存数据"><span class="nav-number">4.</span> <span class="nav-text">d)存数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#FFMPEG结构体分析：AVFrame"><span class="nav-number">4.1.</span> <span class="nav-text">FFMPEG结构体分析：AVFrame</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FFMPEG结构体分析：AVFormatContext"><span class="nav-number">4.2.</span> <span class="nav-text">FFMPEG结构体分析：AVFormatContext</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FFMPEG结构体分析：AVCodecContext"><span class="nav-number">4.3.</span> <span class="nav-text">FFMPEG结构体分析：AVCodecContext</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FFMPEG结构体分析：AVIOContext"><span class="nav-number">4.4.</span> <span class="nav-text">FFMPEG结构体分析：AVIOContext</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FFMPEG结构体分析：AVCodec"><span class="nav-number">4.5.</span> <span class="nav-text">FFMPEG结构体分析：AVCodec</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FFMPEG结构体分析：AVStream"><span class="nav-number">4.6.</span> <span class="nav-text">FFMPEG结构体分析：AVStream</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FFMPEG结构体分析：AVPacket"><span class="nav-number">4.7.</span> <span class="nav-text">FFMPEG结构体分析：AVPacket</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Minmin.Sun</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '023374e22942af4046f9',
+    clientSecret: '5cedecd7c2b07700433ee7c72cac9ae1057a9092',
+    repo: 'depthlove.github.io',
+    owner: 'depthlove',
+    admin: ['depthlove'],
+    id: md5(location.pathname),
+    
+      language: window.navigator.language || window.navigator.userLanguage,
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
+
+
+  
+
+
+
+
+  
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
+          } else {
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! More info at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'I0MNwNavGR4emmV0Vq9IRTeE-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'I0MNwNavGR4emmV0Vq9IRTeE-gzGzoHsz',
+                'X-LC-Key': 'jukR11B6qIiKA7bRYTXBe8bd',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script>
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 9731,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

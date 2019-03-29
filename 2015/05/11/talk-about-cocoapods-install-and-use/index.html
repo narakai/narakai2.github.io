@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="因为要重构播放器库，所以就需要参考网上的开源项目，在播放器开源项目这块，kxmovie开源项目是值得参考的一个项目。在github下载下来后，运行该工程，发现其用到了cocoapods来管理第三方库，以前我做项目都是将第三方库直接下载然后将源文件导入到工程，这种做法有其好处也存在一定的弊端，好处是便于项目的维护，方便的知道过去使用的第三方库是个什么情况，还可以根据实际需求修改，弊端就是第三方库">
+<meta name="keywords" content="iOS中高级开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="笔谈cocoapods的安装与使用">
+<meta property="og:url" content="https://depthlove.github.io/2015/05/11/talk-about-cocoapods-install-and-use/index.html">
+<meta property="og:site_name" content="Minmin.Sun Blog">
+<meta property="og:description" content="因为要重构播放器库，所以就需要参考网上的开源项目，在播放器开源项目这块，kxmovie开源项目是值得参考的一个项目。在github下载下来后，运行该工程，发现其用到了cocoapods来管理第三方库，以前我做项目都是将第三方库直接下载然后将源文件导入到工程，这种做法有其好处也存在一定的弊端，好处是便于项目的维护，方便的知道过去使用的第三方库是个什么情况，还可以根据实际需求修改，弊端就是第三方库">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://images.cnitblog.com/blog2015/499497/201505/111557198605907.png">
+<meta property="og:image" content="http://images.cnitblog.com/blog2015/499497/201505/111601220012200.png">
+<meta property="og:image" content="http://images.cnitblog.com/blog2015/499497/201505/111605066427802.png">
+<meta property="og:image" content="http://images.cnitblog.com/blog2015/499497/201505/111655319395424.png">
+<meta property="og:image" content="http://images.cnitblog.com/blog2015/499497/201505/111608117677679.png">
+<meta property="og:updated_time" content="2019-03-29T04:10:03.092Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="笔谈cocoapods的安装与使用">
+<meta name="twitter:description" content="因为要重构播放器库，所以就需要参考网上的开源项目，在播放器开源项目这块，kxmovie开源项目是值得参考的一个项目。在github下载下来后，运行该工程，发现其用到了cocoapods来管理第三方库，以前我做项目都是将第三方库直接下载然后将源文件导入到工程，这种做法有其好处也存在一定的弊端，好处是便于项目的维护，方便的知道过去使用的第三方库是个什么情况，还可以根据实际需求修改，弊端就是第三方库">
+<meta name="twitter:image" content="http://images.cnitblog.com/blog2015/499497/201505/111557198605907.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://depthlove.github.io/2015/05/11/talk-about-cocoapods-install-and-use/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>笔谈cocoapods的安装与使用 | Minmin.Sun Blog</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bb3cb1d5838b79bdd0bccc4f449418c6";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Minmin.Sun Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">计算机硕士，音视频，机器学习方向。GitHub：https://github.com/depthlove</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-messages">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/messages/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>留言板</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-top">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/top/" rel="section"><i class="menu-item-icon fa fa-fw fa-signal"></i> <br>阅读最多</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://depthlove.github.io/2015/05/11/talk-about-cocoapods-install-and-use/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minmin.Sun">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Minmin.Sun Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">笔谈cocoapods的安装与使用
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-05-11 16:09:05" itemprop="dateCreated datePublished" datetime="2015-05-11T16:09:05+08:00">2015-05-11</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+            <span id="/2015/05/11/talk-about-cocoapods-install-and-use/" class="leancloud_visitors" data-flag-title="笔谈cocoapods的安装与使用">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>　　因为要重构播放器库，所以就需要参考网上的开源项目，在播放器开源项目这块，kxmovie开源项目是值得参考的一个项目。在github下载下来后，运行该工程，发现其用到了cocoapods来管理第三方库，以前我做项目都是将第三方库直接下载然后将源文件导入到工程，这种做法有其好处也存在一定的弊端，好处是便于项目的维护，方便的知道过去使用的第三方库是个什么情况，还可以根据实际需求修改，弊端就是第三方库的更新需要自己下载最新的再将旧的替换（手动更新）。通过cocoapods来管理第三方库，可以获取到最新的第三库将其引用到项目中，而且不需要自己手动去添加该第三方库的依赖库，虽然cocoapods用起来方便，但是也不一定全好，因为项目运行链接第三方库的时候，比如之前自己改过cocoapods引用进来的第三方库，这时就悲剧了，加载的第三方库是重新从网络上获取的，网上一些开发者也提到了，通过cocoapods管理项目中的第三方库不便于项目回滚。所以，是否选择cocoapods要根据实际情况来定。</p>
+<a id="more"></a>
+<p>　　要使用cocoapods，对于之前没有安装过cocoapods的开发者来说，首先就是要在Mac上安装cocoapods，在Mac终端执行命令 <strong>sudo gem install cocoapods</strong>，执行结果如下<br>　　<br><img src="http://images.cnitblog.com/blog2015/499497/201505/111557198605907.png" alt="终端执行结果"></p>
+<p>　　但是没有发现cocoapods源，因为ruby的软件源rubygems.org使用的亚马逊的云服务，被墙了，需要更新一下ruby的源，使用其他能支持的源—-&gt;国内淘宝的源：</p>
+<pre><code>gem sources --remove https://rubygems.org/
+
+gem sources -a http://ruby.taobao.org/
+
+gem sources -l
+</code></pre><p>　　执行上面的命令结果如下：</p>
+<p><img src="http://images.cnitblog.com/blog2015/499497/201505/111601220012200.png" alt="淘宝源执行结果"></p>
+<p>　　现在，更新源成功了，可以进行安装了，继续在Mac终端执行命令 <strong>sudo gem install cocoapods</strong>，执行结果如下：</p>
+<p><img src="http://images.cnitblog.com/blog2015/499497/201505/111605066427802.png" alt="终端执行结果"></p>
+<p>………….</p>
+<p>………….</p>
+<p>　　接下来在Mac终端输入以下命令：<strong>pod setup</strong>　　</p>
+<p>注意：This process will likely take a while as this command clones the CocoaPods Specs repository </p>
+<p>into ~/.cocoapods/ on your computer.</p>
+<p><img src="http://images.cnitblog.com/blog2015/499497/201505/111655319395424.png" alt="终端执行结果"></p>
+<p> 　　来看看我们安装的cocoapods的版本信息，在Mac终端上执行命令 <strong>pod –version</strong>，执行结果如下：</p>
+<p><img src="http://images.cnitblog.com/blog2015/499497/201505/111608117677679.png" alt="终端执行结果"></p>
+<p>　　OK，cocoapods安装成功了。</p>
+<p>　　若要卸载cocoapods， 就在Mac终端执行命令 <strong>sudo gem uninstall cocoapods</strong></p>
+<p>　　参考文章：<a href="http://www.devtang.com/blog/2014/05/25/use-cocoapod-to-manage-ios-lib-dependency/" target="_blank" rel="noopener">用CocoaPods做iOS程序的依赖管理</a></p>
+<p>　　　　　　　<a href="http://www.cnblogs.com/cwgk/p/3370949.html" target="_blank" rel="noopener">iOS.CocoaPods.0</a></p>
+<p>　　　　　　  <a href="http://blog.csdn.net/dqjyong/article/details/37958067" target="_blank" rel="noopener">OS X升级到10.10之后使用pod出现问题的解决方法</a></p>
+<p>　　　　　　  <a href="http://blog.csdn.net/feixiang_song/article/details/40392629?utm_source=tuicool" target="_blank" rel="noopener">osx升级到10.10后，用pod install报错最终解决办法</a></p>
+<p>　　cocoapods安装好了，接下来就该用它来做事了。使用CocoaPods管理第三方库的例子如下：</p>
+<p>　　使用Xcode,在工程根目录下，新建立一个空白的Podfile文档，然后在里面添加以下内容</p>
+<pre><code>platform:ios,&apos;6.0&apos;
+pod &apos;FMDB&apos;, &apos;~&gt; 2.0&apos;
+pod &apos;AFNetworking&apos;, &apos;~&gt; 1.1.0&apos;
+pod &apos;JSONKit&apos;,&apos;~&gt;1.4&apos;
+</code></pre><p> 　  保存，然后配置工程， 在系统终端中，使用cd命令切换到项目根目录下，输入命令： <strong>pod install</strong></p>
+<p>　　执行完之后，CocoaPods在工程目录下创建了一个文件夹“Pods”，该文件夹存放所有依赖的库，另外还创建了一个.xcworkspace文件，配置完之后需使用.xcworkspace文件打开工程。</p>
+<p>　　参考文章：<a href="http://www.cnblogs.com/crazypebble/p/3597419.html" target="_blank" rel="noopener">CocoaPods安装和使用教程</a></p>
+<p>　　　　　　  <a href="http://jishu.zol.com.cn/207731.html" target="_blank" rel="noopener">iOS系列译文：深入理解 CocoaPods</a></p>
+<p>　　对于kxmoive这个工程，它使用cocoapods就引用了一个库，对于我而言，就因为引用一个库反复折腾cocoapods，肯定不爽，浪费时间。所以，我就想删掉kxmoive工程中cocoapods的所有相关东西。但是，删除cocoapods后，出现了如下错误：</p>
+<p>　　<strong>diff: /../Podfile.lock: No such file or directory diff: /Manifest.lock: No such file or directory error: The sandbox is not in sync with the Podfile.lock. Run ‘pod install’ or update your CocoaPods installation.</strong></p>
+<p>　　我参考文章 <a href="http://blog.csdn.net/freedom2028/article/details/10244819" target="_blank" rel="noopener">从工程中删除Cocoapods</a> ，顺利解决了这个问题。对于上面的这个报错，当工程中有使用cocoapods的时候，运行项目也可能会出现这个问题，那就按照报错提示，重新更新pod，即在Mac终端执行pod install，参考文章 <a href="http://www.cnblogs.com/ios-wmm/p/3360958.html" target="_blank" rel="noopener">Xcode工程使用CocoaPods管理第三方库新建工程时出现错误</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+      <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Minmin.Sun wechat" style="width: 200px; max-width: 100%;">
+  <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS中高级开发/" rel="tag"># iOS中高级开发</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/04/28/talk-about-FFmpeg-part2/" rel="next" title="笔谈FFmpeg（二）">
+                <i class="fa fa-chevron-left"></i> 笔谈FFmpeg（二）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/06/12/use-hexo-create-blog-in-mac/" rel="prev" title="Mac搭建hexo博客">
+                Mac搭建hexo博客 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Minmin.Sun">
+            
+              <p class="site-author-name" itemprop="name">Minmin.Sun</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">71</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/depthlove" title="GitHub &rarr; https://github.com/depthlove" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:suntongmian@163.com" title="E-Mail &rarr; mailto:suntongmian@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.csdn.net/leixiaohua1020" title="http://blog.csdn.net/leixiaohua1020" rel="noopener" target="_blank">leixiaohua1020</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://roxlu.com" title="http://roxlu.com" rel="noopener" target="_blank">roxlu.com</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.streamingmedia.com" title="http://www.streamingmedia.com" rel="noopener" target="_blank">streamingmedia.com</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://arxiv.org/list/cs/recent" title="https://arxiv.org/list/cs/recent" rel="noopener" target="_blank">arXiv.org</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://paperswithcode.com/sota" title="https://paperswithcode.com/sota" rel="noopener" target="_blank">paperswithcode.com</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/depthlove/depthlove.github.io/issues" title="https://github.com/depthlove/depthlove.github.io/issues" rel="noopener" target="_blank">BlogComment</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Minmin.Sun</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '023374e22942af4046f9',
+    clientSecret: '5cedecd7c2b07700433ee7c72cac9ae1057a9092',
+    repo: 'depthlove.github.io',
+    owner: 'depthlove',
+    admin: ['depthlove'],
+    id: md5(location.pathname),
+    
+      language: window.navigator.language || window.navigator.userLanguage,
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
+
+
+  
+
+
+
+
+  
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
+          } else {
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! More info at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'I0MNwNavGR4emmV0Vq9IRTeE-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'I0MNwNavGR4emmV0Vq9IRTeE-gzGzoHsz',
+                'X-LC-Key': 'jukR11B6qIiKA7bRYTXBe8bd',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script>
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 9731,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
