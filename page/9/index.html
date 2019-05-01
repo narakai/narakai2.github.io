@@ -390,6 +390,165 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://depthlove.github.io/2016/03/17/hw-encode-and-transfer-in-ios-platform-camera-part1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minmin.Sun">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Minmin.Sun Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/03/17/hw-encode-and-transfer-in-ios-platform-camera-part1/" class="post-title-link" itemprop="url">在iOS上硬编码推流－摄像头数据采集（一）</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-03-17 15:55:53" itemprop="dateCreated datePublished" datetime="2016-03-17T15:55:53+08:00">2016-03-17</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+            <span id="/2016/03/17/hw-encode-and-transfer-in-ios-platform-camera-part1/" class="leancloud_visitors" data-flag-title="在iOS上硬编码推流－摄像头数据采集（一）">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>该文的内容在我之前的文章中已经实现过，但是为了结构清晰起见，本文将相机控制和采集视频数据功能封装为单独的库。</p>
+<p>iOS上使用AVFoundation.framework框架来调用系统相机并获取视频数据。视频数据可以根据设定的参数，可采集到RGB或YUV数据，一般使用的是GBRA32，420v，420f，下面演示相机的调用和视频数据的获取。</p>
+<p>a)引入框架的头文件<code>#import &lt;AVFoundation/AVFoundation.h&gt;</code></p>
+<p>b)调用的类遵守协议<code>AVCaptureVideoDataOutputSampleBufferDelegate</code></p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2016/03/17/hw-encode-and-transfer-in-ios-platform-camera-part1/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://depthlove.github.io/2016/03/16/share-my-project-experience-in-audio-and-video-development/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1150,164 +1309,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://depthlove.github.io/2015/11/16/push-video-or-audio-to-server-in-rtmp-live-play/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Minmin.Sun">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Minmin.Sun Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2015/11/16/push-video-or-audio-to-server-in-rtmp-live-play/" class="post-title-link" itemprop="url">rtmp直播推流（二）－－将音频／视频推送到流媒体服务器</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2015-11-16 18:27:30" itemprop="dateCreated datePublished" datetime="2015-11-16T18:27:30+08:00">2015-11-16</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-            <span id="/2015/11/16/push-video-or-audio-to-server-in-rtmp-live-play/" class="leancloud_visitors" data-flag-title="rtmp直播推流（二）－－将音频／视频推送到流媒体服务器">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>参考我之前写的一篇文章<a href="https://depthlove.github.io/2015/09/18/use-ffmpeg-and-x264-encode-iOS-camera-video-to-h264/">利用FFmpeg+x264将iOS摄像头实时视频流编码为h264文件</a></p>
-<p>参看文章<a href="http://blog.csdn.net/nonmarking/article/details/48022387" target="_blank" rel="noopener">ffmpeg综合应用示例（一）——摄像头直播 </a>，       <a href="http://blog.csdn.net/nonmarking/article/details/50522413" target="_blank" rel="noopener">ffmpeg综合应用示例（四）——摄像头直播的视音频同步</a></p>
-<p>参看文章<a href="http://blog.csdn.net/leixiaohua1020/article/details/47072519" target="_blank" rel="noopener">最简单的基于FFmpeg的移动端例子：IOS 推流器</a>，      <a href="http://blog.csdn.net/leixiaohua1020/article/details/39803457" target="_blank" rel="noopener"> 最简单的基于FFmpeg的推流器（以推送RTMP为例）</a></p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2015/11/16/push-video-or-audio-to-server-in-rtmp-live-play/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1356,7 +1357,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-count">76</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1403,7 +1404,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
