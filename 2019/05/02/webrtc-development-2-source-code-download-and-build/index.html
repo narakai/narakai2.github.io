@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="Minmin.Sun Blog">
 <meta property="og:description" content="在使用任何工具之前，我们都有必要对工具做大概地的了解，做到粗犷但不失偏颇，这对我们选用工具和切入点是很关键的。本节的标题虽然是 WebRTC 源码下载与编译，但在这之前，我们有必要大概地了解 WebRTC，比如开发机构、免费性、支持的平台、功能亮点。 WebRTC 是一个免费开源的跨平台项目，由 Google，Mozilla，Opera 等支持，支持 Chrome，Firefox，Opera 以及">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-05T02:31:46.216Z">
+<meta property="og:updated_time" content="2019-05-05T03:26:48.896Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WebRTC 开发（二）源码下载与编译">
 <meta name="twitter:description" content="在使用任何工具之前，我们都有必要对工具做大概地的了解，做到粗犷但不失偏颇，这对我们选用工具和切入点是很关键的。本节的标题虽然是 WebRTC 源码下载与编译，但在这之前，我们有必要大概地了解 WebRTC，比如开发机构、免费性、支持的平台、功能亮点。 WebRTC 是一个免费开源的跨平台项目，由 Google，Mozilla，Opera 等支持，支持 Chrome，Firefox，Opera 以及">
@@ -485,18 +485,39 @@
       
         <p>在使用任何工具之前，我们都有必要对工具做大概地的了解，做到粗犷但不失偏颇，这对我们选用工具和切入点是很关键的。本节的标题虽然是 WebRTC 源码下载与编译，但在这之前，我们有必要大概地了解 WebRTC，比如开发机构、免费性、支持的平台、功能亮点。</p>
 <p>WebRTC 是一个免费开源的跨平台项目，由 Google，Mozilla，Opera 等支持，支持 Chrome，Firefox，Opera 以及 Android 和 iOS 平台，能够给浏览器、手机应用和物联网设备提供了实时互动能力。</p>
-<p>WebRTC 是一组协议和 API。WebRTC 的起源可追溯到 2011年，经过六年多的时间的发展，在 2017年底 WebRTC 1.0 标准正式出炉。通过 WebRTC 的 <a href="https://webrtc.org/release-notes/" target="_blank" rel="noopener">release notes</a> 可以看到现在最新的 release 版本是 <a href="https://groups.google.com/forum/#!msg/discuss-webrtc/cXEtXIIYrQs/R7y0yIK2AQAJ" target="_blank" rel="noopener">M74 Release Noted</a>。</p>
+<p>WebRTC 是一组协议和 API。WebRTC 的起源可追溯到 2011年，经过六年多的时间的发展，在 2017年底 WebRTC 1.0 标准正式出炉。通过 WebRTC 的 <a href="https://webrtc.org/release-notes/" target="_blank" rel="noopener">Release Notes</a> 可以看到现在最新的 release 版本是 <a href="https://groups.google.com/forum/#!msg/discuss-webrtc/cXEtXIIYrQs/R7y0yIK2AQAJ" target="_blank" rel="noopener">M74 Release Noted</a>。</p>
 <p>2015年移动端直播的兴起，观众可以在手机端实时看主播的直播，但是观众与主播之间的沟通需要通过发弹幕来进行，这种交流的实时性较差，沟通不便利，观众参与感较差。2016年初移动端上出现了主播与观众之间可以通过实时视频聊天这种方式来沟通，即，视频连麦。那我们想实现这种视频连麦的功能该怎么做呢？</p>
 <p>现在通过 WebRTC 以及其它一些音视频工具，我们就可以搭建一个视频聊天工具，做到视频连麦，也能做到类似于微信视频群聊。关于各种实现视频连麦的方式，这里就不细说了，放到后面的章节来解说。</p>
 <p>了解到 WebRTC 是个什么东西后，通常人的心里就会产生一种跃跃欲试的冲动，想试试，那试试就试试呗。“磨刀不误砍柴工”这句话是有道理的，当我们没有经验和没有人传授经验的时候，那我们就要琢磨这句“磨刀不误砍柴工”了。我们要砍柴做饭，找到一把刀拿起就跑到树林里去砍柴，结果发现刀太钝，砍柴真费劲。这个时候，我们就意识到砍柴刀要用磨刀石磨一磨，磨锋利了，就能提升砍柴的效率。我举这个例子，就想说明两点：</p>
 <a id="more"></a>
 <p>第一，先尝试可以加深理解，获取自己的经验。</p>
 <p>第二，通过获取的经验，重新调整，比如调整做事步骤，加深理论学习等。</p>
-<p>参考文献：</p>
+<p>WebRTC 支持 Windows, Mac OS X, Linux, Android 和 iOS 平台，这里以 iOS 平台为例来描述 WebRTC 的源码下载和编译过程。</p>
+<blockquote>
+<h1 id="选择版本"><a href="#选择版本" class="headerlink" title="选择版本"></a>选择版本</h1></blockquote>
+<p>从 WebRTC 的 <a href="https://webrtc.org/release-notes/" target="_blank" rel="noopener">Release Notes</a> 的 release 版本中选择最新的版本，当前最新版为 <a href="https://groups.google.com/forum/#!msg/discuss-webrtc/cXEtXIIYrQs/R7y0yIK2AQAJ" target="_blank" rel="noopener">M74 Release Noted</a> </p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">WebRTC M74 Release Notes</span><br><span class="line"></span><br><span class="line">WebRTC M74 branch (cut <span class="keyword">at</span> r26981)</span><br><span class="line"></span><br><span class="line">Summary</span><br><span class="line"></span><br><span class="line">WebRTC M74, currently available <span class="keyword">in</span> Chrome's beta channel <span class="keyword">and</span> <span class="keyword">as</span> native libraries <span class="keyword">for</span> Android <span class="keyword">and</span> iOS, <span class="keyword">contains</span> feature additions like RID/MID based Simulcast, multiple bug fixes, enhancements <span class="keyword">and</span> stability/performance improvements. As <span class="keyword">with</span> previous releases, we encourage all developers <span class="keyword">to</span> <span class="built_in">run</span> versions <span class="keyword">of</span> Chrome <span class="keyword">on</span> <span class="keyword">the</span> Canary, Dev, <span class="keyword">and</span> Beta channels frequently <span class="keyword">and</span> quickly report any issues found. Please take a look <span class="keyword">at</span> this page, <span class="keyword">for</span> <span class="keyword">some</span> pointers <span class="keyword">on</span> how <span class="keyword">to</span> <span class="built_in">file</span> a good bug report. The help we have received has been invaluable! </span><br><span class="line"></span><br><span class="line">The Chrome release schedule can be found here. Native libraries <span class="keyword">for</span> Android <span class="keyword">and</span> iOS are built <span class="keyword">on</span> a weekly basis <span class="keyword">and</span> are available <span class="keyword">on</span> JCenter <span class="keyword">and</span> CocoaPods; <span class="keyword">the</span> Changelog <span class="keyword">is</span> available here.</span><br></pre></td></tr></table></figure>
+<p>进入分支 <a href="https://chromium.googlesource.com/external/webrtc/+log/branch-heads/m74" target="_blank" rel="noopener">WebRTC M74 branch</a> (cut at r26981)</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">chromium / external / webrtc / branch-heads/m74</span><br><span class="line"></span><br><span class="line">741f9a0 Ignore duplicate sent packets <span class="keyword">in</span> TransportFeedbackAdapter by Erik Språng · 2 weeks ago</span><br><span class="line"></span><br><span class="line">e6d5f62 Merge <span class="keyword">to</span> M74: Allow setting ALR values <span class="keyword">for</span><span class="built_in"> screen </span>content again by Erik Språng · 4 weeks ago</span><br><span class="line"></span><br><span class="line">9c745ae Revert <span class="string">"Disable DTLS 1.0, TLS 1.0 and TLS 1.1 downgrade in WebRTC."</span> by Benjamin Wright · 5 weeks ago</span><br><span class="line"></span><br><span class="line">1c9bf93 Merge <span class="keyword">to</span> M74: Fix bug <span class="keyword">in</span> vp8 FrameDropThreshold by Erik Språng · 5 weeks ago</span><br><span class="line"></span><br><span class="line"><span class="built_in">..</span>.</span><br></pre></td></tr></table></figure>
+<p>选择第一条提交记录 [741f9a0 Ignore duplicate sent packets in TransportFeedbackAdapter by Erik Språng · 2 weeks ago] 进入详情页 <a href="https://chromium.googlesource.com/external/webrtc/+/741f9a0679bc70682b056004f8421879352d1a8d" target="_blank" rel="noopener">chromium / external / webrtc / 741f9a0679bc70682b056004f8421879352d1a8d</a></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">chromium / external / webrtc / 741f9a0679bc70682b056004f8421879352d1a8d</span><br><span class="line"></span><br><span class="line"><span class="keyword">commit</span>	<span class="number">741</span>f9a0679bc70682b056004f8421879352d1a8d	[<span class="keyword">log</span>] [tgz]</span><br><span class="line">author	Erik Språng &lt;sprang@webrtc.org&gt;	Thu Apr <span class="number">18</span> <span class="number">12</span>:<span class="number">28</span>:<span class="number">02</span> <span class="number">2019</span></span><br><span class="line">committer	Erik Språng &lt;sprang@webrtc.org&gt;	Fri Apr <span class="number">19</span> <span class="number">17</span>:<span class="number">51</span>:<span class="number">34</span> <span class="number">2019</span></span><br><span class="line">tree	<span class="number">36</span>ee311fa41a5d60ab98d87273f210ac90ed3fdf</span><br><span class="line"><span class="keyword">parent</span>	e6d5f62d010d7f6284504af1c7898894851b238c [diff]</span><br><span class="line"></span><br><span class="line"><span class="keyword">Ignore</span> <span class="keyword">duplicate</span> sent packets <span class="keyword">in</span> TransportFeedbackAdapter</span><br><span class="line"></span><br><span class="line">Bug: webrtc:<span class="number">10564</span>, chromium:<span class="number">954139</span>, webrtc:<span class="number">10509</span></span><br><span class="line"><span class="keyword">Change</span>-<span class="keyword">Id</span>: I617b58ef8cf5858d7a81aaa39884c5cc1ac2af6e</span><br><span class="line">Reviewed-<span class="keyword">on</span>: https://webrtc-review.googlesource.com/c/src/+/<span class="number">133564</span></span><br><span class="line"><span class="keyword">Commit</span>-Queue: Erik Språng &lt;sprang@webrtc.org&gt;</span><br><span class="line">Reviewed-<span class="keyword">by</span>: Sebastian Jansson &lt;srte@webrtc.org&gt;</span><br><span class="line">Cr-Original-<span class="keyword">Commit</span>-<span class="keyword">Position</span>: refs/heads/<span class="keyword">master</span>@&#123;#<span class="number">27689</span>&#125;(cherry picked <span class="keyword">from</span> <span class="keyword">commit</span> d50947ab516ec404b100752617fb828d05cf0e3d)</span><br><span class="line">Reviewed-<span class="keyword">on</span>: https://webrtc-review.googlesource.com/c/src/+/<span class="number">133579</span></span><br><span class="line">Cr-<span class="keyword">Commit</span>-<span class="keyword">Position</span>: refs/branch-heads/m74@&#123;#<span class="number">20</span>&#125;</span><br><span class="line">Cr-Branched-<span class="keyword">From</span>: be7af9399ceb88171bf60b50419ff2dec8184fb9-refs/heads/<span class="keyword">master</span>@&#123;#<span class="number">26981</span>&#125;</span><br><span class="line"></span><br><span class="line">modules/congestion_controller/rtp/BUILD.gn[diff]</span><br><span class="line">modules/congestion_controller/rtp/send_time_history.cc[diff]</span><br><span class="line">modules/congestion_controller/rtp/send_time_history.h[diff]</span><br><span class="line">modules/congestion_controller/rtp/transport_feedback_adapter.cc[diff]</span><br><span class="line">modules/congestion_controller/rtp/transport_feedback_adapter.h[diff]</span><br><span class="line">modules/congestion_controller/rtp/transport_feedback_adapter_unittest.cc[diff]</span><br><span class="line"><span class="number">6</span> files <span class="keyword">changed</span></span><br><span class="line"></span><br><span class="line">tree: <span class="number">36</span>ee311fa41a5d60ab98d87273f210ac90ed3fdf</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>获取到该分支的最新提交记录：<strong>commit    741f9a0679bc70682b056004f8421879352d1a8d</strong>。后面下载源码的时候要用到这个 commit 编号。</p>
+<blockquote>
+<h1 id="下载源码"><a href="#下载源码" class="headerlink" title="下载源码"></a>下载源码</h1></blockquote>
+<p>下载源码的时候，要用到 gclient 工具，该工具具备类似于 git clone 的作用，可以将远程分支的代码克隆到本地。为什么不直接用 git 工具的 git clone 呢？原因在于 Google 的代码管理工具用的就是 gclient，用来管理源码的 checkout, update 等。此处，我们知道 gclient 是个什么东西就行了，要想详细了解可以自行 Google。</p>
+<p>我使用的是 MacBook Pro 2015款机器：</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">macOS Mojave</span><br><span class="line">版本 <span class="number">10.14</span><span class="number">.4</span></span><br><span class="line"></span><br><span class="line">MacBook Pro (Retina, <span class="number">13</span>-inch, Early <span class="number">2015</span>)</span><br><span class="line">处理器 <span class="number">2.7</span> GHz Intel Core i5</span><br><span class="line">内存 <span class="number">8</span> GB <span class="number">1867</span> MHz DDR3</span><br><span class="line">启动磁盘 Macintosh HD</span><br><span class="line">图形卡 Intel Iris Graphics <span class="number">6100</span> <span class="number">1536</span> MB</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h1 id="执行编译"><a href="#执行编译" class="headerlink" title="执行编译"></a>执行编译</h1></blockquote>
+<blockquote>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1></blockquote>
 <p>[1] <a href="https://webrtc.org/" target="_blank" rel="noopener">WebRTC Home</a></p>
 <p>[2] <a href="https://www.w3.org/2017/11/media-advisory-webrtc10-cr.html.en" target="_blank" rel="noopener">WebRTC becomes design-complete strengthening the Web Platform as a solid actor in the telecommunications arena</a></p>
 <p>[3] <a href="https://www.w3.org/TR/2017/CR-webrtc-20171102/" target="_blank" rel="noopener">WebRTC 1.0: Real-time Communication Between Browsers</a>, W3C Candidate Recommendation 02 November 2017</p>
 <p>[4] <a href="https://www.w3.org/TR/webrtc/" target="_blank" rel="noopener">WebRTC 1.0: Real-time Communication Between Browsers</a>, W3C Candidate Recommendation 27 September 2018</p>
+<p>[5] <a href="https://webrtc.org/release-notes/" target="_blank" rel="noopener">WebRTC Release Notes</a> </p>
+<p>[6] <a href="https://webrtc.org/native-code/ios/" target="_blank" rel="noopener">WebRTC Native Code, iOS</a></p>
+<p>[7] <a href="https://www.chromium.org/developers/how-tos/depottools" target="_blank" rel="noopener">gclient</a></p>
 
       
     </div>
@@ -613,8 +634,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -765,6 +795,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#选择版本"><span class="nav-number">1.</span> <span class="nav-text">选择版本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#下载源码"><span class="nav-number">2.</span> <span class="nav-text">下载源码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#执行编译"><span class="nav-number">3.</span> <span class="nav-text">执行编译</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
