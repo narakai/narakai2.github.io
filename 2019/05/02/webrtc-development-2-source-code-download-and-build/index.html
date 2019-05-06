@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="Minmin.Sun Blog">
 <meta property="og:description" content="在使用任何工具之前，我们都有必要对工具做大概地的了解，做到粗犷但不失偏颇，这对我们选用工具和切入点是很关键的。本节的标题虽然是 WebRTC 源码下载与编译，但在这之前，我们有必要大概地了解 WebRTC，比如开发机构、免费性、支持的平台、功能亮点。 WebRTC 是一个免费开源的跨平台项目，由 Google，Mozilla，Opera 等支持，支持 Chrome，Firefox，Opera 以及">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-06T01:58:59.080Z">
+<meta property="og:updated_time" content="2019-05-06T02:30:15.647Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WebRTC 开发（二）源码下载与编译">
 <meta name="twitter:description" content="在使用任何工具之前，我们都有必要对工具做大概地的了解，做到粗犷但不失偏颇，这对我们选用工具和切入点是很关键的。本节的标题虽然是 WebRTC 源码下载与编译，但在这之前，我们有必要大概地了解 WebRTC，比如开发机构、免费性、支持的平台、功能亮点。 WebRTC 是一个免费开源的跨平台项目，由 Google，Mozilla，Opera 等支持，支持 Chrome，Firefox，Opera 以及">
@@ -537,10 +537,12 @@
 <figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">macOS Mojave</span><br><span class="line">版本 <span class="number">10.14</span><span class="number">.4</span></span><br><span class="line"></span><br><span class="line">MacBook Pro (Retina, <span class="number">13</span>-inch, Early <span class="number">2015</span>)</span><br><span class="line">处理器 <span class="number">2.7</span> GHz Intel Core i5</span><br><span class="line">内存 <span class="number">8</span> GB <span class="number">1867</span> MHz DDR3</span><br><span class="line">启动磁盘 Macintosh HD</span><br><span class="line">图形卡 Intel Iris Graphics <span class="number">6100</span> <span class="number">1536</span> MB</span><br><span class="line">磁盘空间 <span class="number">128</span> GB</span><br><span class="line">可用磁盘空间 <span class="number">17.11</span> GB</span><br></pre></td></tr></table></figure>
 <p>我的 Mac 电脑可用磁盘空间 17.11 GB，是足以装的下 5.6 GB 文件的，好了，接下来就可以放心下载源码了。</p>
 <p>在终端执行命令</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fetch <span class="comment">--nohooks webrtc_ios</span></span><br><span class="line">gclient sync</span><br></pre></td></tr></table></figure>
-<p>在前面的步骤中，通过 <strong>fetch –help</strong>，可以看到代码目录 webrtc，webrtc_android，webrtc_ios 等。我要在 iOS 平台上使用，就选择了 webrtc_ios。选择依据见 <a href="https://webrtc.org/native-code/ios/" target="_blank" rel="noopener">WebRTC Native Code, iOS</a> 中提到的 “This will fetch a regular WebRTC checkout with the iOS-specific parts added.”</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fetch <span class="comment">--nohooks webrtc_ios</span></span><br><span class="line">gclient sync -r <span class="number">741</span>f9a0679bc70682b056004f8421879352d1a8d</span><br></pre></td></tr></table></figure>
+<p>在 “安装 depot_tools 工具包” 的步骤中，通过 <strong>fetch –help</strong>，可以看到代码目录 webrtc，webrtc_android，webrtc_ios 等。我要在 iOS 平台上使用，就选择了 webrtc_ios。选择依据见 <a href="https://webrtc.org/native-code/ios/" target="_blank" rel="noopener">WebRTC Native Code, iOS</a> 中提到的 “This will fetch a regular WebRTC checkout with the iOS-specific parts added.”</p>
+<p>741f9a0679bc70682b056004f8421879352d1a8d 是 “选择 Release 版本” 步骤中获取的 M74 Release 版本的 commit 编号信息。</p>
 <blockquote>
 <h1 id="执行编译"><a href="#执行编译" class="headerlink" title="执行编译"></a>执行编译</h1></blockquote>
+<p>编译的方式有2种选择，即使用 ninja 和 Xcode，详见 <a href="https://webrtc.org/native-code/ios/" target="_blank" rel="noopener">WebRTC Native Code, iOS</a>。</p>
 <blockquote>
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1></blockquote>
 <p>[1] <a href="https://webrtc.org/" target="_blank" rel="noopener">WebRTC Home</a></p>
@@ -548,11 +550,10 @@
 <p>[3] <a href="https://www.w3.org/TR/2017/CR-webrtc-20171102/" target="_blank" rel="noopener">WebRTC 1.0: Real-time Communication Between Browsers</a>, W3C Candidate Recommendation 02 November 2017</p>
 <p>[4] <a href="https://www.w3.org/TR/webrtc/" target="_blank" rel="noopener">WebRTC 1.0: Real-time Communication Between Browsers</a>, W3C Candidate Recommendation 27 September 2018</p>
 <p>[5] <a href="https://webrtc.org/release-notes/" target="_blank" rel="noopener">WebRTC Release Notes</a> </p>
-<p>[6] <a href="https://www.chromium.org/developers/how-tos/depottools" target="_blank" rel="noopener">gclient</a></p>
-<p>[7] <a href="https://webrtc.org/native-code/development/" target="_blank" rel="noopener">WebRTC Native Code, Development</a></p>
-<p>[8] <a href="https://webrtc.org/native-code/ios/" target="_blank" rel="noopener">WebRTC Native Code, iOS</a></p>
-<p>[9] <a href="https://www.chromium.org/developers/how-tos/depottools" target="_blank" rel="noopener">Using depot_tools</a></p>
-<p>[10] <a href="https://commondatastorage.googleapis.com/chrome-infra-docs/flat/depot_tools/docs/html/depot_tools_tutorial.html" target="_blank" rel="noopener">depot_tools_tutorial(7) Manual Page</a></p>
+<p>[6] <a href="https://webrtc.org/native-code/development/" target="_blank" rel="noopener">WebRTC Native Code, Development</a></p>
+<p>[7] <a href="https://webrtc.org/native-code/ios/" target="_blank" rel="noopener">WebRTC Native Code, iOS</a></p>
+<p>[8] <a href="https://www.chromium.org/developers/how-tos/depottools" target="_blank" rel="noopener">Using depot_tools</a></p>
+<p>[9] <a href="https://commondatastorage.googleapis.com/chrome-infra-docs/flat/depot_tools/docs/html/depot_tools_tutorial.html" target="_blank" rel="noopener">depot_tools_tutorial(7) Manual Page</a></p>
 
       
     </div>
