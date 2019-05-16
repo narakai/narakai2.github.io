@@ -456,6 +456,24 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -1320,7 +1338,7 @@ brew install git
       
         
           <p>经过前面的学习对FFmpeg的基本流程已经很熟悉了，现在到了掌握其中细节的时候了，用FFmpeg做播放器解码操作中，涉及到了一些结构体，这些结构之间到底有什么关系，它们是怎样协同工作的呢。文章 FFMPEG中最关键的结构体之间的关系 对这些结构间的关系进行了分析，详细内容如下：</p>
-<p>FFMPEG中结构体很多。最关键的结构体可以分成以下几类：<br>　　<br>
+<p>FFMPEG中结构体很多。最关键的结构体可以分成以下几类：</p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1332,7 +1350,7 @@ brew install git
           <!--/noindex-->
         
       
-    </p></div>
+    </div>
 
     
 
@@ -1477,7 +1495,7 @@ brew install git
       
         
           <p>现在的工作是播放器库的开发，可不是调用iOS系统自带的播放器框架进行一些简单的功能和界面定制，这些没什么含量。涉及iOS开发有3个年头了，现在的工作算是有点含金量了。涉及播放器的开发，FFmpeg的架构和功能是必须清楚的。FFmpeg自带的三个工程：ffplay， ffmpeg， ffprobe。这三个工程的代码量太大，如何切入进去，一窥其中的奥秘为自己所用呢？从核心切入，编码和解码。编码和解码的核心API接口就那十几个，通过这些深入然后剖析源代码，目标就明确了。</p>
-<p>就我个人而言，首先要了解FFmpeg整个的运行机制，哪一部分工作需要调用FFmpeg的哪一块，这个必须清楚。播放器库的开发，解码播放这就是核心，我就需要从FFmpeg的解码流程入手了。FFmpeg源代码结构图 - 解码 这篇文章太好了，看得我两眼放光，精华。这篇文章读透了，完全可以把控FFmpeg的使用。我接下来的学习任务，那就是认真研读和敲代码研习，光看是不顶用的，需要动手写。<br>　　<br>
+<p>就我个人而言，首先要了解FFmpeg整个的运行机制，哪一部分工作需要调用FFmpeg的哪一块，这个必须清楚。播放器库的开发，解码播放这就是核心，我就需要从FFmpeg的解码流程入手了。FFmpeg源代码结构图 - 解码 这篇文章太好了，看得我两眼放光，精华。这篇文章读透了，完全可以把控FFmpeg的使用。我接下来的学习任务，那就是认真研读和敲代码研习，光看是不顶用的，需要动手写。</p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1489,7 +1507,7 @@ brew install git
           <!--/noindex-->
         
       
-    </p></div>
+    </div>
 
     
 

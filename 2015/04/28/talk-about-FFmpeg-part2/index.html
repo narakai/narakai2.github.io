@@ -105,7 +105,7 @@
 <meta property="og:description" content="经过前面的学习对FFmpeg的基本流程已经很熟悉了，现在到了掌握其中细节的时候了，用FFmpeg做播放器解码操作中，涉及到了一些结构体，这些结构之间到底有什么关系，它们是怎样协同工作的呢。文章 FFMPEG中最关键的结构体之间的关系 对这些结构间的关系进行了分析，详细内容如下： FFMPEG中结构体很多。最关键的结构体可以分成以下几类：">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://img.blog.csdn.net/20130914204051125?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGVpeGlhb2h1YTEwMjA=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
-<meta property="og:updated_time" content="2019-05-16T06:30:14.089Z">
+<meta property="og:updated_time" content="2019-05-16T07:03:28.498Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="笔谈FFmpeg（二）">
 <meta name="twitter:description" content="经过前面的学习对FFmpeg的基本流程已经很熟悉了，现在到了掌握其中细节的时候了，用FFmpeg做播放器解码操作中，涉及到了一些结构体，这些结构之间到底有什么关系，它们是怎样协同工作的呢。文章 FFMPEG中最关键的结构体之间的关系 对这些结构间的关系进行了分析，详细内容如下： FFMPEG中结构体很多。最关键的结构体可以分成以下几类：">
@@ -500,7 +500,8 @@
 
       
         <p>经过前面的学习对FFmpeg的基本流程已经很熟悉了，现在到了掌握其中细节的时候了，用FFmpeg做播放器解码操作中，涉及到了一些结构体，这些结构之间到底有什么关系，它们是怎样协同工作的呢。文章 FFMPEG中最关键的结构体之间的关系 对这些结构间的关系进行了分析，详细内容如下：</p>
-<p>FFMPEG中结构体很多。最关键的结构体可以分成以下几类：<br>　　<br><a id="more"></a></p>
+<p>FFMPEG中结构体很多。最关键的结构体可以分成以下几类：</p>
+<a id="more"></a>
 <h4 id="a-解协议（http-rtsp-rtmp-mms）"><a href="#a-解协议（http-rtsp-rtmp-mms）" class="headerlink" title="a) 解协议（http,rtsp,rtmp,mms）"></a>a) 解协议（http,rtsp,rtmp,mms）</h4><p>AVIOContext，URLProtocol，URLContext主要存储视音频使用的协议的类型以及状态。URLProtocol存储输入视音频使用的封装格式。每种协议都对应一个URLProtocol结构。（注意：FFMPEG中文件也被当做一种协议“file”）</p>
 <h4 id="b-解封装（flv-avi-rmvb-mp4）"><a href="#b-解封装（flv-avi-rmvb-mp4）" class="headerlink" title="b) 解封装（flv,avi,rmvb,mp4）"></a>b) 解封装（flv,avi,rmvb,mp4）</h4><p>AVFormatContext主要存储视音频封装格式中包含的信息；AVInputFormat存储输入视音频使用的封装格式。每种视音频封装格式都对应一个AVInputFormat 结构。</p>
 <h4 id="c-解码（h264-mpeg2-aac-mp3）"><a href="#c-解码（h264-mpeg2-aac-mp3）" class="headerlink" title="c) 解码（h264,mpeg2,aac,mp3）"></a>c) 解码（h264,mpeg2,aac,mp3）</h4><p>每个AVStream存储一个视频/音频流的相关数据；每个AVStream对应一个AVCodecContext，存储该视频/音频流使用解码方式的相关数据；每个AVCodecContext中对应一个AVCodec，包含该视频/音频对应的解码器。每种解码器都对应一个AVCodec结构。</p>
