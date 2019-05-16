@@ -105,7 +105,7 @@
 <meta property="og:description" content="上一篇写的是 WebRTC 源码的下载和编译，为什么不先剖析 WebRTC 的架构设计而是先讲编译过程呢？原因是通过观察 WebRTC 的编译过程，能看到 WebRTC 里有什么。很多人觉得编译过程耗时长，就去干点其它的事坐等编译过程结束。我喜欢观察编译过程的打印信息，通过观察，可以看到 WebRTC 里面有什么，形成对 WebRTC 源码库有基本的认识。接触一个东西时，最初都是从局部到整体。知道">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/depthlove/depthloveBlog/8c991266c4350b1b66dc277d7576903824013017/source/images/webrtc-development-3-analysis-of-architectural-design/webrtc-architecture.png">
-<meta property="og:updated_time" content="2019-05-16T15:30:27.063Z">
+<meta property="og:updated_time" content="2019-05-16T15:33:50.113Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WebRTC 开发（三）架构设计剖析">
 <meta name="twitter:description" content="上一篇写的是 WebRTC 源码的下载和编译，为什么不先剖析 WebRTC 的架构设计而是先讲编译过程呢？原因是通过观察 WebRTC 的编译过程，能看到 WebRTC 里有什么。很多人觉得编译过程耗时长，就去干点其它的事坐等编译过程结束。我喜欢观察编译过程的打印信息，通过观察，可以看到 WebRTC 里面有什么，形成对 WebRTC 源码库有基本的认识。接触一个东西时，最初都是从局部到整体。知道">
@@ -536,7 +536,7 @@
 <p>WebRTC 采用 Opus/iLIBC/iSAC/G722/PCM16/RED/AVT 编解码技术。</p>
 <p>WebRTC 还提供 NetEQ 功能 — 抖动缓冲器及丢包补偿模块，能够提高音质，并把延迟减至最小。</p>
 <p>另外一个核心功能是基于语音会议的混音处理。</p>
-<h2 id="声音加密-voice-engine-encryption"><a href="#声音加密-voice-engine-encryption" class="headerlink" title="声音加密 voice_engine_encryption"></a>声音加密 voice_engine_encryption</h2><p>和视频一样，WebRTC也提供声音加密功能。</p>
+<h2 id="声音加密-voice-engine-encryption"><a href="#声音加密-voice-engine-encryption" class="headerlink" title="声音加密 voice_engine_encryption"></a>声音加密 voice_engine_encryption</h2><p>和视频一样，WebRTC 也提供声音加密功能。</p>
 <blockquote>
 <h1 id="二、视频模块"><a href="#二、视频模块" class="headerlink" title="二、视频模块"></a>二、视频模块</h1></blockquote>
 <h2 id="视频采集-video-capture"><a href="#视频采集-video-capture" class="headerlink" title="视频采集 video_capture"></a>视频采集 video_capture</h2><p>源代码在 webrtc\modules\video_capture\main 目录下，包含接口和各个平台的源代码。</p>
