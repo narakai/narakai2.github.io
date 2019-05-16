@@ -48,6 +48,9 @@
     <title><![CDATA[音视频开发技能列表]]></title>
     <url>%2F2019%2F04%2F10%2Faudio-and-video-development-skills-list%2F</url>
     <content type="text"><![CDATA[流媒体协议 RTMP带你吃透RTMP直播推流实现RTMP协议的一些注意事项 HLSRTSPLive555 源码解析 (2) - RTSP 协议概述 SDPSDP 协议分析SDPSDP协议解析 RTP、RTCPRTP协议分析RTP/RTCP协议解析WebRTC的RTP、RTCP协议实现分析 传输层协议 TCP、UDP极客时间的专栏 趣谈网络协议 QUIC科普：QUIC协议原理分析QUIC协议初探-iOS实践让互联网更快的协议，QUIC在腾讯的实践及性能优化 文件格式 FLVH.264标准（二）FLV封装格式详解将h.264视频流封装成flv格式文件（一.flv格式）将h.264视频流封装成flv格式文件（二.开始动手）FFmpeg从入门到出家（FLV文件结构解析） 编解码 H.264/AVC深入浅出理解视频编码H.264结构H.264流媒体协议格式中的Annex B格式和AVCC格式深度解析码流格式: Annex-B, AVCC(H.264)与HVCC(H.265), extradata详解 H.265/HEVCFFmpeg从入门到出家（HEVC在RTMP中的扩展）基于iOS11的HEVC(H.265)硬编码/硬解码功能开发指南Web端H.265播放器研发解密 AACSEIFFmpeg从入门到精通——进阶篇，SEI那些事儿 开源工具 FFmpegFFmpeg FFmpeg-iOS-build-script FFmpeg从入门到出家（FFmpeg简析） fdk-aacfdk-aac fdk-aac-iOS-build-script x264x264 x264-iOS-build-script WebRTC一张图解释WebRTC底层协议结构实际中的WebRTC：STUN，TURN以及信令（一）RTC 专栏webrtchacksWebRTC Native 源码导读 LIVE555LIVE555 live555源代码分析live555 源代码简单分析1：主程序live555 分析—— OpenRtsplive555学习笔记－RTSP服务运作live555学习笔记－RTP打包与发送live555学习笔记－RTSPClient分析 SRSSRS NGINX-RTMPnginx-rtmp-module OpenGL 基础概念20分钟让你了解OpenGL ——OpenGL全流程详细解读一篇通俗易懂的讲解OpenGL ES的文章OpenGL ES入门详解iOS OpenGL 纹理坐标详解如何配置OpenGL ES的上下文（OpenGL ES2.0官方文档翻译）（译）OpenGL ES2.0 – Iphone开发指引（译）OpenGLES2.0 Iphone开发指引：第二部分，纹理贴图 基础应用OpenGL ES 2.0 iOS教程 iOS — OpenGLES之初步认识iOS — OpenGLES之着色器(shader)语法介绍iOS — OpenGLES之着色器(shader)的编译、链接及使用iOS — OpenGLES之简单的图形绘制iOS — OpenGLES之顶点缓存对象VBO[译] — OpenGL ES 2.0 for iPhone Tutorial Part 2: TexturesiOS — OpenGLES之图片纹理 西蒙iPhone-OpenGL ES 中文教程专题 从0打造一个GPUImage(1)从0打造一个GPUImage(2)从0打造一个GPUImage(3)从0打造一个GPUImage(4)从0打造一个GPUImage(5)从0打造一个GPUImage(6)如何调试shader 特效“抖音”式的酷炫短视频开发进阶在 iOS 中使用 GLSL 实现抖音特效 视频教程OpenGL ES 音视频测试 关于音视频测试的一点建议 优化策略 音视频开发中常见基础问题总结直播首屏耗时400ms以下的优化实践弱网优化、网络抖动、网络延时，这些问题，怎么处理？直播技术总结（三）ijkplayer的一些问题优化记录多媒体那些事-播放器漫谈（一）多媒体那些事-播放器漫谈（二）手机游戏直播 ： 悟空TV客户端设计与技术难点从直播CDN的原理说起，谈如何解决延时和连麦的老难题视频直播时的QoS策略超百万观众同场看直播流畅不卡顿，快手如何做到的？|首次披露 架构设计与应用 iOS流媒体直播整个框架介绍(HLS、RTSP)短视频客户端SDK设计与实现 博客 简书CSDN 公众号 LiveVideoStack观止云野狗何俊林编风网]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>音视频处理</tag>
       </tags>
@@ -56,6 +59,9 @@
     <title><![CDATA[使用 SRS 在 VPS 上搭建流媒体服务器]]></title>
     <url>%2F2019%2F04%2F02%2Fuse-srs-establish-server-on-vps%2F</url>
     <content type="text"><![CDATA[闲话少说，直接步入正题。 一、登陆远程服务器我使用的是 MacBook Pro 笔记本，在 MacBook Pro 笔记本上的终端输入命令 ssh root@IP地址 -p ssh端口 1ssh root@111.11.111.111 -p 1111 其中，IP 地址和 SSH 端口换成你自己的 VPS 信息。 二、下载 SRS 源码在终端执行命令下载 SRS 源码 1git clone https://github.com/ossrs/srs 三、编译 SRS进入 srs/trunk 目录 1cd ./srs/trunk 在终端执行下面的命令编译 SRS 1./configure &amp;&amp; make 四、修改配置文件我没有对 ./conf/srs.conf 文件进行修改，使用的是默认配置。使用默认的配置，可跳过此步，直接进入下一步 “五、启动 SRS” 的操作。如果想改 vhost 或其它，就执行下面的操作。 1vi ./conf/srs.conf srs.conf 配置文件的默认参数为 12345678910111213141516171819202122# main config for srs.# @see full.conf for detail config.listen 1935;max_connections 1000;srs_log_tank file;srs_log_file ./objs/srs.log;http_api &#123; enabled on; listen 1985;&#125;http_server &#123; enabled on; listen 8080; dir ./objs/nginx/html;&#125;stats &#123; network 0; disk sda sdb xvda xvdb;&#125;vhost __defaultVhost__ &#123;&#125; 五、启动 SRS启动 SRS 服务 1./objs/srs -c conf/srs.conf 六、下载 FFmpeg下载 FFmpeg 1git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg 七、编译 FFmpeg进入目录 ffmpeg 1cd ffmpeg 编译 FFmpeg 1./configure &amp;&amp; make 如果出现错误：nasm/yasm not found or too old. Use –disable-x86asm for a crippled build.，就需要安装 yasm，并再次执行 ./configure &amp;&amp; make 命令。如果未出错，跳过下面的操作直接进行下一步：八、FFmpeg 推流 的操作。 从 yasm 的版本列表 http://www.tortall.net/projects/yasm/releases 中找到合适的平台版本，通过以下命令安装 yasm 1wget http://www.tortall.net/projects/yasm/releases/yasm-1.3.0.tar.gz 1tar zxvf yasm-1.3.0.tar.gz 1cd yasm-1.3.0 1./configure 1make &amp;&amp; make install 再次进入目录 ffmpeg 执行命令 1./configure &amp;&amp; make 八、FFmpeg 推流使用 scp 命令上传文件到远程服务器上。scp 的使用见我的文章 使用 live555 在 VPS 上搭建流媒体服务器 1./ffmpeg -re -i ../ForBiggerFun.mp4 -f flv -y rtmp://111.11.111.111/live/teststreaming 其中，ForBiggerFun.mp4 视频文件在目录 ffmpeg 的上一层目录中。 九、播放视频流使用 VLC 或者 ffplay 播放 rtmp 视频流：rtmp://111.11.111.111/live/teststreaming 参考文献https://github.com/ossrs/srs/wiki]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>音视频处理</tag>
         <tag>服务器端</tag>
@@ -65,6 +71,9 @@
     <title><![CDATA[使用 live555 在 VPS 上搭建流媒体服务器]]></title>
     <url>%2F2019%2F03%2F30%2Fuse-live555-establish-server-on-vps%2F</url>
     <content type="text"><![CDATA[在上一篇文章 使用搬瓦工搭建 ShadowSocks 翻墙（VPN） 中提到了我购买了 VPS 服务资源，所谓物尽其用，仅让其充当 VPN 服务的工具有点浪费，可以在上面跑一些其它服务，比如流媒体直播服务、流媒体转码服务等。关于主机购买，也可以购买国内供应商的提供的主机服务，像阿里云、腾讯云、百度云等，可以关注他们的一些促销活动，在优惠力度大的时候囤机。 我的 VPS 服务器的操作系统为：1Operating system: Centos 7 x86_64 bbr 一、登陆 VPS 服务器我使用的是 MacBook Pro 笔记本，在 MacBook Pro 笔记本上的终端输入命令 ssh root@IP地址 -p ssh端口，其中 IP 地址和 SSH 端口换成你自己的 VPS 信息 1suntongmiandeMacBook-Pro:~ suntongmian$ ssh root@111.11.111.111 -p 1111 执行命令后的结果如下： 1234suntongmiandeMacBook-Pro:~ suntongmian$ suntongmiandeMacBook-Pro:~ suntongmian$ ssh root@111.11.111.111 -p 1111root@111.11.111.111's password: [root@host ~]# 二、安装 gcc 编译器给 VPS 主机安装 gcc 编译器 1[root@host ~]# yum install gcc-c++ 三、下载 live55 源码在主机根目录创建目录 streamingserver 123[root@host ~]# [root@host ~]# mkdir streamingserver[root@host ~]# 进入目录 streamingserver 123[root@host ~]# [root@host ~]# cd streamingserver[root@host streamingserver]# 从 live555 官网下载 live555 源码在终端执行命令下载或者直接在官网下载，以在终端执行命令下载为例子 1[root@host streamingserver]# curl -O http://www.live555.com/live.2019.03.06.tar.gz 四、解压在终端执行文件的解压缩命令 1[root@host streamingserver]# tar -xvf live.2019.03.06.tar.gz 使用 ls 命令查看当前目录下的文件 1234[root@host streamingserver]# [root@host streamingserver]# lslive live.2019.03.06.tar.gz[root@host streamingserver]# 五、编译第一步：进入 live55 源码目录 live 1[root@host streamingserver]# cd live 第二步：执行脚本 1[root@host live]# ./genMakefiles linux-64bit 因为我的系统是 Centos, 64bit，执行的是上面的脚本。如果系统是 Mac 系统，那么就要执行脚本 ./genMakefiles macosx 第三步：执行编译 1[root@host live]# make 六、启动流媒体服务第一步：进入 mediaServer 目录 123[root@host live]# [root@host live]# cd mediaServer[root@host mediaServer]# 第二步：启动流媒体服务 12[root@host mediaServer]# [root@host mediaServer]# ./live555MediaServer 命令执行后的结果如下： 1234567891011121314151617181920212223242526[root@host mediaServer]# [root@host mediaServer]# ./live555MediaServerLIVE555 Media Server version 0.96 (LIVE555 Streaming Media library version 2019.03.06).Play streams from this server using the URL rtsp://111.11.111.111/&lt;filename&gt;where &lt;filename&gt; is a file present in the current directory.Each file's type is inferred from its name suffix: ".264" =&gt; a H.264 Video Elementary Stream file ".265" =&gt; a H.265 Video Elementary Stream file ".aac" =&gt; an AAC Audio (ADTS format) file ".ac3" =&gt; an AC-3 Audio file ".amr" =&gt; an AMR Audio file ".dv" =&gt; a DV Video file ".m4e" =&gt; a MPEG-4 Video Elementary Stream file ".mkv" =&gt; a Matroska audio+video+(optional)subtitles file ".mp3" =&gt; a MPEG-1 or 2 Audio file ".mpg" =&gt; a MPEG-1 or 2 Program Stream (audio+video) file ".ogg" or ".ogv" or ".opus" =&gt; an Ogg audio and/or video file ".ts" =&gt; a MPEG Transport Stream file (a ".tsx" index file - if present - provides server 'trick play' support) ".vob" =&gt; a VOB (MPEG-2 video with AC-3 audio) file ".wav" =&gt; a WAV Audio file ".webm" =&gt; a WebM audio(Vorbis)+video(VP8) fileSee http://www.live555.com/mediaServer/ for additional documentation.(We use port 80 for optional RTSP-over-HTTP tunneling, or for HTTP live streaming (for indexed Transport Stream files only).) 从上面显示的信息可看出，live555 默认支持 .264, .265, .aac, ac3, .amr, .dv, .m4e, .mkv, .mp3, .mpg, .ogg, .ts, .vob, .wav, .webm 视频格式。 七、本地文件上传到服务器第一步：获取 .mkv 格式的视频文件 如果在网络上找不到合适的 .mkv 格式的视频文件，那么可以使用 ffmpeg 转码获取。ffmpeg 的安装，可参看我的文章 在Mac OSX上安装ffmpeg &amp;&amp; ffmpeg命令行将h264封装为mp4 在 MacBook Pro 笔记本的终端输入 ffmpeg 转码命令 1suntongmiandeMacBook-Pro:myTestVideo suntongmian$ ffmpeg -i SampleVideo_1280x720_10mb.mp4 -vcodec copy -acodec copy output.mkv 执行结果如下： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657suntongmiandeMacBook-Pro:myTestVideo suntongmian$ suntongmiandeMacBook-Pro:myTestVideo suntongmian$ lsSampleVideo_1280x720_10mb.mp4suntongmiandeMacBook-Pro:myTestVideo suntongmian$ suntongmiandeMacBook-Pro:myTestVideo suntongmian$ ffmpeg -i SampleVideo_1280x720_10mb.mp4 -vcodec copy -acodec copy output.mkv ffmpeg version 4.1.2 Copyright (c) 2000-2019 the FFmpeg developers built with Apple LLVM version 10.0.0 (clang-1000.11.45.5) configuration: --prefix=/usr/local/Cellar/ffmpeg/4.1.2 --enable-shared --enable-pthreads --enable-version3 --enable-hardcoded-tables --enable-avresample --cc=clang --host-cflags='-I/Library/Java/JavaVirtualMachines/openjdk-11.0.2.jdk/Contents/Home/include -I/Library/Java/JavaVirtualMachines/openjdk-11.0.2.jdk/Contents/Home/include/darwin' --host-ldflags= --enable-ffplay --enable-gnutls --enable-gpl --enable-libaom --enable-libbluray --enable-libmp3lame --enable-libopus --enable-librubberband --enable-libsnappy --enable-libtesseract --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libx265 --enable-libxvid --enable-lzma --enable-libfontconfig --enable-libfreetype --enable-frei0r --enable-libass --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-librtmp --enable-libspeex --enable-videotoolbox --disable-libjack --disable-indev=jack --enable-libaom --enable-libsoxr libavutil 56. 22.100 / 56. 22.100 libavcodec 58. 35.100 / 58. 35.100 libavformat 58. 20.100 / 58. 20.100 libavdevice 58. 5.100 / 58. 5.100 libavfilter 7. 40.101 / 7. 40.101 libavresample 4. 0. 0 / 4. 0. 0 libswscale 5. 3.100 / 5. 3.100 libswresample 3. 3.100 / 3. 3.100 libpostproc 55. 3.100 / 55. 3.100Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'SampleVideo_1280x720_10mb.mp4': Metadata: major_brand : isom minor_version : 512 compatible_brands: isomiso2avc1mp41 creation_time : 1970-01-01T00:00:00.000000Z encoder : Lavf53.24.2 Duration: 00:01:02.32, start: 0.000000, bitrate: 1347 kb/s Stream #0:0(und): Video: h264 (Main) (avc1 / 0x31637661), yuv420p, 1280x720 [SAR 1:1 DAR 16:9], 959 kb/s, 25 fps, 25 tbr, 12800 tbn, 50 tbc (default) Metadata: creation_time : 1970-01-01T00:00:00.000000Z handler_name : VideoHandler Stream #0:1(und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, 5.1, fltp, 383 kb/s (default) Metadata: creation_time : 1970-01-01T00:00:00.000000Z handler_name : SoundHandlerOutput #0, matroska, to 'output.mkv': Metadata: major_brand : isom minor_version : 512 compatible_brands: isomiso2avc1mp41 encoder : Lavf58.20.100 Stream #0:0(und): Video: h264 (Main) (avc1 / 0x31637661), yuv420p, 1280x720 [SAR 1:1 DAR 16:9], q=2-31, 959 kb/s, 25 fps, 25 tbr, 1k tbn, 12800 tbc (default) Metadata: creation_time : 1970-01-01T00:00:00.000000Z handler_name : VideoHandler Stream #0:1(und): Audio: aac (LC) ([255][0][0][0] / 0x00FF), 48000 Hz, 5.1, fltp, 383 kb/s (default) Metadata: creation_time : 1970-01-01T00:00:00.000000Z handler_name : SoundHandlerStream mapping: Stream #0:0 -&gt; #0:0 (copy) Stream #0:1 -&gt; #0:1 (copy)Press [q] to stop, [?] for helpframe= 1557 fps=0.0 q=-1.0 Lsize= 10249kB time=00:01:02.29 bitrate=1347.9kbits/s speed= 973x video:7298kB audio:2919kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.316002%suntongmiandeMacBook-Pro:myTestVideo suntongmian$ suntongmiandeMacBook-Pro:myTestVideo suntongmian$ lsSampleVideo_1280x720_10mb.mp4 output.mkvsuntongmiandeMacBook-Pro:myTestVideo suntongmian$ 第二步：上传本地文件到远端服务器 我使用的是 MacBook Pro 笔记本，在 MacBook Pro 笔记本上的终端上执行下面的命令，将视频文件上传到 VPS 服务器上。 1suntongmiandeMacBook-Pro:myTestVideo suntongmian$ scp -P 1111 output.mkv root@111.11.111.111:/root/streamingserver/live/mediaServer 命令执行后的结果如下： 12345suntongmiandeMacBook-Pro:myTestVideo suntongmian$ suntongmiandeMacBook-Pro:myTestVideo suntongmian$ scp -P 1111 output.mkv root@111.11.111.111:/root/streamingserver/live/mediaServerroot@111.11.111.111's password: output.mkv 100% 30MB 511.1KB/s 01:00 suntongmiandeMacBook-Pro:myTestVideo suntongmian$ 其中，myTestVideo 是我的 MacBook Pro 笔记本上存放测试视频的文件夹。/root/streamingserver/live/mediaServer 为 VPS 主机的目录层级。 关于 scp 命令的使用，可参看文章 Linux SSH远程文件/目录传输命令scp 第二步：检测文件是否上传成功 在 VPS 主机上执行命令 ls 查看相应的目录下是否存在文件 output.mkv。若存在 output.mkv，就说明上面的第一步操作成功了。 1234567[root@host mediaServer]# [root@host mediaServer]# lsCOPYING DynamicRTSPServer.o Makefile version.hhCOPYING.LESSER live555MediaServer Makefile.headDynamicRTSPServer.cpp live555MediaServer.cpp Makefile.tailDynamicRTSPServer.hh live555MediaServer.o output.mkv[root@host mediaServer]# 八、重新启动流媒体服务第一步：使用 ctrl+c 终止之前启动的流媒体服务 执行结果如下： 12^C[root@host mediaServer]# 第二步：重新启动流媒体服务 12[root@host mediaServer]# [root@host mediaServer]# ./live555MediaServer 九、测试视频流第一步：安装 VLC 视频播放器。我使用的是 MacBook Pro 笔记本，在笔记本上下载并安装了 VLC 视频播放器。 第二步：播放视频流。在 VLC 中打开视频流地址 rtsp://111.11.111.111/output.mkv，即可看到 live555 服务器推送出来的视频流。]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>音视频处理</tag>
         <tag>服务器端</tag>
@@ -93,6 +102,9 @@
     <title><![CDATA[【译】调查：苹果 HEVC 采用的影响]]></title>
     <url>%2F2018%2F02%2F26%2Ftranslate-Survey-The-Impact-of-Apples-HEVC-Adoption%2F</url>
     <content type="text"><![CDATA[英语原文：Survey: The Impact of Apple’s HEVC Adoption 调查：苹果 HEVC 采用的影响新的 Unisphere 报告显示OTT服务和其他视频发布商正在向HEVC转移，但同样对 AV1 感兴趣作者：Streaming Media 编辑人员发布时间：2018年1月23日 您是否想知道苹果决定在 HTTP Live Streaming（HLS）中添加 HEVC 对流发布社区意图部署 HEVC 有多大影响？最近一项对 Streaming Media 读者的调查显示，66.2％的受访者表示，苹果的举动产生了重大影响，到2018年年底，高达62.5％的人可能会向 HLS 中添加 HEVC。这些只是 Harmonic 公司和 Unisphere 研究机构今天联合发布的许多调查结果中的两个。这份名为“苹果 HEVC 采用的影响：基于调查的报告”的报告包括来自600多 Streaming Media 读者的回应。 这份可供下载的8页报告也显示了制片人对开放媒体联盟（AOM）AV1 编解码器的兴趣，66％以上的受访者表现出浓厚的兴趣。虽然目前超过25％的受访者分发使用 HEVC 编码的视频，但74％的受访者表示“已知或未知的内容使用费”是通过 HLS 部署 HEVC 的一个重要问题。 调查报告的作者，Streaming Media 特约编辑 Jan Ozer 说：“HEVC 推出五年多以来，总版税费用仍然未知，继续遏制了编解码器的采用。结果，在苹果加入 AOM 之前有33％的受访者计划在2018年及以后增加AV1，苹果加入 AOM，这只会增加受访者的兴趣。额外的27.3％对 VP9 表示相同的观点，显然，最好的事情是 HEVC IP 社区可以采取行动来促进 HEVC 的采用，从而降低版税结构和成本。” HEVC 的采用也受到其他几个因素的影响，如与 HEVC 编码相关的额外编码成本以及有关如何解决传统 HLS 终端的混淆。具体来说，当被问及他们如何处理传统设备时，48.3％回答他们不知道，表明在这一点上需要市场教育。那些避开 HEVC 的公司采用了许多其他技术来实现相同的好处，如内容感知编码和其他比特率缩减系统。 尽管对 AV1 的兴趣很浓厚，但采用并不是扣篮。受访者对比较质量，播放性能和编码时间表示了很大的担忧。令人意外的是，对潜在知识产权问题的关注并不是一个重大障碍。Ozer 评论说：“在 VP8 之前，专家和专利组织一直在使用开源编解码器来解决潜在的 IP 问题。在开放媒体联盟中，亚马逊，思科，谷歌，英特尔，微软，Mozilla，Netflix 以及现在的苹果都认为：出版界认为 IP 挑战的威胁并不真实。” 这项调查还测量了其他编解码器的兴趣，并提到了 V-NOVA PERSEUS，Divideon xvc 和 RealNetworks RealMedia HD，尽管53.8％的受访者当前没有计划添加任何编解码器。对高动态范围（HDR）视频的兴趣似乎在迅速增长；虽然只有9.8％的受访者在2017年底发布 HDR，但计划在2018年底之前发布 HDR 的比例为50.6％，49.4％的用户没有超出标准动态范围的计划。 “苹果HEVC采用的影响：基于调查的报告”，现在可以下载。]]></content>
+      <categories>
+        <category>译文</category>
+      </categories>
       <tags>
         <tag>译文</tag>
       </tags>
@@ -101,6 +113,9 @@
     <title><![CDATA[【译】人工智能和机器学习将视频质量推向新的高度]]></title>
     <url>%2F2018%2F02%2F25%2Ftranslate-AI-and-Machine-Learning-Push-Video-Quality-to-New-Heights%2F</url>
     <content type="text"><![CDATA[英语原文：AI and Machine Learning Push Video Quality to New Heights 人工智能和机器学习将视频质量推向新的高度人工智能和机器学习以及深度学习和神经网络正在解决编码质量到隐藏字幕的 OTT（Over To Top）挑战。作者：Ankur Patel发布时间：2018-02-15 [对人工智能和机器学习如何彻底改变视频感兴趣？加入我们2月27日在伦敦的流媒体论坛，我们将介绍亚马逊，IBM等专注于人工智能和机器学习的演讲。] 自从1928年第一次播出电视节目以来，视频技术已经从模拟标准清晰度（SD）黑白电视到 OTT 数字高清（HD）流式传输到数百个的连接设备。根据思科最新的可视网络指数，到2021年视频流量将占所有互联网流量的82%，高于2016年的73%。而且，思科首席执行官 Chuck Robbins 预测，到2020年每小时将有100万台设备添加到网络中。 OTT 视频流最大的挑战是提供尽可能高的体验质量（QoE）和服务质量（QoS）。 根据马萨诸塞大学阿默斯特分校的 Ramesh K. Sitarman 教授发表的一篇论文，观众在2秒延迟后开始放弃一个视频，其后每秒钟有6％消失。缓冲和像素化会导致数字广告带来负面的用户体验和收入损失。通过根据需要切换比特率并通过带宽波动，自适应比特率（ABR）流已经被采用来保证最小化缓冲。 ABR 的概念解决了 OTT 流媒体的部分挑战。但是，考虑到移动用户的位置和连接性的动态变化，ABR不能完全消除移动手持设备上的重新缓冲和像素化，需要重新缓冲过去的事物。另外，诸如快进和快退等其他复杂性通常会导致播放停顿，从而产生负面的用户体验。 这些挑战的答案隐藏在人工智能（AI）和机器学习的新技术概念中。麻省理工学院的计算机科学和人工智能实验室（CSAIL）开发了 Pensieve 神经网络，这是一种人工智能（AI）系统，它使用机器学习来选择不同的现有算法，例如基于速率的算法，取决于网络条件的基于缓冲区的算法。 Pensieve 神经网络提前预测连接问题，并预测性地调整流分辨率，为无缓冲用户体验创建足够的回放缓冲区。实际上，这种方法不会完全消除缓冲，但它可以帮助减少缓冲，让我们更接近无缓冲视频流。使用 Pensieve 神经网络进行的现场实验减少了30％的重新缓冲，并将主要 QoE 矩阵增加了25％。然而，随着更全面的数据可用于训练 Pensieve 神经网络，总会有进一步改进的空间。 视频流也可以受益于机器学习技术的进步。 YouTube 和 Netflix 采用机器学习动态优化编码参数。这不仅增加了用户的 QoE 和 QoS，而且还减少了相同质量所需的比特数。使用机器学习的编码优化还可以帮助优化带宽使用率较低的成本。它还将减少以前用于手动优化的工程资源成本。就 YouTube 来说，神经网络（NN）用于动态预测视频编码量化等级（QL），该等级可以产生目标比特率，并且在单程中实现双通编码的性能。因此，它也将减少整体视频延迟和编码成本。 从手持移动设备到大屏幕电视的连接设备的可用性已经产生了许多挑战，因为不同的屏幕尺寸可以使感知视频质量产生巨大差异。静态编码模型不具有成本效益，因为它们不会将屏幕大小和场景复杂度计算在内。机器学习算法可用于基于视频的感知质量来实现“内容感知”编码。机器学习算法可以根据针对该特定屏幕尺寸的屏幕大小和目标感知质量来决定编码参数。例如，为了在两种不同的屏幕尺寸上实现相同的感知质量，一个屏幕所需的位数可能比另一个屏幕少得多。机器学习可以帮助我们即时执行此操作，从而减少带宽消耗并节省成本。 人工智能和机器学习可以为动态检测唇形同步和隐藏字幕（CC）文本同步问题提供有效的解决方案，否则需要主动眼球检测或使用侵入性方法，例如在基带视频中插入水印或指纹（SDI）和音频。由牛津大学计算机科学系使用名为 LipNet 的人工智能系统进行的实验可以识别出准确率为93.4％的单词，而与仅达到52.3％的人类专业人员相比，其准确性达到了93.4％。 Google DeepMind 项目进行的类似测试表明，AI 很容易胜过试图破译200个随机剪辑数据集的专业口头读者。 人工智能成功破译了所有单词的46.8％，而专业唇读者则破译了12.4％。市场上出现的产品使用AI和机器学习来检测唇形同步和 CC 文本同步问题。一种这样的产品是来至于 Multicoreware 公司的 Li​​pSync，它使用人工智能和深度学习来跟踪嘴唇的运动以测量视频-音频同步。 随着我们进入人工智能的世界，新的概念和理论正在出现，以优化内容生成，准备，交付，安全和演示。例如，深度神经网络的实施对 YouTube 视频推荐系统产生了巨大的积极影响。更为有希望的是基于人工智能和机器学习的下一代高度直观的网络，这将对 OTT 视频流产生巨大的积极影响，改变其采用和增长以及增强内容安全性。]]></content>
+      <categories>
+        <category>译文</category>
+      </categories>
       <tags>
         <tag>译文</tag>
       </tags>
@@ -141,6 +156,9 @@
     <title><![CDATA[分析 H.265 + AAC 的 FLV 文件]]></title>
     <url>%2F2017%2F07%2F01%2Fanalyse-h265-flv%2F</url>
     <content type="text"><![CDATA[常见的 FLV 文件里封装的是 H.264 和 AAC 数据。对于 H.265(HEVC)，FLV 支不支持呢，答案是官方版本不支持。想用 FLV 封装 H.265 数据，那该怎么搞？首先，需要一套 H.265 的编解码器，其次，就是扩展 FLV 的头 header，其实是增加对 H.265 CodecID 的支持。 今年6月6日苹果开发者大会开放了 iOS 平台的 HEVC API，也就是开发者可以调用 iOS 系统的 API 进行 H.265 硬编码了，但是只能在 iOS 11.0 及以上版本使用。目前，iOS 11.0 正式版还未正式发布，需要等到今年的9月份。不建议开发者将自己的 iOS 设备刷到 iOS 11.0 beta 版，因为升级 beta 版后非常卡。经测试，苹果的 H.265 编码出来的图像质量还是可以的，但是消耗码率较高。 苹果开放 H.265 编解码 API 势必会影响到整个 H.265 行业的发展，但 H.265 离真正落地和普及还需要时间。明年（2018年）再看 H.265 对整个音视频行业的影响。 去年，我们团队就已经实现 H.265 直播推流和播放了，采用的是 H.265 软编码和软解码器，推流端使用 500K 码率就能推送 24 帧，720P 的视频流，设备的性能消耗在可接受的范围内，播放端画质相当清晰。 言归正传，分析下 H.265+AAC 的 FLV 文件。 关于 H.265 的 VPS、SPS、PPS 等知识点的解释，可参看文章：VPS SPS PPSHEVC编码结构：序列参数集SPS、图像参数集PPS、视频参数集VPSFFmpeg的HEVC解码器源代码简单分析：解析器（Parser）部分homerHEVC代码阅读（21）——基本流程HEVC概念缩写对照表 想了解关于 FLV 的更多细节请看文章rtmp直播推流（一）－－flv格式解析与封装]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>音视频处理</tag>
       </tags>
@@ -427,6 +445,9 @@
     <title><![CDATA[利用openh264将iOS摄像头实时视频流编码为h264文件]]></title>
     <url>%2F2016%2F07%2F11%2Fuse-openh264-encode-iOS-camera-video-to-h264%2F</url>
     <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>iOS</tag>
         <tag>音视频处理</tag>
@@ -436,6 +457,9 @@
     <title><![CDATA[利用fdk-aac将iOS麦克风实时音频流编码为aac文件]]></title>
     <url>%2F2016%2F07%2F08%2Fuse-fdk-aac-encode-iOS-mic-pcm-to-aac%2F</url>
     <content type="text"><![CDATA[近几天终于有点空闲时间写写东西了，将之前项目中自己做的东西更新上来，写写自己的心得感想。 iOS系统上的音频硬编码器，可实现将pcm音频数据编码为aac格式的数据。但是，对于低码率下的音频编码，就是它的软肋了。通过函数扫描iOS各系统上音频硬编码支持的情况发现，aac-lc编码都是支持的，苹果的官方文档也说的很清楚。对于aac-he-v2编码，iOS现在所有的系统都不支持，aac-he编码需要iOS9.0以上系统才支持音频硬编码。 做直播的时候，利用iOS的音频硬编码器可以将码率降到80Kb/s，用128Kb/s虽然可以让音质更好，但有点浪费带宽，当主播的网络状况不好时，这就成了一个影响观众流畅观看的一个负面因子，一般选用96Kb/s的码率，这个码率在现今国内网络条件下，还是显得有那么点大。为降低码率同时保证音频音质的情形下，选择合适的编码器才是在有限带宽下优化直播体验的最好武器。 音频编码器有很多，比如常见的有faac，vo_aacenc，fdk-aac，以及ffmpeg自带的音频编码器。ffmpeg3.0及之后的版本都已经移除了对faac，vo_aacenc的支持，对于ffmpeg3.0之后版本音频编码器的支持情况可以看看它的官网说明，从官网上看，ffmpeg组织建议使用他们的原生native音频编码器，可见，ffmpeg自带的编码器还是不错的。但是，为了一个音频编码功能引入一个这么强壮且庞大的库，有点不划算，虽然可裁剪ffmpeg，也可以将fdk-aac编译进ffmpeg中，但是如果应用中引入了基于ffmpeg开发的播放器的时候，ffmpeg库冲突的情形可能会出现。再说，有比ffmpeg原生音频编码器更好的fdk-aac音频编码器存在，就不需要考虑ffmpeg了，即便用ffmpeg做编码很方便。因为我们是用ffmpeg时间长了，就习惯依赖于ffmpeg了。 fdk-aac音频编码器用起来也很简单，跟单独用faac差不多，但比faac编码效果好。使用fdk-aac实现了aac-lc，aac-he，aac-he-v2 采样率为44.1KHz，通道数为2（立体声），码率为32Kb/s的aac编码。]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>iOS</tag>
         <tag>音视频处理</tag>
@@ -465,6 +489,9 @@
     <title><![CDATA[移动端直播应用的开发流程]]></title>
     <url>%2F2016%2F05%2F09%2Flive-broadcast-development-process%2F</url>
     <content type="text"><![CDATA[Part 1. 推流端推流，就是将采集到的音频，视频数据通过流媒体协议发送到流媒体服务器。 一、选择流媒体协议现在直播应用，采用 RTMP 协议居多，也有部分使用 HLS 协议。 采用RTMP协议，就要看下它与流媒体服务器交互的过程，RTMP协议的默认端口是1935，采用 TCP 协议。并且需要了解 FLV 的封装格式。 采用 HLS 协议，因为涉及到切片，延时会比较大，需要了解 TS 流。 二、采集音视频数据做直播，数据的来源不可缺少，就是采集摄像头，麦克风的数据。 iOS 平台上采集音视频数据，需要使用 AVFoundation.Framework 框架，从 captureSession 会话的回调中获取音频，视频数据。 三、硬编码，软编码音视频数据软编码就是利用 CPU 资源来压缩音视频数据，硬编码与之相反。 软编码的话，现在广泛采用 FFmpeg 库结合编码库来实现，FFmpeg+X624 来编码视频数据 YUV/RGB 输出 H264 数据，FFmpeg+fdk_aac 来编码音频数据 PCM 输出 AAC 数据。 四、根据所选流媒体协议封包音视频数据将音频，视频打包成 packet。 五、与服务器交互发送封包数据根据所选流媒体协议，发送相应指令连接服务器，连接服务器成功后，就可以发送 packet 数据了。 Part 2. 拉流端拉流，就是从流媒体服务器获取音频，视频数据。 一、解析协议播放器端根据URL解析所用的流媒体协议（RTMP，HLS）。 二、解封装解封装，就是 demux 的过程，从容器格式（FLV，TS）中，分离出音视频数据。 三、解码解码，就是把获取到的数据解压缩，恢复成原始数据。解码就是将 H264 变成 YUV，AAC 变成 PCM。 解码可以使用软解码，硬解码。 软解码就是利用 CPU 资源去解压缩数据，采用的方式是FFmpeg解码。 硬解码，对于 iOS 平台来说，可以使用 VideoToolbox.Framework（该框架只能在iOS 8.0及以上系统使用）硬解码视频数据。Android 平台上，可以使用 MediaCodec 来硬解码视频数据。 四、渲染数据采用 OpenGL 渲染 YUV 数据，呈现视频画面。将PCM送入设备的硬件资源播放，产生声音。 iOS 播放流式音频，使用 Audio Queue 的方式，即，利用 AudioToolbox.Framework 框架。]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>音视频处理</tag>
       </tags>
@@ -472,7 +499,7 @@
   <entry>
     <title><![CDATA[重温《Objective-C高级编程iOS与OSX多线程和内存管理》一书]]></title>
     <url>%2F2016%2F03%2F24%2Freview-multithreading-and-memory-management-for-ios-and-osx%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[]]></content>
       <tags>
         <tag>iOS</tag>
       </tags>
@@ -480,7 +507,10 @@
   <entry>
     <title><![CDATA[在iOS上硬编码推流－编码aac（六）]]></title>
     <url>%2F2016%2F03%2F23%2Fhw-encode-and-transfer-in-ios-platform-encode-aac-part6%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>iOS</tag>
         <tag>音视频处理</tag>
@@ -489,7 +519,10 @@
   <entry>
     <title><![CDATA[在iOS上硬编码推流－麦克风数据采集（五）]]></title>
     <url>%2F2016%2F03%2F22%2Fhw-encode-and-transfer-in-ios-platform-mic-part5%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>iOS</tag>
         <tag>音视频处理</tag>
@@ -498,7 +531,10 @@
   <entry>
     <title><![CDATA[在iOS上硬编码推流－硬编码h264（四）]]></title>
     <url>%2F2016%2F03%2F20%2Fhw-encode-and-transfer-in-ios-platform-videotoolbox-encode-h264-part4%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>iOS</tag>
         <tag>音视频处理</tag>
@@ -507,7 +543,10 @@
   <entry>
     <title><![CDATA[在iOS上硬编码推流－实时图像滤镜（三）]]></title>
     <url>%2F2016%2F03%2F19%2Fhw-encode-and-transfer-in-ios-platform-real-time-image-filter-part3%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>iOS</tag>
         <tag>音视频处理</tag>
@@ -517,6 +556,9 @@
     <title><![CDATA[在iOS上硬编码推流－图像融合（二）]]></title>
     <url>%2F2016%2F03%2F18%2Fhw-encode-and-transfer-in-ios-platform-image-merging-part2%2F</url>
     <content type="text"><![CDATA[采用UIGraphics将两幅图绘制到同一个画布上输出，达到图像融合的简单效果。 1234567891011121314151617181920 UIImage *supermanImage = [UIImage imageNamed:@"superman.png"]; UIImage *moneyImage = [UIImage imageNamed:@"money.png"]; CGSize supermanSize = [supermanImage size]; CGSize moneySize = [moneyImage size]; // NSLog(@"s : %f,%f \n m : %f,%f", supermanSize.width, supermanSize.height, moneySize.width, moneySize.height); UIGraphicsBeginImageContext(supermanSize); [supermanImage drawInRect:CGRectMake(0, 0, supermanSize.width, supermanSize.height)]; [moneyImage drawInRect:CGRectMake(0, 0, moneySize.width, moneySize.height)]; UIImage *mergeImage = UIGraphicsGetImageFromCurrentImageContext(); UIGraphicsEndImageContext(); mergeImageView = [[UIImageView alloc] init]; mergeImageView.image = mergeImage; mergeImageView.frame = self.view.bounds; [self.view addSubview:mergeImageView]; demo地址：https://github.com/depthlove/STMImageMerging]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>iOS</tag>
         <tag>音视频处理</tag>
@@ -526,6 +568,9 @@
     <title><![CDATA[在iOS上硬编码推流－摄像头数据采集（一）]]></title>
     <url>%2F2016%2F03%2F17%2Fhw-encode-and-transfer-in-ios-platform-camera-part1%2F</url>
     <content type="text"><![CDATA[该文的内容在我之前的文章中已经实现过，但是为了结构清晰起见，本文将相机控制和采集视频数据功能封装为单独的库。 iOS上使用AVFoundation.framework框架来调用系统相机并获取视频数据。视频数据可以根据设定的参数，可采集到RGB或YUV数据，一般使用的是GBRA32，420v，420f，下面演示相机的调用和视频数据的获取。 a)引入框架的头文件#import &lt;AVFoundation/AVFoundation.h&gt; b)调用的类遵守协议AVCaptureVideoDataOutputSampleBufferDelegate c)声明变量 AVCaptureSession *captureSession; AVCaptureDevice *captureDevice; AVCaptureDeviceInput *captureDeviceInput; AVCaptureVideoDataOutput *captureVdieoDataOutput; d)实现 e)demo地址 https://github.com/depthlove/STMCamera]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>iOS</tag>
         <tag>音视频处理</tag>
@@ -535,6 +580,9 @@
     <title><![CDATA[个人在音视频开发方面的经历分享启动啦]]></title>
     <url>%2F2016%2F03%2F16%2Fshare-my-project-experience-in-audio-and-video-development%2F</url>
     <content type="text"><![CDATA[本人小硕一枚，科班出身，毕业后在公司做过iOS应用开发工程师，搞过iOS项目移植到flash、unity3d平台的开发，在流媒体行业内实力不错的公司做过播放器开发工程师，现在在一家互联网公司做音视频编解码工程师。 以前，就想着把自己实战经历过的项目经验总结并分享下，个人觉得在分享的过程中，会加深对知识点和技术的认识，同时也能帮助下一些人。值得开心的是，去年4月份左右，具体时间记不得请了，北京的一家做游戏应用内支付的公司的iOS工程师看到我的博客园博客后，联系我寻求iOS项目移植到flash平台的帮助。经过半个月时间与我沟通，项目移植成功上线了。在小型互联网公司，工程师可谓是孤军奋战。分享自己所学和经历是一件很兴奋，很开心的事。 分享安排：先分享iOS平台上的音视频开发 再分享Android平台上的音视频开发 最后分享PC平台上的音视频开发]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>工作</tag>
         <tag>音视频处理</tag>
@@ -544,6 +592,9 @@
     <title><![CDATA[iOS平台上编码之CMTime，CMTimeMake，CMTimeMakeWithSeconds的作用]]></title>
     <url>%2F2016%2F03%2F15%2FCMTime-CMTimeMake-CMTimeMakeWithSeconds-in-iOS-encode%2F</url>
     <content type="text"><![CDATA[在iOS平台上使用iOS8及以上系统的VideoToolbox进行硬编码，会涉及到CMTime，CMTimeMake，CMTimeMakeWithSeconds的使用。下面说下这几个结构体的作用。 CoreMedia.framework的CMTime.h中CMTime，CMTimeMake，CMTimeMakeWithSeconds的定义如下： （备注：关于CMTime可翻看下苹果官网api文档http://developer.apple.com/library/mac/#documentation/CoreMedia/Reference/CMTime/Reference/reference.html） 123456789101112131415/*! @typedef CMTime @abstract Rational time value represented as int64/int32.*/typedef struct&#123; CMTimeValue value; /*! @field value The value of the CMTime. value/timescale = seconds. */ CMTimeScale timescale; /*! @field timescale The timescale of the CMTime. value/timescale = seconds. */ CMTimeFlags flags; /*! @field flags The flags, eg. kCMTimeFlags_Valid, kCMTimeFlags_PositiveInfinity, etc. */ CMTimeEpoch epoch; /*! @field epoch Differentiates between equal timestamps that are actually different because of looping, multi-item sequencing, etc. Will be used during comparison: greater epochs happen after lesser ones. Additions/subtraction is only possible within a single epoch, however, since epoch length may be unknown/variable. */&#125; CMTime; 12345678910/*! @function CMTimeMake @abstract Make a valid CMTime with value and timescale. Epoch is implied to be 0. @result The resulting CMTime.*/CM_EXPORT CMTime CMTimeMake( int64_t value, /*! @param value Initializes the value field of the resulting CMTime. */ int32_t timescale) /*! @param timescale Initializes the timescale field of the resulting CMTime. */ __OSX_AVAILABLE_STARTING(__MAC_10_7,__IPHONE_4_0); /*! @function CMTimeMakeWithSeconds @abstract Make a CMTime from a Float64 number of seconds, and a preferred timescale. @discussion The epoch of the result will be zero. If preferredTimeScale is &lt;= 0, the result will be an invalid CMTime. If the preferred timescale will cause an overflow, the timescale will be halved repeatedly until the overflow goes away, or the timescale is 1. If it still overflows at that point, the result will be +/- infinity. The kCMTimeFlags_HasBeenRounded flag will be set if the result, when converted back to seconds, is not exactly equal to the original seconds value. @result The resulting CMTime. */ CM_EXPORT CMTime CMTimeMakeWithSeconds( Float64 seconds, int32_t preferredTimeScale) __OSX_AVAILABLE_STARTING(__MAC_10_7,__IPHONE_4_0); CMTime firstframe=CMTimeMake(1,10); CMTime lastframe=CMTimeMake(10, 10); CMTime是专门用来表示影片事件用的类别，用法为：CMTimeMake(time, timeScale)。其中，time指的是时间，而不是秒，而时间要换算成秒，此时就要用到第二个参数timeScale。timeScale指的是1秒需要有几个frame构成（可以看作为fps），因此真正要表达的时间就是 time/timeScale，才会是秒。 上面的代码可以理解为，视频的fps（帧率）是10，firstframe是第一帧，在视频中的时间为0.1秒，lastframe是第10帧，在视频中的时间为1秒。 或者换种写法：CMTime curFrame = CMTimeMake(第几帧， 帧率）。看看另一篇博客的写法：解釋何謂iOS中的CMTimeMake， 要使用VPN翻墙才能打开这篇文章。这么看，CMTime firstframe=CMTimeMake(32，16);CMTime lastframe=CMTimeMake(48, 24); 这两个都表示2秒的时间。但是帧率是完全不同的。 CMTimeMakeWithSeconds和CMTimeMake区别在于，第一个函数的第一个参数可以是float，其他一样。 以上解释的比较清楚了，为加深印象，可看下stackoverflow上Trying to understand CMTime一文。 综述如下： CMTimeMake(a,b) a当前第几帧, b每秒钟多少帧.当前播放时间a/b CMTimeMakeWithSeconds(a,b) a当前时间,b每秒钟多少帧.]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>iOS</tag>
         <tag>音视频处理</tag>
@@ -553,6 +604,9 @@
     <title><![CDATA[在iOS平台上编译WebRTC]]></title>
     <url>%2F2016%2F03%2F14%2Fuse-webrtc-codec-in-ios-platform%2F</url>
     <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>iOS</tag>
         <tag>音视频处理</tag>
@@ -585,6 +639,9 @@
     <title><![CDATA[rtmp直播推流（二）－－将音频／视频推送到流媒体服务器]]></title>
     <url>%2F2015%2F11%2F16%2Fpush-video-or-audio-to-server-in-rtmp-live-play%2F</url>
     <content type="text"><![CDATA[参考我之前写的一篇文章利用FFmpeg+x264将iOS摄像头实时视频流编码为h264文件 参看文章ffmpeg综合应用示例（一）——摄像头直播 ， ffmpeg综合应用示例（四）——摄像头直播的视音频同步 参看文章最简单的基于FFmpeg的移动端例子：IOS 推流器， 最简单的基于FFmpeg的推流器（以推送RTMP为例） 使用librtmp发布h.264可参看文章最简单的基于librtmp的示例：发布H.264（H.264通过RTMP发布）， 最简单的基于librtmp的示例：发布（FLV通过RTMP发布） 通过以上文章，就可以将采集到的音频／视频数据推送到流媒体服务器，至于观看延迟方面，需要结合实际情况区处理了。]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>iOS</tag>
         <tag>音视频处理</tag>
@@ -594,6 +651,9 @@
     <title><![CDATA[rtmp直播推流（一）－－flv格式解析与封装]]></title>
     <url>%2F2015%2F11%2F13%2Fflv-analysis-in-rtmp-live-play%2F</url>
     <content type="text"><![CDATA[flv文件格式分析，可参看RTMP中FLV流到标准h264、aac的转换，该文章写的很清晰。 flv封装格式解析，可参看视音频数据处理入门：FLV封装格式解析，文章图文并貌，很直观。 flv文件封装，可参看将h.264视频流封装成flv格式文件（一.flv格式）， 将h.264视频流封装成flv格式文件（二.开始动手） 使用rtmp协议发送flv文件，可参看rtmp协议简单解析以及用其发送h264的flv文件 通过以上几篇好文，对flv文件格式，封装flv文件以及通过rtmp协议与流媒体服务器交互就有清晰的认识。 附上两张图 图一为 FLV Format with AVC Video Tag （H.264） 图二为 FLV Format with AAC Audio Tag (AAC)]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>音视频处理</tag>
       </tags>
@@ -602,6 +662,9 @@
     <title><![CDATA[iOS开发需要掌握的知识点]]></title>
     <url>%2F2015%2F10%2F29%2FiOS-development-need-abilities%2F</url>
     <content type="text"><![CDATA[任何一个方向，都需要基本功扎实。软件开发领域，数据结构与算法，操作系统，网络协议（tcp/ip协议族）是立足的基础。 下面列举iOS开发需要掌握的知识点： 一、数据结构与算法（一）数据结构1. 链表2. 队列3. 树（二叉树）4. 哈希表（即散列表）（二）算法1. 查找算法2. 排序算法二、操作系统（一）缓存（二）分页（三）生产者与消费者三、网络协议（tcp/ip协议族）（一）http协议（http/https）（二）tcp协议（三）udp协议（四）ip协议四、Socket、Thread（套接字、线程）（一）Socket（套接字）（二）Thread（线程）四、iOS方向知识点（一）AutoLayout / SizeClass（二）KVO/KVC（三）NSNotification（四）Block（五）Protocol/Delegate（六）Grand Central Dispatch（七）NSOperation Queue（八）NSRunloop（九）Runtime（十）HTTP Request：Post、Get（十一）Json、XML（十二）CoreData、Sqlite（十三）LLDB]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>iOS</tag>
       </tags>
@@ -610,6 +673,9 @@
     <title><![CDATA[音视频编解码中常用的编译脚本]]></title>
     <url>%2F2015%2F10%2F29%2Ffrequently-used-audio-and-video-codec-script%2F</url>
     <content type="text"><![CDATA[FFmpegiOS：https://github.com/kewlbear/FFmpeg-iOS-build-script x264iOS：https://github.com/kewlbear/x264-ios fdk-aaciOS：https://github.com/verybigdog/fdk-aac-ios 或 https://github.com/kewlbear/fdk-aac-build-script-for-iOS，不支持iOS arm64，但是可以借鉴 librtmpiOS：https://github.com/saiten/ios-librtmp OpenSSLiOS：https://github.com/x2on/OpenSSL-for-iPhone]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>音视频处理</tag>
       </tags>
@@ -618,6 +684,9 @@
     <title><![CDATA[iOS上使用VideoToolBox硬解码h264]]></title>
     <url>%2F2015%2F10%2F24%2Fuse-VideoToolBox-decode-h264%2F</url>
     <content type="text"><![CDATA[以下内容摘自我博客的编译iOS平台上使用的X264库一文。 从iOS8开始，苹果开放了硬解码和硬编码API，框架为VideoToolbox.framework， 此框架需要在iOS8及以上的系统上才能使用。 此框架中的硬解码API是几个纯C函数，在任何OC或者 C++代码里都可以使用。使用的时候，首先，要把 VideoToolbox.framework 添加到工程里，并且在要使用该API的文件中包含头文件 #include &lt;VideoToolbox/VideoToolbox.h&gt;，然后，就可以畅快的高效的对视频流进行硬编码了。 其实至少从iPhone4开始，苹果就是支持硬件解码了，但是硬解码API框架VideoToolBox一直是私有API，如果调用这个私有库，那么app在必须在越狱的设备上运行，正常的App如果想提交到AppStore是不允许使用私有API的。 点评：对于如何使用iOS平台上的VideoToolbox框架对图像数据进行硬编码，github上已经有很多demo了，虽然苹果官方文档对VideoToolbox介绍的不全面，但足以搞清楚整个流程，至于细节需要花些时间自己去搞了，比如时间戳的计算。]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>iOS</tag>
         <tag>音视频处理</tag>
@@ -627,6 +696,9 @@
     <title><![CDATA[利用FFmpeg和rtmp实现iOS设备上摄像头视频流的推送]]></title>
     <url>%2F2015%2F10%2F13%2Fuse-ffmpeg-and-rtmp-to-push-iOS-camera-streaming%2F</url>
     <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>iOS</tag>
         <tag>音视频处理</tag>
@@ -644,6 +716,9 @@
     <title><![CDATA[使用FFmpeg开发iOS播放器（第一部分）]]></title>
     <url>%2F2015%2F10%2F08%2Fuse-ffmpeg-to-create-a-iOS-player-part1%2F</url>
     <content type="text"><![CDATA[一、开发需求 支持多种流媒体协议（rtsp, rtmp, hls） 播放，暂停，拖动 录像，截图 语音对讲，视频对讲 视频上传流媒体服务器 二、开发准备工作 查看流媒体协议知识点 理解音视频流的分离与复合 编译FFmpeg库 通读FFmpeg源码中ffplay.c 理解OpengGL ES的渲染流程 三、开发执行 记录开发过程中的心得 完成iOS播放器库(*.a)]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>iOS</tag>
         <tag>音视频处理</tag>
@@ -653,6 +728,9 @@
     <title><![CDATA[在Mac OSX上安装ffmpeg && ffmpeg命令行将h264封装为mp4]]></title>
     <url>%2F2015%2F09%2F24%2Finstall-ffmpeg-to-MacOSX-and-use-ffmpeg-to-transform-h264-to-mp4%2F</url>
     <content type="text"><![CDATA[ffmpeg功能强大，可以通过命令行来对音视频进行处理。为了使用其功能，我在Mac上对其进行了安装。 我的Mac OS X 系统版本：OS X Yosemite, 10.10.14 关于ffmpeg在Mac OS X上的编译，FFmpeg上有官方文档说明：https://trac.ffmpeg.org/wiki/CompilationGuide/MacOSX。该文档给出了3种方法： ffmpeg through Homebrew Compiling FFmpeg yourself Manual install of the dependencies without Homebrew 看了这三种方法的官方说明后，我选择了第一种，因为最简单。 首先，Mac上要安装Homebrew在终端执行命令，ruby -e “$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot; 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849devtemobideMac-mini:~ sunminmin$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"==&gt; This script will install:/usr/local/bin/brew/usr/local/Library/.../usr/local/share/man/man1/brew.1 Press RETURN to continue or any other key to abort==&gt; /usr/bin/sudo /bin/chmod g+rwx /Library/Caches/HomebrewPassword:==&gt; Downloading and installing Homebrew... remote: Counting objects: 225571, done.remote: Compressing objects: 100% (59354/59354), done.remote: Total 225571 (delta 165037), reused 225482 (delta 164969)Receiving objects: 100% (225571/225571), 51.57 MiB | 1.19 MiB/s, done.Resolving deltas: 100% (165037/165037), done.From https://github.com/Homebrew/homebrew * [new branch] master -&gt; origin/masterHEAD is now at 82d7dc4 tomcat: update 8.0.17 bottle.==&gt; Installation successful!==&gt; Next stepsRun `brew doctor` before you install anythingRun `brew help` to get started 其次，安装ffmpeg在终端执行命令，brew install ffmpeg 12345678910111213141516171819202122232425262728293031323334353637383940devtemobideMac-mini:~ sunminmin$ brew install ffmpeg==&gt; Installing dependencies for ffmpeg: x264, lame, libvo-aacenc, xvid==&gt; Installing ffmpeg dependency: x264==&gt; Downloading https://homebrew.bintray.com/bottles/x264-r2533.yosemite.bottle.######################################################################## 100.0%==&gt; Pouring x264-r2533.yosemite.bottle.tar.gz🍺 /usr/local/Cellar/x264/r2533: 9 files, 3.4M==&gt; Installing ffmpeg dependency: lame==&gt; Downloading https://homebrew.bintray.com/bottles/lame-3.99.5.yosemite.bottle######################################################################## 100.0%==&gt; Pouring lame-3.99.5.yosemite.bottle.1.tar.gz🍺 /usr/local/Cellar/lame/3.99.5: 25 files, 2.1M==&gt; Installing ffmpeg dependency: libvo-aacenc==&gt; Downloading https://homebrew.bintray.com/bottles/libvo-aacenc-0.1.3.yosemite######################################################################## 100.0%==&gt; Pouring libvo-aacenc-0.1.3.yosemite.bottle.tar.gz🍺 /usr/local/Cellar/libvo-aacenc/0.1.3: 15 files, 336K==&gt; Installing ffmpeg dependency: xvid==&gt; Downloading https://homebrew.bintray.com/bottles/xvid-1.3.3.yosemite.bottle.######################################################################## 100.0%==&gt; Pouring xvid-1.3.3.yosemite.bottle.2.tar.gz🍺 /usr/local/Cellar/xvid/1.3.3: 9 files, 1.3M==&gt; Installing ffmpeg==&gt; Downloading https://homebrew.bintray.com/bottles/ffmpeg-2.6.3.yosemite.bottle.ta######################################################################## 100.0%==&gt; Pouring ffmpeg-2.6.3.yosemite.bottle.tar.gz==&gt; CaveatsFFmpeg has been built without libfaac for licensing reasons;libvo-aacenc is used by default.To install with libfaac, you can: brew reinstall ffmpeg --with-faacYou can also use the experimental FFmpeg encoder, libfdk-aac, orlibvo_aacenc to encode AAC audio: ffmpeg -i input.wav -c:a aac -strict experimental output.m4aOr: brew reinstall ffmpeg --with-fdk-aac ffmpeg -i input.wav -c:a libfdk_aac output.m4a==&gt; Summary🍺 /usr/local/Cellar/ffmpeg/2.6.3: 204 files, 42M 再次，查看ffmpeg info在终端执行命令，brew info ffmpeg 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788devtemobideMac-mini:~ sunminmin$ brew info ffmpegffmpeg: stable 2.6.3 (bottled), HEADPlay, record, convert, and stream audio and videohttps://ffmpeg.org//usr/local/Cellar/ffmpeg/2.6.3 (204 files, 42M) * Poured from bottleFrom: https://github.com/Homebrew/homebrew/blob/master/Library/Formula/ffmpeg.rb==&gt; DependenciesBuild: pkg-config ✘, texi2html ✘, yasm ✘Recommended: x264 ✔, lame ✔, libvo-aacenc ✔, xvid ✔Optional: faac ✘, fontconfig ✘, freetype ✘, theora ✘, libvorbis ✘, libvpx ✘, rtmpdump ✘, opencore-amr ✘, libass ✘, openjpeg ✘, speex ✘, schroedinger ✘, fdk-aac ✘, opus ✘, frei0r ✘, libcaca ✘, libbluray ✘, libsoxr ✘, libquvi ✘, libvidstab ✘, x265 ✘, openssl ✘, libssh ✘, webp ✘==&gt; Options--with-faac Build with faac support--with-fdk-aac Enable the Fraunhofer FDK AAC library--with-ffplay Enable FFplay media player--with-fontconfig Build with fontconfig support--with-freetype Build with freetype support--with-frei0r Build with frei0r support--with-libass Enable ASS/SSA subtitle format--with-libbluray Build with libbluray support--with-libcaca Build with libcaca support--with-libquvi Build with libquvi support--with-libsoxr Enable the soxr resample library--with-libssh Enable SFTP protocol via libssh--with-libvidstab Enable vid.stab support for video stabilization--with-libvorbis Build with libvorbis support--with-libvpx Build with libvpx support--with-opencore-amr Enable Opencore AMR NR/WB audio format--with-openjpeg Enable JPEG 2000 image format--with-openssl Enable SSL support--with-opus Build with opus support--with-rtmpdump Enable RTMP protocol--with-schroedinger Enable Dirac video format--with-speex Build with speex support--with-theora Build with theora support--with-tools Enable additional FFmpeg tools--with-webp Enable using libwebp to encode WEBP images--with-x265 Enable x265 encoder--without-lame Disable MP3 encoder--without-libvo-aacenc Disable VisualOn AAC encoder--without-qtkit Disable deprecated QuickTime framework--without-x264 Disable H.264 encoder--without-xvid Disable Xvid MPEG-4 video encoder--HEAD Install HEAD version==&gt; CaveatsFFmpeg has been built without libfaac for licensing reasons;libvo-aacenc is used by default.To install with libfaac, you can: brew reinstall ffmpeg --with-faacYou can also use the experimental FFmpeg encoder, libfdk-aac, orlibvo_aacenc to encode AAC audio: ffmpeg -i input.wav -c:a aac -strict experimental output.m4aOr: brew reinstall ffmpeg --with-fdk-aac ffmpeg -i input.wav -c:a libfdk_aac output.m4a 经过这3步，现在就可以使用ffmpeg的强大功能了。 现在ffmpeg的版本更新很快，今年3月份发布了 FFmpeg 2.6.1，7月份发布了 FFmpeg 2.7.2，中间还有一些其它版本，比如2.7，2.7.1，这些版本我都在iOS平台上编译使用过，今年9月份，FFmpeg 的版本更新到了2.8。今年，我见证了FFmpeg更新最频繁的的时刻。 经过前面的3步，在Mac上安装了 ffmpeg 2.6.3 的版本，过段时间，homebrew上ffmpeg 的安装源就会更新，若想升级ffmpeg，就需要执行下面的第4步操作了。 最后，升级ffmpeg的版本若想升级ffmpeg的版本，可以在终端执行命令，brew update &amp;&amp; brew upgrade ffmpeg 实例安装好了ffmpeg，就要试试其功能了。采用文章利用x264将iOS摄像头实时视频流编码为h264文件配套工程X264-Encode-for-iOS中的h264文件，该文件地址为2015-09-17 18:05:20.h264，使用ffmpeg 命令将其打包为 .mp4容器格式的文件 将该h264文件下载，在终端上，执行命令进入存放该文件的目录 1devtemobideMac-mini:~ sunminmin$ cd /Users/dev.temobi/Desktop/sunmmMainPrj/ZZ_Z_Github_clone 进入到该目录后，执行命令，ffmpeg -i 2015-09-17\ 18_05_20.h264 2015-09-17.mp4 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748devtemobideMac-mini:ZZ_Z_Github_clone sunminmin$ ffmpeg -i 2015-09-17\ 18_05_20.h264 2015-09-17.mp4ffmpeg version 2.6.3 Copyright (c) 2000-2015 the FFmpeg developers built with Apple LLVM version 6.1.0 (clang-602.0.53) (based on LLVM 3.6.0svn) configuration: --prefix=/usr/local/Cellar/ffmpeg/2.6.3 --enable-shared --enable-pthreads --enable-gpl --enable-version3 --enable-hardcoded-tables --enable-avresample --cc=clang --host-cflags= --host-ldflags= --enable-libx264 --enable-libmp3lame --enable-libvo-aacenc --enable-libxvid --enable-vda libavutil 54. 20.100 / 54. 20.100 libavcodec 56. 26.100 / 56. 26.100 libavformat 56. 25.101 / 56. 25.101 libavdevice 56. 4.100 / 56. 4.100 libavfilter 5. 11.102 / 5. 11.102 libavresample 2. 1. 0 / 2. 1. 0 libswscale 3. 1.101 / 3. 1.101 libswresample 1. 1.100 / 1. 1.100 libpostproc 53. 3.100 / 53. 3.100Input #0, h264, from '2015-09-17 18_05_20.h264': Duration: N/A, bitrate: N/A Stream #0:0: Video: h264 (Constrained Baseline), yuv420p, 480x360, 15 fps, 15 tbr, 1200k tbn, 30 tbc[libx264 @ 0x7fada2818000] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX[libx264 @ 0x7fada2818000] profile High, level 2.1[libx264 @ 0x7fada2818000] 264 - core 144 r2533 c8a773e - H.264/MPEG-4 AVC codec - Copyleft 2003-2015 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=15 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00Output #0, mp4, to '2015-09-17.mp4': Metadata: encoder : Lavf56.25.101 Stream #0:0: Video: h264 (libx264) ([33][0][0][0] / 0x0021), yuv420p, 480x360, q=-1--1, 15 fps, 15360 tbn, 15 tbc Metadata: encoder : Lavc56.26.100 libx264Stream mapping: Stream #0:0 -&gt; #0:0 (h264 (native) -&gt; h264 (libx264))Press [q] to stop, [?] for helpframe= 64 fps=0.0 q=27.0 size= 60kB time=00:00:00.80 bitrate= 609.7kbits/s frame= 87 fps= 85 q=27.0 size= 187kB time=00:00:02.33 bitrate= 655.2kbits/s frame= 120 fps= 77 q=27.0 size= 366kB time=00:00:04.53 bitrate= 661.5kbits/s frame= 149 fps= 72 q=27.0 size= 444kB time=00:00:06.46 bitrate= 562.4kbits/s frame= 178 fps= 69 q=27.0 size= 508kB time=00:00:08.40 bitrate= 495.4kbits/s frame= 196 fps= 56 q=-1.0 Lsize= 651kB time=00:00:12.93 bitrate= 412.2kbits/s video:648kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.389284%[libx264 @ 0x7fada2818000] frame I:2 Avg QP:20.10 size: 5888[libx264 @ 0x7fada2818000] frame P:126 Avg QP:22.22 size: 4340[libx264 @ 0x7fada2818000] frame B:68 Avg QP:23.94 size: 1537[libx264 @ 0x7fada2818000] consecutive B-frames: 43.9% 27.6% 6.1% 22.4%[libx264 @ 0x7fada2818000] mb I I16..4: 31.4% 51.4% 17.2%[libx264 @ 0x7fada2818000] mb P I16..4: 8.6% 10.2% 4.6% P16..4: 46.2% 11.9% 4.2% 0.0% 0.0% skip:14.2%[libx264 @ 0x7fada2818000] mb B I16..4: 1.1% 0.6% 0.6% B16..8: 52.3% 4.9% 0.8% direct: 3.2% skip:36.5% L0:51.0% L1:45.1% BI: 3.9%[libx264 @ 0x7fada2818000] 8x8 transform intra:43.2% inter:63.2%[libx264 @ 0x7fada2818000] coded y,uvDC,uvAC intra: 42.6% 57.1% 10.4% inter: 19.2% 28.2% 0.7%[libx264 @ 0x7fada2818000] i16 v,h,dc,p: 20% 51% 10% 19%[libx264 @ 0x7fada2818000] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 24% 38% 22% 2% 2% 2% 4% 2% 5%[libx264 @ 0x7fada2818000] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 21% 43% 12% 3% 3% 3% 6% 4% 5%[libx264 @ 0x7fada2818000] i8c dc,h,v,p: 51% 32% 14% 3%[libx264 @ 0x7fada2818000] Weighted P-Frames: Y:7.1% UV:5.6%[libx264 @ 0x7fada2818000] ref P L0: 78.9% 10.4% 8.3% 2.3% 0.1%[libx264 @ 0x7fada2818000] ref B L0: 93.9% 5.6% 0.5%[libx264 @ 0x7fada2818000] ref B L1: 96.2% 3.8%[libx264 @ 0x7fada2818000] kb/s:405.98 到此，h264文件封装为.mp4格式的过程结束。 查看2015-09-17.mp4 文件，如图 2015-09-17.mp4 文件可以使用Quick Time Player，VLC 正常播放。 2015-09-17.mp4 文件的下载地址为：2015-09-17.mp4 2015-09-17 18:05:20.h264 文件的下载地址为：2015-09-17 18:05:20.h264]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>音视频处理</tag>
       </tags>
@@ -661,6 +739,9 @@
     <title><![CDATA[采用工具软件分析h264文件]]></title>
     <url>%2F2015%2F09%2F23%2Fuse-tool-to-analyze-h264-file%2F</url>
     <content type="text"><![CDATA[通过文章利用x264将iOS摄像头实时视频流编码为h264文件 和 利用FFmpeg+x264将iOS摄像头实时视频流编码为h264文件，实现了如何采集实时视频流并压缩为h264编码格式的文件。对于采集到h264文件，里面究竟有些什么，下面就通过工具软件来一探究竟。 采用文章利用x264将iOS摄像头实时视频流编码为h264文件配套工程X264-Encode-for-iOS中的h264文件，该文件地址为2015-09-17 18:05:20.h264 工具软件 UITraEdit H.264 的基本流（elementary stream,ES）的结构分为两层，包括视频编码层（VCL）和网络适配层（NAL）。视频编码层负责高效的视频内容表示，而网络适配层负责以网络所要求的恰当的方式对数据进行打包和传送。引入NAL并使之与VCL分离带来的好处包括两方面：其一、使信号处理和网络传输分离，VCL 和NAL 可以在不同的处理平台上实现；其二、VCL 和NAL 分离设计，使得在不同的网络环境内，网关不需要因为网络环境不同而对VCL比特流进行重构和重编码。 H.264 的基本流由一系列NALU （Network Abstraction Layer Unit ）组成，不同的NALU数据量各不相同。H.264 草案指出，当数据流是储存在介质上时，在每个NALU 前添加起始码：0x000001 或 0x00000001，用来指示一个NALU 的起始和终止位置。在这样的机制下，在码流中检测起始码，作为一个NALU得起始标识，当检测到下一个起始码时，当前NALU结束。 H.264 码流中每个帧的开头的3~4个字节是H.264 的start_code（起始码），0x00000001或者0x000001。3字节的0x000001只有一种场合下使用，就是一个完整的帧被编为多个slice（片）的时候，包含这些slice的NALU 使用3字节起始码。其余场合都是4字节0x00000001的。 每个NALU单元由一个字节的 NALU头（NALU Header）和若干个字节的载荷数据（RBSP）组成。其中NALU 头的格式如图所示： NALU头结构 长度：1byte forbidden_bit(1bit) + nal_reference_bit(2bit) + nal_unit_type(5bit) F：forbidden_zero_bit.1 位，如果有语法冲突，则为 1。当网络识别此单元存在比特错误时，可将其设为 1，以便接收方丢掉该单元。 NRI：nal_ref_idc.2 位，用来指示该NALU 的重要性等级。值越大，表示当前NALU越重要。具体大于0 时取何值，没有具体规定。 Type：5 位，指出NALU 的类型。 h264中NALU类型取值如下图(图片来至《新一代视频压缩编码标准H.264》) 将 2015-09-17 18:05:20.h264 文件用UITraEdit打开，效果如下图 由于数据量较大，我挑选了其中3段数据来分析。 分析第一段数据： 00 00 00 01 67 00 00 00 01 为NALU的起始标志。 00 00 00 01 后面的 67 为前面说的占1个字节的NALU头。将十六进制的67转换为二进制，得 0110 0111。 字段 所占bit位数 二进制 十进制 类型 forbidden_bit 1 0 0 nal_reference_bit 2 11 3 NALU 的重要性等级系数 nal_unit_type 5 00111 7 序列参数集，sps 00 00 00 01 68 00 00 00 01 为NALU的起始标志。 00 00 00 01 后面的 68 为前面说的占1个字节的NALU头。将十六进制的68转换为二进制，得 0110 1000。 字段 所占bit位数 二进制 十进制 类型 forbidden_bit 1 0 0 nal_reference_bit 2 11 3 NALU 的重要性等级系数 nal_unit_type 5 01000 8 图像参数集，pps 00 00 03 00 H.264规定，当检测到0x000000时，也可以表征当前NAL的结束。那么NAL中数据出现0x000001或0x000000时怎么办？H.264引入了防止竞争机制，如果编码器检测到NAL数据存在0x000001或0x000000时，编码器会在最后个字节前插入一个新的字节0x03，这样： 0x000000－&gt;0x00000300 0x000001－&gt;0x00000301 0x000002－&gt;0x00000302 0x000003－&gt;0x00000303 解码器检测到0x000003时，把03抛弃，恢复原始数据（脱壳操作）。解码器在解码时，首先逐个字节读取NAL的数据，统计NAL的长度，然后再开始解码。 分析第二段数据： 00 00 00 01 65 或 00 00 01 65 00 00 00 01 或 00 00 01 为NALU的起始标志。 00 00 00 01 或 00 00 01 后面的 65 为前面说的占1个字节的NALU头。将十六进制的65转换为二进制，得 0110 0101。 字段 所占bit位数 二进制 十进制 类型 forbidden_bit 1 0 0 nal_reference_bit 2 11 3 NALU 的重要性等级系数 nal_unit_type 5 00101 5 IDR图像中的片 IDR图像中的片，即 I帧。 我在用UITraEdit打开的2015-09-17 18:05:20.h264文件中搜索 00 00 00 01 65，没有找到该标志。搜索 00 00 01 65，存在该标志，说明一个完整的帧被编为多个slice（片）。 分析第三段数据： 00 00 00 01 41 00 00 00 01 为NALU的起始标志。 00 00 00 01 后面的 41 为前面说的占1个字节的NALU头。将十六进制的41转换为二进制，得 0100 0001。 字段 所占bit位数 二进制 十进制 类型 forbidden_bit 1 0 0 nal_reference_bit 2 10 2 NALU 的重要性等级系数 nal_unit_type 5 00001 1 不分区，非IDR图像的片 在baseline的档次中nal_unit_type表示的就是P帧，因为baseline没有B帧。 以上，就是对H264的结构和机制的一些分析。 扩展阅读： H264–1–编码原理以及I帧B帧P帧 H264–2–语法及结构]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>音视频处理</tag>
       </tags>
@@ -669,6 +750,9 @@
     <title><![CDATA[利用FFmpeg+x264将iOS摄像头实时视频流编码为h264文件]]></title>
     <url>%2F2015%2F09%2F18%2Fuse-ffmpeg-and-x264-encode-iOS-camera-video-to-h264%2F</url>
     <content type="text"><![CDATA[一、编译x264库如何编译x264源码获取支持iOS平台的静态库，可参考我的文章《编译iOS平台上使用的X264库》 二、编译FFmpeg库如何编译FFmpeg源码获取支持iOS平台的静态库，可参考我的博客园上的文章《实战FFmpeg－－编译iOS平台使用的FFmpeg库（支持arm64的FFmpeg2.6.2）》 三、将x264库编译进FFmpeg库通过步骤二，知道了如何编译FFmpeg库，但是要在FFmpeg中使用x264进行h264编码，还需要修改步骤二中的脚本。 步骤二中，使用的脚本的下载地址为：build-ffmpeg.sh 现在，FFmpeg的最新版本是 2.8，iOS系统的最新版本是 iOS 9.0.2，Xcode 最新版本是 Xcode 7.0.1，从 Xcode 7.0 开始支持 bitcode 选项了，bitcode 是什么，在百度上搜一搜就知道了。 看一看从下载地址获取的脚本，脚本内容如下： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154#!/bin/sh# directoriesSOURCE="ffmpeg-2.8"FAT="FFmpeg-iOS"SCRATCH="scratch"# must be an absolute pathTHIN=`pwd`/"thin"# absolute path to x264 library#X264=`pwd`/fat-x264#FDK_AAC=`pwd`/fdk-aac/fdk-aac-iosCONFIGURE_FLAGS="--enable-cross-compile --disable-debug --disable-programs \ --disable-doc --enable-pic"if [ "$X264" ]then CONFIGURE_FLAGS="$CONFIGURE_FLAGS --enable-gpl --enable-libx264"fiif [ "$FDK_AAC" ]then CONFIGURE_FLAGS="$CONFIGURE_FLAGS --enable-libfdk-aac"fi# avresample#CONFIGURE_FLAGS="$CONFIGURE_FLAGS --enable-avresample"ARCHS="arm64 armv7 x86_64 i386"COMPILE="y"LIPO="y"DEPLOYMENT_TARGET="6.0"if [ "$*" ]then if [ "$*" = "lipo" ] then # skip compile COMPILE= else ARCHS="$*" if [ $# -eq 1 ] then # skip lipo LIPO= fi fifiif [ "$COMPILE" ]then if [ ! `which yasm` ] then echo 'Yasm not found' if [ ! `which brew` ] then echo 'Homebrew not found. Trying to install...' ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" \ || exit 1 fi echo 'Trying to install Yasm...' brew install yasm || exit 1 fi if [ ! `which gas-preprocessor.pl` ] then echo 'gas-preprocessor.pl not found. Trying to install...' (curl -L https://github.com/libav/gas-preprocessor/raw/master/gas-preprocessor.pl \ -o /usr/local/bin/gas-preprocessor.pl \ &amp;&amp; chmod +x /usr/local/bin/gas-preprocessor.pl) \ || exit 1 fi if [ ! -r $SOURCE ] then echo 'FFmpeg source not found. Trying to download...' curl http://www.ffmpeg.org/releases/$SOURCE.tar.bz2 | tar xj \ || exit 1 fi CWD=`pwd` for ARCH in $ARCHS do echo "building $ARCH..." mkdir -p "$SCRATCH/$ARCH" cd "$SCRATCH/$ARCH" CFLAGS="-arch $ARCH" if [ "$ARCH" = "i386" -o "$ARCH" = "x86_64" ] then PLATFORM="iPhoneSimulator" CFLAGS="$CFLAGS -mios-simulator-version-min=$DEPLOYMENT_TARGET" else PLATFORM="iPhoneOS" CFLAGS="$CFLAGS -mios-version-min=$DEPLOYMENT_TARGET -fembed-bitcode" if [ "$ARCH" = "arm64" ] then EXPORT="GASPP_FIX_XCODE5=1" fi fi XCRUN_SDK=`echo $PLATFORM | tr '[:upper:]' '[:lower:]'` CC="xcrun -sdk $XCRUN_SDK clang" CXXFLAGS="$CFLAGS" LDFLAGS="$CFLAGS" if [ "$X264" ] then CFLAGS="$CFLAGS -I$X264/include" LDFLAGS="$LDFLAGS -L$X264/lib" fi if [ "$FDK_AAC" ] then CFLAGS="$CFLAGS -I$FDK_AAC/include" LDFLAGS="$LDFLAGS -L$FDK_AAC/lib" fi TMPDIR=$&#123;TMPDIR/%\/&#125; $CWD/$SOURCE/configure \ --target-os=darwin \ --arch=$ARCH \ --cc="$CC" \ $CONFIGURE_FLAGS \ --extra-cflags="$CFLAGS" \ --extra-ldflags="$LDFLAGS" \ --prefix="$THIN/$ARCH" \ || exit 1 make -j3 install $EXPORT || exit 1 cd $CWD donefiif [ "$LIPO" ]then echo "building fat binaries..." mkdir -p $FAT/lib set - $ARCHS CWD=`pwd` cd $THIN/$1/lib for LIB in *.a do cd $CWD echo lipo -create `find $THIN -name $LIB` -output $FAT/lib/$LIB 1&gt;&amp;2 lipo -create `find $THIN -name $LIB` -output $FAT/lib/$LIB || exit 1 done cd $CWD cp -rf $THIN/$1/include $FATfiecho Done 三（一）、注意内容11234567891011121314151617181920# absolute path to x264 library#X264=`pwd`/fat-x264#FDK_AAC=`pwd`/fdk-aac/fdk-aac-iosCONFIGURE_FLAGS="--enable-cross-compile --disable-debug --disable-programs \ --disable-doc --enable-pic"if [ "$X264" ]then CONFIGURE_FLAGS="$CONFIGURE_FLAGS --enable-gpl --enable-libx264"fiif [ "$FDK_AAC" ]then CONFIGURE_FLAGS="$CONFIGURE_FLAGS --enable-libfdk-aac"fi# avresample#CONFIGURE_FLAGS="$CONFIGURE_FLAGS --enable-avresample" 要将x264编译进FFmpeg中，需要取消对该句代码的注销 X264=`pwd`/fat-x264 即， #X264=`pwd`/fat-x264 改为 X264=`pwd`/fat-x264 三（二）、注意内容2经过步骤三（一）的修改后，在Mac终端执行FFmpeg，脚本的时候，可能会存在因为bitcode引起编译出错。 需要将脚本中 1CFLAGS="$CFLAGS -mios-version-min=$DEPLOYMENT_TARGET -fembed-bitcode" 修改为 1CFLAGS="$CFLAGS -mios-version-min=$DEPLOYMENT_TARGET" 四、总结编译x264以及支持x264的FFmpeg的步骤 编译得到 x264 静态库 将存放x264静态库（头文件，库文件）的文件夹名称改为 fat-x264 （因为编译FFmpeg的脚本中定义存放x264文件的文件夹名称为fat-x264，看步骤三（一）中的内容） 修改编译FFmpeg的脚本build-ffmpeg.sh，具体见步骤 三（一），三（二） 将编译FFmpeg的脚本build-ffmpeg.sh 与 fat-x264 存放到同一个目录下 在Mac终端执行脚本build-ffmpeg.sh 最后x264静态库，支持x264的FFmpeg静态库，内容如下 五、获取iOS设备摄像头实时视频六，采用x264和FFmpeg对iOS实时视频流编码为h264七、完整的代码下载地址采用FFmpeg+x264将iOS摄像头实时视频流编码为h264文件的工程的下载地址为：FFmpeg-X264-Encode-for-iOS]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>iOS</tag>
         <tag>音视频处理</tag>
@@ -678,6 +762,9 @@
     <title><![CDATA[利用x264将iOS摄像头实时视频流编码为h264文件]]></title>
     <url>%2F2015%2F09%2F17%2Fuse-x264-encode-iOS-camera-video-to-h264%2F</url>
     <content type="text"><![CDATA[代码见我的Github代码托管区域：X264-Encode-for-iOS]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>iOS</tag>
         <tag>音视频处理</tag>
@@ -687,6 +774,9 @@
     <title><![CDATA[编译iOS平台上使用的X264库]]></title>
     <url>%2F2015%2F09%2F16%2Fbuild-X264-library-for-iOS-platform%2F</url>
     <content type="text"><![CDATA[x264是一种免费的、具有更优秀算法的符合H.264/MPEG-4 AVC视频压缩编码标准格式的编码库。它同xvid一样都是开源项目，但x264是采用H.264标准的，而xvid是采用MPEG-4早期标准的。由于H.264是2003年正式发布的最新的视频编码标准，因此，在通常情况下，x264压缩出的视频文件在相同质量下要比xvid压缩出的文件要小，或者也可以说，在相同体积下比xvid压缩出的文件质量要好。它符合GPL许可证。 从iOS8开始，苹果开放了硬解码和硬编码API，框架为 VideoToolbox.framework， 此框架需要在iOS8及以上的系统上才能使用。此框架中的硬解码API是几个纯C函数，在任何OC或者 C++代码里都可以使用。使用的时候，首先，要把 VideoToolbox.framework 添加到工程里，并且在要使用该API的文件中包含头文件 #include &lt;VideoToolbox/VideoToolbox.h&gt;，然后，就可以畅快的高效的对视频流进行硬编码了。 其实至少从iPhone4开始，苹果就是支持硬件解码了，但是硬解码API框架VideoToolBox一直是私有API，如果调用这个私有库，那么app在必须在越狱的设备上运行，正常的App如果想提交到AppStore是不允许使用私有API的。 此处，不讨论iOS硬编解码框架VideoToolbox.framework的使用。现在，使用较多的h264编码工具还是X264开源库。要想在iOS平台上使用X264编码视频流，首先要知道如何编译运行在iOS上的X264静态库。 编译X264的一个靠谱的脚本为https://github.com/kewlbear/x264-ios，但是，使用该脚本有个不方便的，就是要先下载X264并解压好，同时要下载https://github.com/libav/gas-preprocessor并将gas-preprocessor.pl拷贝到/usr/local/bin/下，并且赋予管理员权限，才能启动脚本进行编译。 为了使用脚本一步到位得到X264静态库，我在该脚本的基础上做了一些修改。 第一处修改：# sunminmin blog: http://depthlove.github.io/ # modified by sunminmin, 2015/09/07 #ARCHS=&quot;arm64 armv7s x86_64 i386 armv7&quot; ARCHS=&quot;arm64 x86_64 i386 armv7&quot; 第二处修改：# begin: added by sunminmin, 2015/09/07 if [ ! -r $GAS_PREPROCESSOR ] then echo &apos;gas-preprocessor.pl not found. Trying to install...&apos; (curl -L https://github.com/libav/gas-preprocessor/blob/master/gas-preprocessor.pl \ -o /usr/local/bin/gas-preprocessor.pl \ &amp;&amp; chmod +x /usr/local/bin/gas-preprocessor.pl) \ || exit 1 fi if [ ! -r $SOURCE ] then echo &apos;x264 source not found. Trying to download...&apos; curl https://download.videolan.org/pub/x264/snapshots/x264-snapshot-20140930-2245.tar.bz2 | tar xj &amp;&amp; ln -s x264-snapshot-20140930-2245 x264 || exit 1 fi # end: added by sunminmin, 2015/09/07 第三处修改：# begin: added by sunminmin, 2015/09/07 echo &quot;copy config.h to ...&quot; for ARCH in $ARCHS do cd $CWD echo &quot;copy $SCRATCH/$ARCH/config.h to $THIN/$ARCH/$include&quot; cp -rf $SCRATCH/$ARCH/config.h $THIN/$ARCH/$include || exit 1 done echo &quot;building success!&quot; # end: added by sunminmin, 2015/09/07 修改后的脚本下载地址：https://github.com/depthlove/x264-iOS-build-script 原始脚本下载地址：https://github.com/kewlbear/x264-ios 后续文章后写如何使用x264库对iOS设备摄像头实时视频流进行h264软编码。]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>音视频处理</tag>
       </tags>
@@ -695,6 +785,9 @@
     <title><![CDATA[音视频传输解决方案]]></title>
     <url>%2F2015%2F07%2F02%2Faudio-video-transmission-plan%2F</url>
     <content type="text"><![CDATA[协议流媒体协议：RTSP（Real Time Streaming Protocol），RTMP（Real Time Messaging Protocol），HLS(http live streaming) 会话描述协议：SDP（Session Description Protocol） 实时传输控制协议：RTCP（Real-time Transport Control Protocol或RTP Control Protocol） 实时传输协议：RTP（Real-time Transport Protocol） 流的类型流的类型：TS流，RTP流 容器类型 .mp4 音频编解码格式视频编解码格式BSD socket Introduction to BSD Sockets 知识点的维基百科解释维基百科：rtsp－实时流协议 维基百科：rtmp－实时消息传递协议 维基百科：HLS－HTTP实时流 维基百科：SDP－会话描述协议 维基百科：RTCP－实时传输控制协议 维基百科：RTP－实时传输协议 维基百科：BSD socket]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>音视频处理</tag>
       </tags>
@@ -744,6 +837,9 @@
     <title><![CDATA[笔谈cocoapods的安装与使用]]></title>
     <url>%2F2015%2F05%2F11%2Ftalk-about-cocoapods-install-and-use%2F</url>
     <content type="text"><![CDATA[因为要重构播放器库，所以就需要参考网上的开源项目，在播放器开源项目这块，kxmovie开源项目是值得参考的一个项目。在github下载下来后，运行该工程，发现其用到了cocoapods来管理第三方库，以前我做项目都是将第三方库直接下载然后将源文件导入到工程，这种做法有其好处也存在一定的弊端，好处是便于项目的维护，方便的知道过去使用的第三方库是个什么情况，还可以根据实际需求修改，弊端就是第三方库的更新需要自己下载最新的再将旧的替换（手动更新）。通过cocoapods来管理第三方库，可以获取到最新的第三库将其引用到项目中，而且不需要自己手动去添加该第三方库的依赖库，虽然cocoapods用起来方便，但是也不一定全好，因为项目运行链接第三方库的时候，比如之前自己改过cocoapods引用进来的第三方库，这时就悲剧了，加载的第三方库是重新从网络上获取的，网上一些开发者也提到了，通过cocoapods管理项目中的第三方库不便于项目回滚。所以，是否选择cocoapods要根据实际情况来定。 要使用cocoapods，对于之前没有安装过cocoapods的开发者来说，首先就是要在Mac上安装cocoapods，在Mac终端执行命令 sudo gem install cocoapods，执行结果如下 但是没有发现cocoapods源，因为ruby的软件源rubygems.org使用的亚马逊的云服务，被墙了，需要更新一下ruby的源，使用其他能支持的源—-&gt;国内淘宝的源： 123gem sources --remove https://rubygems.org/gem sources -a http://ruby.taobao.org/gem sources -l 执行上面的命令结果如下： 现在，更新源成功了，可以进行安装了，继续在Mac终端执行命令 sudo gem install cocoapods，执行结果如下： …………. …………. 接下来在Mac终端输入以下命令：pod setup 注意：This process will likely take a while as this command clones the CocoaPods Specs repository into ~/.cocoapods/ on your computer. 来看看我们安装的cocoapods的版本信息，在Mac终端上执行命令 pod –version，执行结果如下： OK，cocoapods安装成功了。 若要卸载cocoapods， 就在Mac终端执行命令 sudo gem uninstall cocoapods 参考文章：用CocoaPods做iOS程序的依赖管理 iOS.CocoaPods.0 OS X升级到10.10之后使用pod出现问题的解决方法 osx升级到10.10后，用pod install报错最终解决办法 cocoapods安装好了，接下来就该用它来做事了。使用CocoaPods管理第三方库的例子如下： 使用Xcode,在工程根目录下，新建立一个空白的Podfile文档，然后在里面添加以下内容 1234platform:ios,'6.0'pod 'FMDB', '~&gt; 2.0'pod 'AFNetworking', '~&gt; 1.1.0'pod 'JSONKit','~&gt;1.4' 保存，然后配置工程， 在系统终端中，使用cd命令切换到项目根目录下，输入命令： pod install 执行完之后，CocoaPods在工程目录下创建了一个文件夹“Pods”，该文件夹存放所有依赖的库，另外还创建了一个.xcworkspace文件，配置完之后需使用.xcworkspace文件打开工程。 参考文章：CocoaPods安装和使用教程 iOS系列译文：深入理解 CocoaPods 对于kxmoive这个工程，它使用cocoapods就引用了一个库，对于我而言，就因为引用一个库反复折腾cocoapods，肯定不爽，浪费时间。所以，我就想删掉kxmoive工程中cocoapods的所有相关东西。但是，删除cocoapods后，出现了如下错误： diff: /../Podfile.lock: No such file or directory diff: /Manifest.lock: No such file or directory error: The sandbox is not in sync with the Podfile.lock. Run ‘pod install’ or update your CocoaPods installation. 我参考文章 从工程中删除Cocoapods ，顺利解决了这个问题。对于上面的这个报错，当工程中有使用cocoapods的时候，运行项目也可能会出现这个问题，那就按照报错提示，重新更新pod，即在Mac终端执行pod install，参考文章 Xcode工程使用CocoaPods管理第三方库新建工程时出现错误]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>iOS</tag>
       </tags>
@@ -752,6 +848,9 @@
     <title><![CDATA[笔谈FFmpeg（二）]]></title>
     <url>%2F2015%2F04%2F28%2Ftalk-about-FFmpeg-part2%2F</url>
     <content type="text"><![CDATA[经过前面的学习对FFmpeg的基本流程已经很熟悉了，现在到了掌握其中细节的时候了，用FFmpeg做播放器解码操作中，涉及到了一些结构体，这些结构之间到底有什么关系，它们是怎样协同工作的呢。文章 FFMPEG中最关键的结构体之间的关系 对这些结构间的关系进行了分析，详细内容如下： FFMPEG中结构体很多。最关键的结构体可以分成以下几类： a) 解协议（http,rtsp,rtmp,mms）AVIOContext，URLProtocol，URLContext主要存储视音频使用的协议的类型以及状态。URLProtocol存储输入视音频使用的封装格式。每种协议都对应一个URLProtocol结构。（注意：FFMPEG中文件也被当做一种协议“file”） b) 解封装（flv,avi,rmvb,mp4）AVFormatContext主要存储视音频封装格式中包含的信息；AVInputFormat存储输入视音频使用的封装格式。每种视音频封装格式都对应一个AVInputFormat 结构。 c) 解码（h264,mpeg2,aac,mp3）每个AVStream存储一个视频/音频流的相关数据；每个AVStream对应一个AVCodecContext，存储该视频/音频流使用解码方式的相关数据；每个AVCodecContext中对应一个AVCodec，包含该视频/音频对应的解码器。每种解码器都对应一个AVCodec结构。 d)存数据视频的话，每个结构一般是存一帧；音频可能有好几帧 解码前数据：AVPacket 解码后数据：AVFrame 他们之间的对应关系如下所示： 上面提到的这些结构到底是干嘛用的，中国传媒大学的一个博士写了一系列的结构体的分析的文章，在这里列一个列表，需要好好看下： FFMPEG结构体分析：AVFrameFFMPEG结构体分析：AVFormatContextFFMPEG结构体分析：AVCodecContextFFMPEG结构体分析：AVIOContextFFMPEG结构体分析：AVCodecFFMPEG结构体分析：AVStreamFFMPEG结构体分析：AVPacket]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>音视频处理</tag>
       </tags>
@@ -760,6 +859,9 @@
     <title><![CDATA[笔谈FFmpeg（一）]]></title>
     <url>%2F2015%2F04%2F27%2Ftalk-about-FFmpeg-part1%2F</url>
     <content type="text"><![CDATA[现在的工作是播放器库的开发，可不是调用iOS系统自带的播放器框架进行一些简单的功能和界面定制，这些没什么含量。涉及iOS开发有3个年头了，现在的工作算是有点含金量了。涉及播放器的开发，FFmpeg的架构和功能是必须清楚的。FFmpeg自带的三个工程：ffplay， ffmpeg， ffprobe。这三个工程的代码量太大，如何切入进去，一窥其中的奥秘为自己所用呢？从核心切入，编码和解码。编码和解码的核心API接口就那十几个，通过这些深入然后剖析源代码，目标就明确了。 就我个人而言，首先要了解FFmpeg整个的运行机制，哪一部分工作需要调用FFmpeg的哪一块，这个必须清楚。播放器库的开发，解码播放这就是核心，我就需要从FFmpeg的解码流程入手了。FFmpeg源代码结构图 - 解码 这篇文章太好了，看得我两眼放光，精华。这篇文章读透了，完全可以把控FFmpeg的使用。我接下来的学习任务，那就是认真研读和敲代码研习，光看是不顶用的，需要动手写。 FFmpeg源代码结构图 - 解码中包含的信息太多了，对于在音视频领域中的初学者来说，首先要看FFmpeg源代码结构图 - 解码 中提到的简单的基于FFMPEG+SDL的视频播放器 ver2 （采用SDL2.0）入手。心急吃不了热豆腐，心急就不能静下心来搞懂深层次的问题。FFmpeg的解码过程调用的API依次为： 开始—-&gt; av_register_all(); avformat_open_input()； av_find_stream_info(); avcodec_find_decoder(); av_read_frame(); 获取到packet—-&gt; avcodec_decode_video2(); 对于FFmpeg的解码流程，先知道了有上面那些方法，但是这些方法是用来做什么，从方法名上能看出其功能，要深入的理解才行。借鉴别人的经验，收集有效的资源是非常重要的。对FFmpeg解码流程讲解的比较好的一篇博文是 FFMpeg的解码流程 ，配合文章 ffmpeg解码流程 一起服下，效果更好。因为当当看 简单的基于FFMPEG+SDL的视频播放器 ver2 （采用SDL2.0） 还不足以搞透整个流程。通过研习这三篇文章，整个流程和方法功能应该就吃透了。 学习任何东西什么时候该从局部把控全局，那就是有了自己的切入点之后，在这个点上摸爬滚打搞得比较熟练之后，就需要把控全局，对FFmpeg框架的整体要有把控。对于FFmpeg框架讲解的比较好的入门读物是 FFMpeg框架代码阅读。]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>音视频处理</tag>
       </tags>
@@ -768,6 +870,9 @@
     <title><![CDATA[谈一谈做iOS播放器库开发所涉及的知识点]]></title>
     <url>%2F2015%2F04%2F22%2Ftalk-about-knowledge-points-of-developing-iOS-player%2F</url>
     <content type="text"><![CDATA[在自己研究生毕业的时候，想着能找上一份做视频编解码的工作，可惜没有如愿，最后到了一家iOS游戏渠道公司去做游戏支付业务的SDK开发，我的iOS正式开发生涯就这么开始了。 在那家iOS游戏渠道没做上一年，就离职了，至于怎么离职的，后续文章会谈一谈，以此来梳理下自己的职业规划。说了这多了，进入正题吧，今年3月份找上了一家做音视频服务的公司，做iOS播放器的开发，职位是播放器开发工程师，就是我现在所在的公司咯。 要开发一套属于自己的播放器库，不利用移动设备上自带的播放器来播放音频、视频，要用到哪些知识点呢，下面以我熟悉公司播放器库的前提下，说一说我的看法。 任何客户端只要跟服务器打交道，少不了通讯协议。音视频这块涉及的实时流相关协议很多，有RTSP、RTMP、MMS、HLS、RTP、RTCP、SDP、TCP、UDP、HTTP等。 客户端从服务器上获取到的音视频数据，要知道容器与编码方式的区别，封装音视频数据的容器类型主要有AVI(.avi), MPG(.mpg/.mpeg/.dat), VOB(.vob), MP4, 3GP, ASF(.wmv/.asf), RM(.rm/.rmvb), MOV(.mov), MKV, WAV, TS。 客户端从服务器上获取到了音视频数据，该如何进行解码显示，首先要知道音频、视频的的编码方式，客户端要显示音视频数据需要根据编码的方式进行相应的解码操作，目前常见的编码类型有MPEG系列、H.26X系列、微软windows media系列、Real Media系列、QuickTime系列。 上面说到了一些流媒体协议、流媒体数据的封装类型以及编码方式。而我们要做一款播放器首先是要对以上知识要了解的。 公司的业务涉及最多的是rtsp这块。服务器端为rtsp流媒体服务器，客户端也就是播放器库采用FFMpeg进行解码、OPenGL ES进行YUV视频数据渲染。 播放器库与服务器端进行交互，涉及到RTSP协议的请求，传输层协议采用的TCP、UDP协议，所以要对TCP连接的三次握手要熟悉，这其中也就涉及到网络编程中的SOCKET编程知识了，BSD socket编程是需要掌握的。 播放器库对从服务器上请求到的音频、视频rtp包，要进行解包，就是去掉一些协议的头获取到音视频数据段。获取到这些数据后，不能直接播放，需要进行解码操作。视频解码出来一般为Planar 4:2:0 YUV格式。要显示YUV视频图像就需要利用OPenGL ES进行渲染了。 播放器在工作时，视频数据要进行解码放入数据缓存区，数据缓存区的解码后的数据被取出交给OpenGL进行渲染，所以多线程是必不可少的环节了。开辟2个线程，一个线程进行解码处理，另一个线程进行视频数据的渲染。多线程中常使用的是POSIX thread多线程编程。 虽然开发的iOS播放器库，但是底层的东西大部分是c语言的东西，比如用到开源库FFMpeg，以及一些上层的对FFMpeg的封装，数据缓存区，所以c语言和数据结构的基础要扎实，什么函数指针，内存分配与管理，数据结构中的单链表那得玩得比较溜。 总结一下，需要具备的知识有 rtsp、sdp、tcp、udp、ip协议（rtsp的DESCRIBE、OPTION、SETUP、PLAY、PAUSE、TEARDOWN；tcp连接的三次握手／断开的四次握手） socket（bsd socket） 多线程（posix thread） opengl es FFmpeg（知道用它来解码） YUV420（知道它的原理与格式） 音视频同步（时间戳的处理） C语言指针（void *、函数指针、回调函数） 内存管理（堆区、栈区、静态区、内存对齐） 数据结构（单链表）]]></content>
+      <categories>
+        <category>直播</category>
+      </categories>
       <tags>
         <tag>音视频处理</tag>
       </tags>
