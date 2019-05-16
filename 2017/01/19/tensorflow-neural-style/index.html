@@ -97,7 +97,7 @@
 
 
   <meta name="description" content="配一台个人使用的深度学习机器大概会花费2万人民币，比如其中的核心部件英伟达 Titan X GPU 售价大概9000人民币左右，这个价格对于一般人还是略贵的。想深层次进入深度学习应用领域，花点钱是必须的。正所谓有投入才有产出。本人现在还没有入手深度学习机器的预算，所以使用 Mac Pro 利用 CPU 计算来玩玩简单点的深度学习项目。 我的 Mac Pro 配置为： 1234567OS X EI">
-<meta name="keywords" content="深度学习">
+<meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 tensorflow 学习梵高画作">
 <meta property="og:url" content="https://depthlove.github.io/2017/01/19/tensorflow-neural-style/index.html">
@@ -125,7 +125,7 @@
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/719115/201701/719115-20170120005049062-618427893.jpg">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/719115/201701/719115-20170120005104421-824057092.jpg">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/719115/201701/719115-20170120013703062-275928298.gif">
-<meta property="og:updated_time" content="2019-03-29T07:04:25.769Z">
+<meta property="og:updated_time" content="2019-05-16T05:36:28.055Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用 tensorflow 学习梵高画作">
 <meta name="twitter:description" content="配一台个人使用的深度学习机器大概会花费2万人民币，比如其中的核心部件英伟达 Titan X GPU 售价大概9000人民币左右，这个价格对于一般人还是略贵的。想深层次进入深度学习应用领域，花点钱是必须的。正所谓有投入才有产出。本人现在还没有入手深度学习机器的预算，所以使用 Mac Pro 利用 CPU 计算来玩玩简单点的深度学习项目。 我的 Mac Pro 配置为： 1234567OS X EI">
@@ -275,6 +275,23 @@
     
 
     <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
 
   </li>
         
@@ -463,6 +480,24 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -521,7 +556,7 @@
 #
 </code></pre><p>在 Mac 终端执行命令 <code>source activate tensorflow</code> 可以激活名为 tensorflow 的 conda 计算环境，执行命令 <code>source deactivate tensorflow</code> 能关闭 conda 计算环境。</p>
 <h3 id="3-运行名为-tensorflow-的-conda-计算环境"><a href="#3-运行名为-tensorflow-的-conda-计算环境" class="headerlink" title="3. 运行名为 tensorflow 的 conda 计算环境"></a>3. 运行名为 tensorflow 的 conda 计算环境</h3><p>在 Mac 终端执行命令激活 conda 计算环境</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source <span class="built_in">activate</span> tensorflow</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> activate tensorflow</span><br></pre></td></tr></table></figure>
 <p><img src="http://images2015.cnblogs.com/blog/719115/201701/719115-20170119215425593-252567153.png" alt="激活 conda 计算环境"></p>
 <p>命令执行完之后，终端最左边会出现 (tensorflow) ，说明名为 tensorflow 的 conda 计算环境被激活了。</p>
 <h3 id="4-使用-pip-安装-tensorflow-深度学习框架"><a href="#4-使用-pip-安装-tensorflow-深度学习框架" class="headerlink" title="4. 使用 pip 安装 tensorflow 深度学习框架"></a>4. 使用 pip 安装 tensorflow 深度学习框架</h3><p>仍然是在 Mac 终端执行命令：</p>
@@ -609,7 +644,7 @@ print sess.run(a+b)
       
         <div class="post-tags">
           
-            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
           
         </div>
       
@@ -728,6 +763,31 @@ print sess.run(a+b)
               
 
               
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
 
               
                 
@@ -770,7 +830,7 @@ print sess.run(a+b)
                     
                       
                     
-                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
