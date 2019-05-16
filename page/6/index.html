@@ -404,7 +404,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://depthlove.github.io/2016/09/25/a-week-in-Shanghai-City/">
+    <link itemprop="mainEntityOfPage" href="https://depthlove.github.io/2016/03/17/hw-encode-and-transfer-in-ios-platform-camera-part1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Minmin.Sun">
@@ -424,7 +424,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2016/09/25/a-week-in-Shanghai-City/" class="post-title-link" itemprop="url">在上海总部工作一周的感受</a>
+                <a href="/2016/03/17/hw-encode-and-transfer-in-ios-platform-camera-part1/" class="post-title-link" itemprop="url">在iOS上硬编码推流－摄像头数据采集（一）</a>
               
             
           </h1>
@@ -449,7 +449,7 @@
                 
               
 
-              <time title="创建时间：2016-09-25 12:50:38" itemprop="dateCreated datePublished" datetime="2016-09-25T12:50:38+08:00">2016-09-25</time>
+              <time title="创建时间：2016-03-17 15:55:53" itemprop="dateCreated datePublished" datetime="2016-03-17T15:55:53+08:00">2016-03-17</time>
             
 
             
@@ -464,7 +464,7 @@
 
           
           
-            <span id="/2016/09/25/a-week-in-Shanghai-City/" class="leancloud_visitors" data-flag-title="在上海总部工作一周的感受">
+            <span id="/2016/03/17/hw-encode-and-transfer-in-ios-platform-camera-part1/" class="leancloud_visitors" data-flag-title="在iOS上硬编码推流－摄像头数据采集（一）">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -496,13 +496,14 @@
 
       
         
-          <p>　　2016年9月19日～2016年9月24日，在上海总部工作了一周，收获颇多。对于我而言，很感谢团队和公司的付出。</p>
-<p>　　人到一定阶段，处在一个和谐进取的团队中，人的感官和认识不再是那种不入流的小民市井看法。</p>
-<p>　　以前，看到某些颁奖典礼上一些人说的大客套话，感谢公司，感谢团队，让人听起来真的好假。为什么觉得好假，在于没有经历过别人的处境。在上海的一周，我确实体会到了一个人在舞台的光鲜，其背后有很多默默付出和支持的小伙伴们，说一些感谢的话，看起来是大话，用心去体验，那是发自内心最真实的声音。现在的社会，是群体，单打独斗不是主流，合群求同化异是趋势。对于知识交流，人际交流，只有放开，才能拥抱更大更广的空间。保持谦逊，保持温和，保持敬畏，保持进取，视野就会大一点，进步就会快一点。</p>
+          <p>该文的内容在我之前的文章中已经实现过，但是为了结构清晰起见，本文将相机控制和采集视频数据功能封装为单独的库。</p>
+<p>iOS上使用AVFoundation.framework框架来调用系统相机并获取视频数据。视频数据可以根据设定的参数，可采集到RGB或YUV数据，一般使用的是GBRA32，420v，420f，下面演示相机的调用和视频数据的获取。</p>
+<p>a)引入框架的头文件<code>#import &lt;AVFoundation/AVFoundation.h&gt;</code></p>
+<p>b)调用的类遵守协议<code>AVCaptureVideoDataOutputSampleBufferDelegate</code></p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2016/09/25/a-week-in-Shanghai-City/#more" rel="contents">
+              <a class="btn" href="/2016/03/17/hw-encode-and-transfer-in-ios-platform-camera-part1/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -562,7 +563,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://depthlove.github.io/2016/09/06/the-feeling-of-Beijing-the-latest-month/">
+    <link itemprop="mainEntityOfPage" href="https://depthlove.github.io/2016/03/16/share-my-project-experience-in-audio-and-video-development/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Minmin.Sun">
@@ -582,7 +583,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2016/09/06/the-feeling-of-Beijing-the-latest-month/" class="post-title-link" itemprop="url">近一个月在北京的感受</a>
+                <a href="/2016/03/16/share-my-project-experience-in-audio-and-video-development/" class="post-title-link" itemprop="url">个人在音视频开发方面的经历分享启动啦</a>
               
             
           </h1>
@@ -607,7 +608,7 @@
                 
               
 
-              <time title="创建时间：2016-09-06 19:47:52" itemprop="dateCreated datePublished" datetime="2016-09-06T19:47:52+08:00">2016-09-06</time>
+              <time title="创建时间：2016-03-16 10:30:55" itemprop="dateCreated datePublished" datetime="2016-03-16T10:30:55+08:00">2016-03-16</time>
             
 
             
@@ -622,7 +623,7 @@
 
           
           
-            <span id="/2016/09/06/the-feeling-of-Beijing-the-latest-month/" class="leancloud_visitors" data-flag-title="近一个月在北京的感受">
+            <span id="/2016/03/16/share-my-project-experience-in-audio-and-video-development/" class="leancloud_visitors" data-flag-title="个人在音视频开发方面的经历分享启动啦">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -654,12 +655,12 @@
 
       
         
-          <p>　　来北京了近一个月了，感觉不太适应。从生活方面，工作节奏上，都显出很多问题。</p>
-<p>　　生活方面，不适应这边的饮食，没南方吃的东西多，也没南方吃饭的地方多。在北京没有吃好过一顿早餐，也只吃过几顿比较满意的中午餐。我觉得要是这样下去，身体营养肯定跟不上，精力也会出现不足的问题。我准备每天自己做饭，早餐自己做，如果去公司上班，就带午饭过去。要是在家办公，就一天三顿都自己做。做饭，有助于培养耐心，细心，有助于做事流程上的统筹规划，最重要的是能吃上比较满意的饭菜。来北京近一个月了，对于我住的地方我都不熟悉，不知道附近有哪些大型超市，大型商场。每天都宅在家里办公，感觉整个人的状态都不打对劲。现在正当年，身体恢复都很快，但是人要活动，要呼吸新的空气，才能持久保持正常以及健康的状态。</p>
+          <p>本人小硕一枚，科班出身，毕业后在公司做过iOS应用开发工程师，搞过iOS项目移植到flash、unity3d平台的开发，在流媒体行业内实力不错的公司做过播放器开发工程师，现在在一家互联网公司做音视频编解码工程师。</p>
+<p>以前，就想着把自己实战经历过的项目经验总结并分享下，个人觉得在分享的过程中，会加深对知识点和技术的认识，同时也能帮助下一些人。值得开心的是，去年4月份左右，具体时间记不得请了，北京的一家做游戏应用内支付的公司的iOS工程师看到我的博客园博客后，联系我寻求iOS项目移植到flash平台的帮助。经过半个月时间与我沟通，项目移植成功上线了。在小型互联网公司，工程师可谓是孤军奋战。分享自己所学和经历是一件很兴奋，很开心的事。</p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2016/09/06/the-feeling-of-Beijing-the-latest-month/#more" rel="contents">
+              <a class="btn" href="/2016/03/16/share-my-project-experience-in-audio-and-video-development/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -719,7 +720,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://depthlove.github.io/2016/09/03/think-of-telecommuting-and-time-co-ordination/">
+    <link itemprop="mainEntityOfPage" href="https://depthlove.github.io/2016/03/15/CMTime-CMTimeMake-CMTimeMakeWithSeconds-in-iOS-encode/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Minmin.Sun">
@@ -739,7 +740,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2016/09/03/think-of-telecommuting-and-time-co-ordination/" class="post-title-link" itemprop="url">对远程办公和时间统筹的思考</a>
+                <a href="/2016/03/15/CMTime-CMTimeMake-CMTimeMakeWithSeconds-in-iOS-encode/" class="post-title-link" itemprop="url">iOS平台上编码之CMTime，CMTimeMake，CMTimeMakeWithSeconds的作用</a>
               
             
           </h1>
@@ -764,7 +765,7 @@
                 
               
 
-              <time title="创建时间：2016-09-03 10:16:16" itemprop="dateCreated datePublished" datetime="2016-09-03T10:16:16+08:00">2016-09-03</time>
+              <time title="创建时间：2016-03-15 16:39:35" itemprop="dateCreated datePublished" datetime="2016-03-15T16:39:35+08:00">2016-03-15</time>
             
 
             
@@ -779,7 +780,7 @@
 
           
           
-            <span id="/2016/09/03/think-of-telecommuting-and-time-co-ordination/" class="leancloud_visitors" data-flag-title="对远程办公和时间统筹的思考">
+            <span id="/2016/03/15/CMTime-CMTimeMake-CMTimeMakeWithSeconds-in-iOS-encode/" class="leancloud_visitors" data-flag-title="iOS平台上编码之CMTime，CMTimeMake，CMTimeMakeWithSeconds的作用">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -811,161 +812,12 @@
 
       
         
-          
-            
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://depthlove.github.io/2016/08/31/spiritual-handholds-on-life/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Minmin.Sun">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Minmin.Sun Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/08/31/spiritual-handholds-on-life/" class="post-title-link" itemprop="url">生命的精神支柱</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-08-31 08:19:16" itemprop="dateCreated datePublished" datetime="2016-08-31T08:19:16+08:00">2016-08-31</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-            <span id="/2016/08/31/spiritual-handholds-on-life/" class="leancloud_visitors" data-flag-title="生命的精神支柱">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>　　    人太拼，总有累的时候，当疲惫驱入身心，人很容易垮掉。古语有云“休养生息”，疲惫的身躯需要休整，劳累的精神需要调节。在现在这个快节奏的社会，停下来去看看身边的风景是多么的奢侈。一味地向前，时间匆匆而过，记忆中却了无良辰美景。</p>
-<p>　　    累了，想放下，仔细一想身上肩负的担子，家人的期望，只能继续行走在疲惫的人生路上。逼近而立之年，心态不复以前，岁月不知不觉让人明白每个年龄段该有的心智，该有的责任感，该有的生活观，该有的工作价值。</p>
+          <p>在iOS平台上使用iOS8及以上系统的VideoToolbox进行硬编码，会涉及到CMTime，CMTimeMake，CMTimeMakeWithSeconds的使用。下面说下这几个结构体的作用。</p>
+<p>CoreMedia.framework的CMTime.h中CMTime，CMTimeMake，CMTimeMakeWithSeconds的定义如下：</p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2016/08/31/spiritual-handholds-on-life/#more" rel="contents">
+              <a class="btn" href="/2016/03/15/CMTime-CMTimeMake-CMTimeMakeWithSeconds-in-iOS-encode/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1025,7 +877,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://depthlove.github.io/2016/08/25/see-in-Beijing/">
+    <link itemprop="mainEntityOfPage" href="https://depthlove.github.io/2016/03/14/use-webrtc-codec-in-ios-platform/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Minmin.Sun">
@@ -1045,7 +897,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2016/08/25/see-in-Beijing/" class="post-title-link" itemprop="url">北京见闻</a>
+                <a href="/2016/03/14/use-webrtc-codec-in-ios-platform/" class="post-title-link" itemprop="url">在iOS平台上编译WebRTC</a>
               
             
           </h1>
@@ -1070,7 +922,7 @@
                 
               
 
-              <time title="创建时间：2016-08-25 12:54:18" itemprop="dateCreated datePublished" datetime="2016-08-25T12:54:18+08:00">2016-08-25</time>
+              <time title="创建时间：2016-03-14 10:46:48" itemprop="dateCreated datePublished" datetime="2016-03-14T10:46:48+08:00">2016-03-14</time>
             
 
             
@@ -1085,7 +937,7 @@
 
           
           
-            <span id="/2016/08/25/see-in-Beijing/" class="leancloud_visitors" data-flag-title="北京见闻">
+            <span id="/2016/03/14/use-webrtc-codec-in-ios-platform/" class="leancloud_visitors" data-flag-title="在iOS平台上编译WebRTC">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -1117,11 +969,178 @@
 
       
         
-          <p>　　    在上海待了一周，就从上海乘动车来北京了。我想起了汪峰的一首歌《北京北京》</p>
+          
+            <a id="more"></a>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://depthlove.github.io/2016/03/10/buy-house-in-2016-03/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minmin.Sun">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Minmin.Sun Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/03/10/buy-house-in-2016-03/" class="post-title-link" itemprop="url">2016年3月买房纪实</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-03-10 10:17:30" itemprop="dateCreated datePublished" datetime="2016-03-10T10:17:30+08:00">2016-03-10</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+            <span id="/2016/03/10/buy-house-in-2016-03/" class="leancloud_visitors" data-flag-title="2016年3月买房纪实">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>去年11月就计划着今年要买房，根据市场行情，我看涨房价走势。但是没有快速入手，原因有很多。主要原因有考虑将来自己要待在哪里生活和发展。今年春节后，一线城市，强二线城市的房价蹭蹭蹭往上窜，此时不入手，更待何时。中国的房地产行情是独具中国特色的，按照市场经济规律来评判在中国行不通，身在中国看懂国家大政策就足够用来分析行情，市场经济规律与我等百姓干系不大。这也是中国房地产的奇特之处。很多经济学者和评论员看衰中国房地产，不如任志强的一句“有钱就买”来的深刻、清晰、明了。任志强，咱们的任大炮同志开炮中国房地产、政府，政府封了他的新浪微博，并发文批判他丧失党性人性，政治上的事千丝万缕，咱百姓插不上嘴，但是房地产这码事，明眼人都能看出点道道。这里不讨论任大炮同志，也不想讨论大部分网民。网民怎么怎么样，大炮同志所作所说怎样怎样，互联网这个大平台充当了事件辐射的工具，跟政府作对能有好果子吃么，跟大部分网民对着干实属浪费精力。事实上，2016年春节到现在，房地产市场普涨，这里不考虑三四线城市的行情，除非实在活不下去了，才有人回三四线城市的。</p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2016/08/25/see-in-Beijing/#more" rel="contents">
+              <a class="btn" href="/2016/03/10/buy-house-in-2016-03/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1181,7 +1200,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://depthlove.github.io/2016/08/24/see-in-Shanghai/">
+    <link itemprop="mainEntityOfPage" href="https://depthlove.github.io/2015/12/31/review-2015-outlook-2016/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Minmin.Sun">
@@ -1201,7 +1220,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2016/08/24/see-in-Shanghai/" class="post-title-link" itemprop="url">上海见闻</a>
+                <a href="/2015/12/31/review-2015-outlook-2016/" class="post-title-link" itemprop="url">回顾2015，展望2016</a>
               
             
           </h1>
@@ -1226,7 +1245,7 @@
                 
               
 
-              <time title="创建时间：2016-08-24 11:08:35" itemprop="dateCreated datePublished" datetime="2016-08-24T11:08:35+08:00">2016-08-24</time>
+              <time title="创建时间：2015-12-31 18:54:50" itemprop="dateCreated datePublished" datetime="2015-12-31T18:54:50+08:00">2015-12-31</time>
             
 
             
@@ -1241,7 +1260,7 @@
 
           
           
-            <span id="/2016/08/24/see-in-Shanghai/" class="leancloud_visitors" data-flag-title="上海见闻">
+            <span id="/2015/12/31/review-2015-outlook-2016/" class="leancloud_visitors" data-flag-title="回顾2015，展望2016">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -1273,14 +1292,646 @@
 
       
         
-          <p>　　    从深圳乘动车去上海的旅程中，我是兴奋的，可以增加新的阅历，丰富自己思考人生的素材。带着一颗充满期待的心，经历一夜的行程到了上海。</p>
-<p>　　 第一次到上海，上海并不是电视宣传和网络上宣称的那样华丽，我的第一感受是一个有着沧桑和陈旧感的都市。或许这就是她的魅力，释放着她的历史与过去。</p>
-<p>　　 我的落脚点是张江高科（张江软件园），到的那天是周六，在出租车上看张江软件园，看不到人影，这和深圳高新园一样，这里只是上班的地点而已，周一到周五上完班，周末软件园显得那么的安静，静的有一丝可怕和空寂。在张江全季酒店办了一周的入住手续，一路过来有点累，到上海的当天休息了半天。第一次来上海，可不能浪费了时间，总得出去转转呀，见识下所谓的大上海。</p>
-<p>　　 当一种东西，可以说是憧憬到来时，其实并没有想象中的完美和无暇，更多的是得到一种残缺，十全十美只是一种美好的期待，只是一种对人生充满美好信念的驱动力。正因为我们得到的是不完美的，有瑕疵的，我们才继续有动力去追寻我们心中那趋于完美，趋于内心期望值的远方。</p>
+          <p>今天是2015年12月31号，2015年最后的一天，这一年过的真快，自己在这一年中做了什么，在2016年需要做什么，我需要花点时间来总结和规划下。2015年的最后一天，没有了以往的那种希望时间快速过去的欲望，而是一种淡淡的对时间流逝的可惜和害怕，害怕变老，害怕时间过得太快，要做的事情没有按时完成。</p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2016/08/24/see-in-Shanghai/#more" rel="contents">
+              <a class="btn" href="/2015/12/31/review-2015-outlook-2016/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://depthlove.github.io/2015/11/16/push-video-or-audio-to-server-in-rtmp-live-play/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minmin.Sun">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Minmin.Sun Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2015/11/16/push-video-or-audio-to-server-in-rtmp-live-play/" class="post-title-link" itemprop="url">rtmp直播推流（二）－－将音频／视频推送到流媒体服务器</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-11-16 18:27:30" itemprop="dateCreated datePublished" datetime="2015-11-16T18:27:30+08:00">2015-11-16</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+            <span id="/2015/11/16/push-video-or-audio-to-server-in-rtmp-live-play/" class="leancloud_visitors" data-flag-title="rtmp直播推流（二）－－将音频／视频推送到流媒体服务器">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>参考我之前写的一篇文章<a href="https://depthlove.github.io/2015/09/18/use-ffmpeg-and-x264-encode-iOS-camera-video-to-h264/">利用FFmpeg+x264将iOS摄像头实时视频流编码为h264文件</a></p>
+<p>参看文章<a href="http://blog.csdn.net/nonmarking/article/details/48022387" target="_blank" rel="noopener">ffmpeg综合应用示例（一）——摄像头直播 </a>，       <a href="http://blog.csdn.net/nonmarking/article/details/50522413" target="_blank" rel="noopener">ffmpeg综合应用示例（四）——摄像头直播的视音频同步</a></p>
+<p>参看文章<a href="http://blog.csdn.net/leixiaohua1020/article/details/47072519" target="_blank" rel="noopener">最简单的基于FFmpeg的移动端例子：IOS 推流器</a>，      <a href="http://blog.csdn.net/leixiaohua1020/article/details/39803457" target="_blank" rel="noopener"> 最简单的基于FFmpeg的推流器（以推送RTMP为例）</a></p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2015/11/16/push-video-or-audio-to-server-in-rtmp-live-play/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://depthlove.github.io/2015/11/13/flv-analysis-in-rtmp-live-play/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minmin.Sun">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Minmin.Sun Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2015/11/13/flv-analysis-in-rtmp-live-play/" class="post-title-link" itemprop="url">rtmp直播推流（一）－－flv格式解析与封装</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-11-13 17:35:27" itemprop="dateCreated datePublished" datetime="2015-11-13T17:35:27+08:00">2015-11-13</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+            <span id="/2015/11/13/flv-analysis-in-rtmp-live-play/" class="leancloud_visitors" data-flag-title="rtmp直播推流（一）－－flv格式解析与封装">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>flv文件格式分析，可参看<a href="http://www.cnblogs.com/chef/archive/2012/07/18/2597279.html" target="_blank" rel="noopener">RTMP中FLV流到标准h264、aac的转换</a>，该文章写的很清晰。</p>
+<p>flv封装格式解析，可参看<a href="http://blog.csdn.net/leixiaohua1020/article/details/50535082" target="_blank" rel="noopener">视音频数据处理入门：FLV封装格式解析</a>，文章图文并貌，很直观。</p>
+<p>flv文件封装，可参看<a href="http://blog.csdn.net/yeyumin89/article/details/7932368" target="_blank" rel="noopener">将h.264视频流封装成flv格式文件（一.flv格式）</a><br>，    <a href="http://blog.csdn.net/yeyumin89/article/details/7932431" target="_blank" rel="noopener">将h.264视频流封装成flv格式文件（二.开始动手）</a></p>
+<p>使用rtmp协议发送flv文件，可参看<a href="http://blog.csdn.net/yeyumin89/article/details/8011362" target="_blank" rel="noopener">rtmp协议简单解析以及用其发送h264的flv文件</a></p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2015/11/13/flv-analysis-in-rtmp-live-play/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://depthlove.github.io/2015/10/29/iOS-development-need-abilities/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minmin.Sun">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Minmin.Sun Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2015/10/29/iOS-development-need-abilities/" class="post-title-link" itemprop="url">iOS开发需要掌握的知识点</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-10-29 15:35:49" itemprop="dateCreated datePublished" datetime="2015-10-29T15:35:49+08:00">2015-10-29</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+            <span id="/2015/10/29/iOS-development-need-abilities/" class="leancloud_visitors" data-flag-title="iOS开发需要掌握的知识点">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>任何一个方向，都需要基本功扎实。软件开发领域，数据结构与算法，操作系统，网络协议（tcp/ip协议族）是立足的基础。</p>
+<p>下面列举iOS开发需要掌握的知识点：</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2015/10/29/iOS-development-need-abilities/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://depthlove.github.io/2015/10/29/frequently-used-audio-and-video-codec-script/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minmin.Sun">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Minmin.Sun Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2015/10/29/frequently-used-audio-and-video-codec-script/" class="post-title-link" itemprop="url">音视频编解码中常用的编译脚本</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-10-29 10:21:47" itemprop="dateCreated datePublished" datetime="2015-10-29T10:21:47+08:00">2015-10-29</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+            <span id="/2015/10/29/frequently-used-audio-and-video-codec-script/" class="leancloud_visitors" data-flag-title="音视频编解码中常用的编译脚本">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="FFmpeg"><a href="#FFmpeg" class="headerlink" title="FFmpeg"></a>FFmpeg</h3><p>iOS：<a href="https://github.com/kewlbear/FFmpeg-iOS-build-script" target="_blank" rel="noopener">https://github.com/kewlbear/FFmpeg-iOS-build-script</a></p>
+<h3 id="x264"><a href="#x264" class="headerlink" title="x264"></a>x264</h3><p>iOS：<a href="https://github.com/kewlbear/x264-ios" target="_blank" rel="noopener">https://github.com/kewlbear/x264-ios</a></p>
+<h3 id="fdk-aac"><a href="#fdk-aac" class="headerlink" title="fdk-aac"></a>fdk-aac</h3><p>iOS：<a href="https://github.com/verybigdog/fdk-aac-ios" target="_blank" rel="noopener">https://github.com/verybigdog/fdk-aac-ios</a></p>
+<p>或 <a href="https://github.com/kewlbear/fdk-aac-build-script-for-iOS" target="_blank" rel="noopener">https://github.com/kewlbear/fdk-aac-build-script-for-iOS</a>，不支持iOS arm64，但是可以借鉴</p>
+<h3 id="librtmp"><a href="#librtmp" class="headerlink" title="librtmp"></a>librtmp</h3><p>iOS：<a href="https://github.com/saiten/ios-librtmp" target="_blank" rel="noopener">https://github.com/saiten/ios-librtmp</a></p>
+<h3 id="OpenSSL"><a href="#OpenSSL" class="headerlink" title="OpenSSL"></a>OpenSSL</h3><p>iOS：<a href="https://github.com/x2on/OpenSSL-for-iPhone" target="_blank" rel="noopener">https://github.com/x2on/OpenSSL-for-iPhone</a></p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2015/10/29/frequently-used-audio-and-video-codec-script/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1329,7 +1980,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1398,9 +2049,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1416,8 +2065,6 @@
                     
                   
                     
-                    
-                      
                     
                       
                     
