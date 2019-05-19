@@ -129,6 +129,27 @@
   &lt;/article&gt;
 
 {% endmacro %}
+</code></pre><pre><code>      &lt;!--/noindex--&gt;
+    {% else %}
+      {% if post.type === &apos;picture&apos; %}
+        &lt;a href=&quot;{{ url_for(post.path) }}&quot;&gt;{{ post.content }}&lt;/a&gt;
+      {% else %}
+        {{ post.content }}
+      {% endif %}
+    {% endif %}
+  {% else %}
+    {% include &apos;../_custom/google_adsense.swig&apos; %}
+    {{ post.content }}
+  {% endif %}
+&lt;/div&gt;
+
+{% if theme.related_posts.enable and (theme.related_posts.display_in_home or not is_index) %}
+  {% include &apos;../_partials/post/post-related.swig&apos; with { post: post } %}
+{% endif %}
+
+{#####################}
+{### END POST BODY ###}
+{#####################}
 </code></pre><h2 id="评论区广告"><a href="#评论区广告" class="headerlink" title="评论区广告"></a>评论区广告</h2><p>往 ~/depthloveBlog/themes/next/layout/_partials/comments.swig 文件，引入方式为 {% include ‘../_custom/google_adsense.swig’ %}</p>
 <pre><code>  {% elif theme.gitment.enable %}
     &lt;div class=&quot;comments&quot; id=&quot;comments&quot;&gt;
