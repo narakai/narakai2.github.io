@@ -129,4 +129,66 @@
   &lt;/article&gt;
 
 {% endmacro %}
+</code></pre><h2 id="评论区广告"><a href="#评论区广告" class="headerlink" title="评论区广告"></a>评论区广告</h2><p>往 ~/depthloveBlog/themes/next/layout/_partials/comments.swig 文件，引入方式为 {% include ‘../_custom/google_adsense.swig’ %}</p>
+<pre><code>{% if page.comments %}
+
+  {% include &apos;../_custom/google_adsense.swig&apos; %}
+
+  {% if theme.facebook_sdk.enable and theme.facebook_comments_plugin.enable %}
+    &lt;div class=&quot;comments&quot; id=&quot;comments&quot;&gt;
+      &lt;div class=&quot;fb-comments&quot;
+           data-href=&quot;{{ page.permalink }}&quot;
+           data-numposts=&quot;{{ theme.facebook_comments_plugin.num_of_posts }}&quot;
+           data-width=&quot;{{ theme.facebook_comments_plugin.width }}&quot;
+           data-colorscheme=&quot;{{ theme.facebook_comments_plugin.scheme }}&quot;&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+  {% elif theme.vkontakte_api.enable and theme.vkontakte_api.comments %}
+    &lt;div class=&quot;comments&quot; id=&quot;comments&quot;&gt;
+      &lt;div id=&quot;vk_comments&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+  {% elif theme.disqus.enable or (theme.disqusjs.enable and theme.disqusjs.apikey and theme.disqusjs.shortname) %}
+    &lt;div class=&quot;comments&quot; id=&quot;comments&quot;&gt;
+      &lt;div id=&quot;disqus_thread&quot;&gt;
+        &lt;noscript&gt;{#
+        #}Please enable JavaScript to view the comments powered by Disqus.{#
+      #}&lt;/noscript&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+  {% elif theme.livere_uid %}
+    &lt;div class=&quot;comments&quot; id=&quot;comments&quot;&gt;
+      &lt;div id=&quot;lv-container&quot; data-id=&quot;city&quot; data-uid=&quot;{{ theme.livere_uid }}&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+  {% elif theme.changyan.enable and theme.changyan.appid and theme.changyan.appkey %}
+    &lt;div class=&quot;comments&quot; id=&quot;comments&quot;&gt;
+      &lt;div id=&quot;SOHUCS&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+  {% elif theme.gitment.enable %}
+    &lt;div class=&quot;comments&quot; id=&quot;comments&quot;&gt;
+      {% if theme.gitment.lazy %}
+        &lt;div onclick=&quot;showGitment()&quot; id=&quot;gitment-display-button&quot;&gt;{{ __(&apos;gitmentbutton&apos;) }}&lt;/div&gt;
+        &lt;div id=&quot;gitment-container&quot; style=&quot;display: none&quot;&gt;&lt;/div&gt;
+      {% else %}
+        &lt;div id=&quot;gitment-container&quot;&gt;&lt;/div&gt;
+      {% endif %}
+    &lt;/div&gt;
+
+  {% elif theme.valine.enable and theme.valine.appid and theme.valine.appkey %}
+    &lt;div class=&quot;comments&quot; id=&quot;comments&quot;&gt;
+    &lt;/div&gt;
+
+  {% elif theme.gitalk.enable %}
+    &lt;div class=&quot;comments&quot; id=&quot;gitalk-container&quot;&gt;
+    &lt;/div&gt;
+
+  {% endif %}
+
+  {% include &apos;../_custom/google_adsense.swig&apos; %}
+
+{% endif %}
 </code></pre>
