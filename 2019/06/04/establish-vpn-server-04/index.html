@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="Minmin.Sun Blog">
 <meta property="og:description" content="《搬瓦工搭建 ShadowSocks 翻墙（VPN）系列》 (1) 搬瓦工搭建 ShadowSocks 翻墙（VPN）(2) 搬瓦工搭建 ShadowSocks 翻墙（VPN）- 解决 IP 被墙(3) 搬瓦工搭建 ShadowSocks 翻墙（VPN）- 解决 port 被封(4) 搬瓦工搭建 ShadowSocks 翻墙（VPN）- 更换密码 我没写一篇文章时，都要交待下写作的原因。交待下原因">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-04T02:07:51.842Z">
+<meta property="og:updated_time" content="2019-06-04T02:12:42.553Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搬瓦工搭建 ShadowSocks 翻墙（VPN）- 更换密码">
 <meta name="twitter:description" content="《搬瓦工搭建 ShadowSocks 翻墙（VPN）系列》 (1) 搬瓦工搭建 ShadowSocks 翻墙（VPN）(2) 搬瓦工搭建 ShadowSocks 翻墙（VPN）- 解决 IP 被墙(3) 搬瓦工搭建 ShadowSocks 翻墙（VPN）- 解决 port 被封(4) 搬瓦工搭建 ShadowSocks 翻墙（VPN）- 更换密码 我没写一篇文章时，都要交待下写作的原因。交待下原因">
@@ -531,7 +531,7 @@
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">vi</span> /etc/shadowsocks-<span class="keyword">python</span>/config.json</span><br></pre></td></tr></table></figure>
 <p>可以看到</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="attr">"server"</span>:<span class="string">"0.0.0.0"</span>,</span><br><span class="line"><span class="attr">"server_port"</span>:<span class="number">11260</span>,</span><br><span class="line"><span class="attr">"local_address"</span>:<span class="string">"127.0.0.1"</span>,</span><br><span class="line"><span class="attr">"local_port"</span>:<span class="number">1080</span>,</span><br><span class="line"><span class="attr">"password"</span>:<span class="string">"123456"</span>,</span><br><span class="line"><span class="attr">"timeout"</span>:<span class="number">300</span>,</span><br><span class="line"><span class="attr">"method"</span>:<span class="string">"aes-256-cfb"</span>,</span><br><span class="line"><span class="attr">"fast_open"</span>:<span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在看到 <code>password</code> 后，我们可以试试修改 <code>password</code> 的值。编辑 <code>/etc/shadowsocks-python/config.json</code>，修改 <code>password</code> 的值为 12345678，保存退出。</p>
+<p>在看到 <code>password</code> 后，说明我们可以试试修改 <code>password</code> 的值。编辑 <code>/etc/shadowsocks-python/config.json</code>，修改 <code>password</code> 的值为 12345678，保存退出。</p>
 <h2 id="第二步：重启-VPS-主机"><a href="#第二步：重启-VPS-主机" class="headerlink" title="第二步：重启 VPS 主机"></a>第二步：重启 VPS 主机</h2><p>上一步中，修改了 VPN 服务的配置文件中密码信息。但要想让新密码生效，就需要执行最关键的一步：<strong>重启 VPS 主机</strong>。重启之后，重新配置 ShadowSocks VPN 客户端软件中的信息，使用新的密码，就可以翻墙访问 Google 等服务了。</p>
 
       
