@@ -513,7 +513,8 @@
 
       
         
-          <p>《搬瓦工搭建 ShadowSocks 翻墙（VPN）系列》<br>(1) <a href="https://depthlove.github.io/2019/03/29/establish-vpn-server/">搬瓦工搭建 ShadowSocks 翻墙（VPN）</a><br>(2) <a href="https://depthlove.github.io/2019/06/02/establish-vpn-server-02/">搬瓦工搭建 ShadowSocks 翻墙（VPN）- 解决 IP 被墙</a><br>(3) <a href="https://depthlove.github.io/2019/06/03/establish-vpn-server-03/">搬瓦工搭建 ShadowSocks 翻墙（VPN）- 解决 port 被封</a></p>
+          <p>《搬瓦工搭建 ShadowSocks 翻墙（VPN）系列》</p>
+<p>(1) <a href="https://depthlove.github.io/2019/03/29/establish-vpn-server/">搬瓦工搭建 ShadowSocks 翻墙（VPN）</a><br>(2) <a href="https://depthlove.github.io/2019/06/02/establish-vpn-server-02/">搬瓦工搭建 ShadowSocks 翻墙（VPN）- 解决 IP 被墙</a><br>(3) <a href="https://depthlove.github.io/2019/06/03/establish-vpn-server-03/">搬瓦工搭建 ShadowSocks 翻墙（VPN）- 解决 port 被封</a></p>
 <p>在上一篇 <a href="https://depthlove.github.io/2019/06/02/establish-vpn-server-02/">搬瓦工搭建 ShadowSocks 翻墙（VPN）- 解决 IP 被墙</a> 谈到了如何解决 IP 被墙的问题，但没有提及端口 port 被封的问题。本文就来说一下 port 被封导致 VPN 服务无法使用的问题。</p>
 <p>之前我在使用过程中，出现过 VPN 突然无法使用的问题。定位下来的原因是 IP 被墙了。其实更详细的原因是 IP 被墙，端口 port 被封。我用工具检测了 IP 地址、port 端口，检测结果是 IP 地址国内检测点超时，国外监测点正常，port 端口处于关闭状态。我在 <a href="https://depthlove.github.io/2019/06/02/establish-vpn-server-02/">搬瓦工搭建 ShadowSocks 翻墙（VPN）- 解决 IP 被墙</a> 一文中只提到了更换 IP 的解决途径。为什么我没有提到要更换 port 端口呢？原因在于使用更换后的 IP 地址，也就是新的 IP 地址搭建 VPN 服务时，默认的 VPN 服务端口 port 跟以前搭建的 VPN 服务的默认端口 port 不一样，我每次搭建 VPN 服务的时候，都是使用提示的默认端口号 port，这让 port 端口被封导致 VPN 服务无法使用的问题没有暴露出来。</p>
           <!--noindex-->
@@ -689,7 +690,9 @@
 
       
         
-          <p><a href="https://depthlove.github.io/2019/03/29/establish-vpn-server/">使用搬瓦工搭建 ShadowSocks 翻墙（VPN）</a> 一文中写了如何搭建 VPN 翻墙工具，但对于可能出现的问题没有提及。本文要说的是 VPN 服务所在的主机 IP 被墙后导致 VPN 服务无法使用的问题。</p>
+          <p>《搬瓦工搭建 ShadowSocks 翻墙（VPN）系列》</p>
+<p>(1) <a href="https://depthlove.github.io/2019/03/29/establish-vpn-server/">搬瓦工搭建 ShadowSocks 翻墙（VPN）</a><br>(2) <a href="https://depthlove.github.io/2019/06/02/establish-vpn-server-02/">搬瓦工搭建 ShadowSocks 翻墙（VPN）- 解决 IP 被墙</a><br>(3) <a href="https://depthlove.github.io/2019/06/03/establish-vpn-server-03/">搬瓦工搭建 ShadowSocks 翻墙（VPN）- 解决 port 被封</a></p>
+<p><a href="https://depthlove.github.io/2019/03/29/establish-vpn-server/">使用搬瓦工搭建 ShadowSocks 翻墙（VPN）</a> 一文中写了如何搭建 VPN 翻墙工具，但对于可能出现的问题没有提及。本文要说的是 VPN 服务所在的主机 IP 被墙后导致 VPN 服务无法使用的问题。</p>
 <p>事情经过是这样的，今天我想使用 VPN 服务访问 Google 的服务，发现 <a href="google.com">google.com</a> 响应超时。有点想不通，因为前几天 VPN 服务可以正常使用。出现这种问题，那就需要排查问题所在了。</p>
 <h1 id="一、排查问题"><a href="#一、排查问题" class="headerlink" title="一、排查问题"></a>一、排查问题</h1><p>（1）访问 <a href="https://bwh88.net" target="_blank" rel="noopener">搬瓦工 (BandwagonHost)</a> 主页，登录之后，查看主机的运行状态。</p>
 <p>结果：主机处在正常运行中。</p>
@@ -2094,7 +2097,9 @@
 
       
         
-          <p>为了查询资料的便利性，大部分时候需要使用 Google 浏览器，但是国内除了高校能默认支持访问 Google 的服务外，基本所有人想使用 Google 的服务都需要借助 <a href="[https://zh.wikipedia.org/wiki/%E8%99%9B%E6%93%AC%E7%A7%81%E4%BA%BA%E7%B6%B2%E8%B7%AF](https://zh.wikipedia.org/wiki/%E8%99%9B%E6%93%AC%E7%A7%81%E4%BA%BA%E7%B6%B2%E8%B7%AF">虚拟专用网 VPN (Virtual Private Network) </a><br>) 工具。以前使用过一些 VPN 服务提供商提供的服务，出现过用了一段时间就使用不了了、服务不稳定、连接后访问网络资源慢，还有的干脆就无法使用。比如我花了 79 美金买过 NordVPN 的服务，网上的口碑和排名很靠前的。事实上真是花钱买烦恼，99%的概率连不上 NordVPN 服务，即使碰运气连上去了，但网速差的让人吐血。为这个事，与 NordVPN 的技术支持来往过好多封英文邮件，最终还是没有解决连不上服务器的问题。在国内想使用 Google 服务查询资料真是痛苦。搞笑的是，2018年12月初去韩国济州岛玩，在济州岛使用 NordVPN 服务倒是 99%以上概率连上服务器，网速也还可以。泪崩，在 NordVPN 上花的钱彻底打水漂了。好在工作所在公司提供了 VPN 服务，就一直使用到现在。</p>
+          <p>《搬瓦工搭建 ShadowSocks 翻墙（VPN）系列》</p>
+<p>(1) <a href="https://depthlove.github.io/2019/03/29/establish-vpn-server/">搬瓦工搭建 ShadowSocks 翻墙（VPN）</a><br>(2) <a href="https://depthlove.github.io/2019/06/02/establish-vpn-server-02/">搬瓦工搭建 ShadowSocks 翻墙（VPN）- 解决 IP 被墙</a><br>(3) <a href="https://depthlove.github.io/2019/06/03/establish-vpn-server-03/">搬瓦工搭建 ShadowSocks 翻墙（VPN）- 解决 port 被封</a></p>
+<p>为了查询资料的便利性，大部分时候需要使用 Google 浏览器，但是国内除了高校能默认支持访问 Google 的服务外，基本所有人想使用 Google 的服务都需要借助 <a href="[https://zh.wikipedia.org/wiki/%E8%99%9B%E6%93%AC%E7%A7%81%E4%BA%BA%E7%B6%B2%E8%B7%AF](https://zh.wikipedia.org/wiki/%E8%99%9B%E6%93%AC%E7%A7%81%E4%BA%BA%E7%B6%B2%E8%B7%AF">虚拟专用网 VPN (Virtual Private Network) </a><br>) 工具。以前使用过一些 VPN 服务提供商提供的服务，出现过用了一段时间就使用不了了、服务不稳定、连接后访问网络资源慢，还有的干脆就无法使用。比如我花了 79 美金买过 NordVPN 的服务，网上的口碑和排名很靠前的。事实上真是花钱买烦恼，99%的概率连不上 NordVPN 服务，即使碰运气连上去了，但网速差的让人吐血。为这个事，与 NordVPN 的技术支持来往过好多封英文邮件，最终还是没有解决连不上服务器的问题。在国内想使用 Google 服务查询资料真是痛苦。搞笑的是，2018年12月初去韩国济州岛玩，在济州岛使用 NordVPN 服务倒是 99%以上概率连上服务器，网速也还可以。泪崩，在 NordVPN 上花的钱彻底打水漂了。好在工作所在公司提供了 VPN 服务，就一直使用到现在。</p>
 <p>为能正常使用 Google 的资源以及考虑到数据访问的私密性，就开始考虑搭建一个私人的 VPN 服务。查询了一些资料，找到了 <a href="https://bwh88.net" target="_blank" rel="noopener">搬瓦工 (BandwagonHost)</a> 。以下是搭建的流程：</p>
           <!--noindex-->
           
