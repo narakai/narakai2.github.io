@@ -15,7 +15,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -199,7 +199,7 @@
     </div>
     
       
-        <p class="site-subtitle">计算机硕士，音视频，机器学习方向。GitHub：https://github.com/depthlove</p>
+        <p class="site-subtitle">计算机硕士，音视频方向。GitHub：https://github.com/depthlove</p>
       
     
     
@@ -516,28 +516,35 @@
       
         <p>《搬瓦工搭建 ShadowSocks 翻墙（VPN）系列》</p>
 <p>(1) <a href="https://depthlove.github.io/2019/03/29/establish-vpn-server/">搬瓦工搭建 ShadowSocks 翻墙（VPN）</a><br>(2) <a href="https://depthlove.github.io/2019/06/02/establish-vpn-server-02/">搬瓦工搭建 ShadowSocks 翻墙（VPN）- 解决 IP 被墙</a><br>(3) <a href="https://depthlove.github.io/2019/06/03/establish-vpn-server-03/">搬瓦工搭建 ShadowSocks 翻墙（VPN）- 解决 port 被封</a><br>(4) <a href="https://depthlove.github.io/2019/06/04/establish-vpn-server-04/">搬瓦工搭建 ShadowSocks 翻墙（VPN）- 更换密码</a></p>
-<p>为了查询资料的便利性，大部分时候需要使用 Google 浏览器，但是国内除了高校能默认支持访问 Google 的服务外，基本所有人想使用 Google 的服务都需要借助 <a href="[https://zh.wikipedia.org/wiki/%E8%99%9B%E6%93%AC%E7%A7%81%E4%BA%BA%E7%B6%B2%E8%B7%AF](https://zh.wikipedia.org/wiki/%E8%99%9B%E6%93%AC%E7%A7%81%E4%BA%BA%E7%B6%B2%E8%B7%AF">虚拟专用网 VPN (Virtual Private Network) </a><br>) 工具。以前使用过一些 VPN 服务提供商提供的服务，出现过用了一段时间就使用不了了、服务不稳定、连接后访问网络资源慢，还有的干脆就无法使用。比如我花了 79 美金买过 NordVPN 的服务，网上的口碑和排名很靠前的。事实上真是花钱买烦恼，99%的概率连不上 NordVPN 服务，即使碰运气连上去了，但网速差的让人吐血。为这个事，与 NordVPN 的技术支持来往过好多封英文邮件，最终还是没有解决连不上服务器的问题。在国内想使用 Google 服务查询资料真是痛苦。搞笑的是，2018年12月初去韩国济州岛玩，在济州岛使用 NordVPN 服务倒是 99%以上概率连上服务器，网速也还可以。泪崩，在 NordVPN 上花的钱彻底打水漂了。好在工作所在公司提供了 VPN 服务，就一直使用到现在。</p>
+<p>为了查询资料的便利性，大部分时候需要使用 Google 浏览器，但是国内除了高校能默认支持访问 Google 的服务外，基本所有人想使用 Google 的服务都需要借助 <a href="[https://zh.wikipedia.org/wiki/%E8%99%9B%E6%93%AC%E7%A7%81%E4%BA%BA%E7%B6%B2%E8%B7%AF](https://zh.wikipedia.org/wiki/%E8%99%9B%E6%93%AC%E7%A7%81%E4%BA%BA%E7%B6%B2%E8%B7%AF)">虚拟专用网 VPN (Virtual Private Network) </a> 工具。以前使用过一些 VPN 服务提供商提供的服务，出现过用了一段时间就使用不了了、服务不稳定、连接后访问网络资源慢，还有的干脆就无法使用。比如我花了 79 美金买过 NordVPN 的服务，网上的口碑和排名很靠前的。事实上真是花钱买烦恼，99%的概率连不上 NordVPN 服务，即使碰运气连上去了，但网速差的让人吐血。为这个事，与 NordVPN 的技术支持来往过好多封英文邮件，最终还是没有解决连不上服务器的问题。在国内想使用 Google 服务查询资料真是痛苦。搞笑的是，2018年12月初去韩国济州岛玩，在济州岛使用 NordVPN 服务倒是 99%以上概率连上服务器，网速也还可以。泪崩，在 NordVPN 上花的钱彻底打水漂了。好在工作所在公司提供了 VPN 服务，就一直使用到现在。</p>
 <p>为能正常使用 Google 的资源以及考虑到数据访问的私密性，就开始考虑搭建一个私人的 VPN 服务。查询了一些资料，找到了 <a href="https://bwh88.net" target="_blank" rel="noopener">搬瓦工 (BandwagonHost)</a> 。以下是搭建的流程：</p>
 <a id="more"></a>
+
 <h4 id="一、购买主机服务-VPS"><a href="#一、购买主机服务-VPS" class="headerlink" title="一、购买主机服务 VPS"></a>一、购买主机服务 VPS</h4><h5 id="参考该文的购买流程"><a href="#参考该文的购买流程" class="headerlink" title="参考该文的购买流程"></a>参考该文的购买流程</h5><p><a href="https://www.iqiqi.org/banwagong-vps-setup-shadowsocks" target="_blank" rel="noopener">搬瓦工(BandwagonHost) 一键搭建ShadowSocks翻墙教程</a></p>
-<h4 id="二、登陆-VPS"><a href="#二、登陆-VPS" class="headerlink" title="二、登陆 VPS"></a>二、登陆 VPS</h4><h5 id="参考该文的登陆搬瓦工的-VPS-的流程"><a href="#参考该文的登陆搬瓦工的-VPS-的流程" class="headerlink" title="参考该文的登陆搬瓦工的 VPS 的流程"></a>参考该文的登陆搬瓦工的 VPS 的流程</h5><p><a href="https://www.bwgyhw.cn/bandwagonhost-ssh-login/?utm_source=textarea.com&amp;utm_medium=textarea.com&amp;utm_campaign=article" target="_blank" rel="noopener">Windows/Mac/Linux如何SSH远程连接/登陆搬瓦工</a></p>
+<h4 id="二、登陆-VPS"><a href="#二、登陆-VPS" class="headerlink" title="二、登陆 VPS"></a>二、登陆 VPS</h4><h5 id="参考该文的登陆搬瓦工的-VPS-的流程"><a href="#参考该文的登陆搬瓦工的-VPS-的流程" class="headerlink" title="参考该文的登陆搬瓦工的 VPS 的流程"></a>参考该文的登陆搬瓦工的 VPS 的流程</h5><p><a href="https://www.bwgyhw.cn/bandwagonhost-ssh-login/?utm_source=textarea.com&utm_medium=textarea.com&utm_campaign=article" target="_blank" rel="noopener">Windows/Mac/Linux如何SSH远程连接/登陆搬瓦工</a></p>
 <p>我使用的 MacBook Pro，以下为 Mac 系统上的 VPS 登陆流程：</p>
 <p>在终端输入命令 <strong>ssh root@IP地址 -p ssh端口</strong>，其中 IP 地址和 SSH 端口换成你自己的 VPS 信息</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ssh</span> <span class="selector-tag">root</span>@<span class="keyword">111</span>.<span class="keyword">11</span>.<span class="keyword">111</span>.<span class="keyword">111</span> -p <span class="number">1111</span></span><br></pre></td></tr></table></figure>
+
 <h4 id="三、安装-SSR-脚本"><a href="#三、安装-SSR-脚本" class="headerlink" title="三、安装 SSR 脚本"></a>三、安装 SSR 脚本</h4><h5 id="参考该文的-Shadowsocks-安装流程"><a href="#参考该文的-Shadowsocks-安装流程" class="headerlink" title="参考该文的 Shadowsocks 安装流程"></a>参考该文的 Shadowsocks 安装流程</h5><p><a href="https://www.iqiqi.org/bandwagonhost-install-shadowsocks" target="_blank" rel="noopener">搬瓦工(BandwagonHost)取消了一键安装Shadowsocks后，最新搬瓦工手动安装SS教程！</a></p>
 <p>第一步：等到出现 <strong>root@host ~</strong> 字样，执行命令</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --<span class="keyword">no</span>-check-certificate -O shadowsocks-<span class="keyword">all</span>.<span class="keyword">sh</span> http<span class="variable">s:</span>//raw.githubusercontent.<span class="keyword">com</span>/teddysun/shadowsocks_install/master/shadowsocks-<span class="keyword">all</span>.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
+
 <p><strong>注意 (warning) : 国外服务器运行脚本时容易出错，如出现错误提示 bash: wget: command not found，可以请在先执行 yum -y install wget 命令。成功后，再执行上面的命令。如果没有出现提示错误，请略过。</strong></p>
 <p>第二步：等待上一步的命令执行结束后，继续执行命令</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +<span class="keyword">x</span> shadowsocks-<span class="keyword">all</span>.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
+
 <p>第三步：等待上一步的命令执行结束后，继续执行命令</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./shadowsocks-<span class="keyword">all</span>.<span class="keyword">sh</span> <span class="number">2</span>&gt;&amp;<span class="number">1</span> | tee shadowsocks-<span class="keyword">all</span>.<span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+
 <p>第四步：根据需要选择，不懂的话直接选1，或者默认回车。下面会提示你输入你的 SS SERVER 的密码和端口。不输入就是默认。跑完命令后会出来你的 SS 客户端的信息。</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Which Shadowsocks<span class="built_in"> server </span>you’d select:</span><br><span class="line">1) Shadowsocks-Python</span><br><span class="line">2) ShadowsocksR</span><br><span class="line">3) Shadowsocks-Go</span><br><span class="line">4) Shadowsocks-libev</span><br><span class="line">Please enter a number (Default Shadowsocks-Python):1</span><br><span class="line"></span><br><span class="line">You choose = Shadowsocks-Python</span><br><span class="line"></span><br><span class="line">Please enter password <span class="keyword">for</span> Shadowsocks-Python</span><br><span class="line">(Default password: teddysun.com):123456</span><br><span class="line"></span><br><span class="line">password = 123456</span><br><span class="line"></span><br><span class="line">Please enter a<span class="built_in"> port </span><span class="keyword">for</span> Shadowsocks-Python [1-65535]</span><br><span class="line">(Default port: 11260):11260</span><br><span class="line"></span><br><span class="line">port = 11260</span><br></pre></td></tr></table></figure>
+
 <p>第五步：特别注意，由于 iPhone 端的的 wingy 目前只支持到 cfb，所以我们选择 aes-256-cfb，即7，回车。</p>
 <p>第六步：当我们看到 Congratulations, Shadowsocks-Python server install completed! 时，则证明我们已经成功安装了 SS。请立即将这些信息复制下来加以保存，我们就会用到这几个比较重要的信息：主机服务器IP地址、端口号、密码和加密方式。上面的命令全部回车执行后，如果没有报错，即为执行成功，出现确认提示的时候，输入 y 后，回车即可。</p>
 <p>这样的话我们就在搬瓦工 VPS 主机上完成了 SS 的手动安装，记录保存好你的上述信息：Server IP、Server Port、Password、Encryption Method，我们就可以在不同的设备终端找到相应的 SS 进行安装设置使用了。</p>
 <figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">INFO: loading config <span class="keyword">from</span> /etc/shadowsocks-python/config.json</span><br><span class="line"><span class="number">2019</span>-<span class="number">03</span>-<span class="number">28</span> <span class="number">05</span>:<span class="number">14</span>:<span class="number">24</span> INFO     loading libcrypto <span class="keyword">from</span> libcrypto.so.<span class="number">10</span></span><br><span class="line">Starting Shadowsocks success</span><br><span class="line"></span><br><span class="line">Congratulations, Shadowsocks-Python server install completed!</span><br><span class="line">Your Server IP        :  <span class="number">111.11</span>.<span class="number">111.111</span></span><br><span class="line">Your Server Port      :  <span class="number">11260</span></span><br><span class="line">Your Password         :  <span class="number">123456</span></span><br><span class="line">Your Encryption <span class="function"><span class="keyword">Method</span>:</span>  aes-<span class="number">256</span>-cfb</span><br><span class="line"></span><br><span class="line">Your QR Code: (<span class="keyword">For</span> Shadowsocks Windows, OSX, Android <span class="keyword">and</span> iOS clients)</span><br><span class="line">ss:<span class="comment">//xxxxxxxxxxxxxxxxx</span></span><br><span class="line">Your QR Code <span class="keyword">has</span> been saved <span class="keyword">as</span> a PNG file path:</span><br><span class="line">/root/shadowsocks_python_qr.png</span><br><span class="line"></span><br><span class="line">Welcome <span class="keyword">to</span> visit: https:<span class="comment">//teddysun.com/486.html</span></span><br><span class="line">Enjoy it!</span><br></pre></td></tr></table></figure>
+
 <h4 id="四、使用-Shadowsocks-终端体验-VPN-服务"><a href="#四、使用-Shadowsocks-终端体验-VPN-服务" class="headerlink" title="四、使用 Shadowsocks 终端体验 VPN 服务"></a>四、使用 Shadowsocks 终端体验 VPN 服务</h4><p>根据设备类型，下载对应的平台软件，并设置好参数就可以畅享 VPN 服务了。</p>
 <p>Windows：<a href="https://github.com/shadowsocks/shadowsocks-windows/releases" target="_blank" rel="noopener">Github链接地址</a></p>
 <p>Mac：<a href="https://github.com/yangfeicheung/Shadowsocks-X/releases" target="_blank" rel="noopener">Github链接地址</a></p>
@@ -680,7 +687,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">81</span>
+                    <span class="site-state-item-count">86</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -859,7 +866,7 @@
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
 
 
 

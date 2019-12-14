@@ -15,7 +15,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -199,7 +199,7 @@
     </div>
     
       
-        <p class="site-subtitle">计算机硕士，音视频，机器学习方向。GitHub：https://github.com/depthlove</p>
+        <p class="site-subtitle">计算机硕士，音视频方向。GitHub：https://github.com/depthlove</p>
       
     
     
@@ -518,8 +518,8 @@
 <h2 id="1-下载-X11-并安装"><a href="#1-下载-X11-并安装" class="headerlink" title="1. 下载 X11 并安装"></a>1. 下载 X11 并安装</h2><p>关于 Mac 版 X11，Mac 不再随附 X11，但 XQuartz 项目会提供 X11 服务器和客户端库。XQuartz 项目提供适用于 MacOS 的 X11 服务器和客户端库，网址是 <a href="https://www.xquartz.org" target="_blank" rel="noopener">https://www.xquartz.org</a>。下载可用的最新版本并安装。具体说明见：<a href="https://support.apple.com/zh-cn/HT201341" target="_blank" rel="noopener">关于 Mac 版 X11</a></p>
 <h2 id="2-下载-cmake-的-dmg-格式并安装"><a href="#2-下载-cmake-的-dmg-格式并安装" class="headerlink" title="2. 下载 cmake 的 dmg 格式并安装"></a>2. 下载 cmake 的 dmg 格式并安装</h2><p>下载地址: <a href="https://cmake.org/download/" target="_blank" rel="noopener">https://cmake.org/download/</a>，本文使用的是 Mac OSX 10.6 or later，cmake-3.7.1-Darwin-x86_64.dmg 版本。</p>
 <h2 id="3-终端安装-cmake"><a href="#3-终端安装-cmake" class="headerlink" title="3. 终端安装 cmake"></a>3. 终端安装 cmake</h2><p>在终端执行命令：</p>
-<pre><code>sudo &quot;/Applications/CMake.app/Contents/bin/cmake-gui&quot; --install
-</code></pre><a id="more"></a>
+<pre><code>sudo &quot;/Applications/CMake.app/Contents/bin/cmake-gui&quot; --install</code></pre><a id="more"></a>
+
 <h2 id="4-进入包含-CMakeLists-txt-文件的源码文件夹-xxx-并执行命令得到-Mac-工程（注意：命令的空格）"><a href="#4-进入包含-CMakeLists-txt-文件的源码文件夹-xxx-并执行命令得到-Mac-工程（注意：命令的空格）" class="headerlink" title="4. 进入包含 CMakeLists.txt 文件的源码文件夹 xxx 并执行命令得到 Mac 工程（注意：命令的空格）"></a>4. 进入包含 CMakeLists.txt 文件的源码文件夹 xxx 并执行命令得到 Mac 工程（注意：命令的空格）</h2><p>在终端依次执行下面的命令：<strong><em>（备注：xxx 为工程的名称）</em></strong></p>
 <pre><code>cd xxx
 
@@ -527,15 +527,13 @@ mkdir build
 
 cd build
 
-cmake -G Xcode ..
-</code></pre><h2 id="5-将-Mac-工程改为-iOS-工程"><a href="#5-将-Mac-工程改为-iOS-工程" class="headerlink" title="5. 将 Mac 工程改为 iOS 工程"></a>5. 将 Mac 工程改为 iOS 工程</h2><p>(1) 进入 build 文件夹，打开 Project.xcodeproj 工程，Duplicate TARGET “xxx”，生成了1个新的 TARGET “xxx copy” <strong><em>（备注：xxx 为 TARGET 的名称，跟 章节 4 中的 xxx 是同名的，也就是说章节 3 中的 xxx 决定了此处 Xcode 项目的 TARGET 名称）</em></strong></p>
+cmake -G Xcode ..</code></pre><h2 id="5-将-Mac-工程改为-iOS-工程"><a href="#5-将-Mac-工程改为-iOS-工程" class="headerlink" title="5. 将 Mac 工程改为 iOS 工程"></a>5. 将 Mac 工程改为 iOS 工程</h2><p>(1) 进入 build 文件夹，打开 Project.xcodeproj 工程，Duplicate TARGET “xxx”，生成了1个新的 TARGET “xxx copy” <strong><em>（备注：xxx 为 TARGET 的名称，跟 章节 4 中的 xxx 是同名的，也就是说章节 3 中的 xxx 决定了此处 Xcode 项目的 TARGET 名称）</em></strong></p>
 <p>(2) 将 TARGET “xxx copy” 改名为 “xxx-iOS”</p>
 <p>(3) 进入 TARGET “xxx-iOS” 的 Build Settings，将 Architectures 下的 Base SDK 改为 Latest iOS(iOS 10.2)，此时 Architectures，Supported Platforms，Valid Architectures 都会变成跟 iOS 平台相关的设置</p>
 <p>(4) 修改 iOS Deployment Target 为想要支持的最低版本，此处设置支持的 iOS 最低版本为 iOS 7.0</p>
 <p>(5) 在 Xcode 的左上角选择工程 xxx copy，接着进入 Manage Schemes，将 xxx copy 更名为 xxx-iOS</p>
 <h2 id="6-编译-xxx-iOS-即可得到-iOS-静态库-libxxx-iOS-a"><a href="#6-编译-xxx-iOS-即可得到-iOS-静态库-libxxx-iOS-a" class="headerlink" title="6. 编译 xxx-iOS 即可得到 iOS 静态库 libxxx-iOS.a"></a>6. 编译 xxx-iOS 即可得到 iOS 静态库 libxxx-iOS.a</h2><h2 id="7-终端执行命令-lipo-info-libxxx-iOS-a-查看-iOS-静态库支持的-Architectures-（如：armv7，arm64，x86-64，i386）"><a href="#7-终端执行命令-lipo-info-libxxx-iOS-a-查看-iOS-静态库支持的-Architectures-（如：armv7，arm64，x86-64，i386）" class="headerlink" title="7. 终端执行命令 lipo -info libxxx-iOS.a 查看 iOS 静态库支持的 Architectures （如：armv7，arm64，x86_64，i386）"></a>7. 终端执行命令 lipo -info libxxx-iOS.a 查看 iOS 静态库支持的 Architectures （如：armv7，arm64，x86_64，i386）</h2><p>在终端执行命令：</p>
-<pre><code>lipo -info libxxx-iOS.a
-</code></pre><p>输出结果为</p>
+<pre><code>lipo -info libxxx-iOS.a</code></pre><p>输出结果为</p>
 <p>Architectures in the fat file: libxxx-iOS.a are: armv7 arm64</p>
 <p>若要生成 x86_64，i386 模拟器架构，就需要在使用 Xcode 编译的时候编译相应的 x86_64，i386 库。</p>
 
@@ -678,7 +676,7 @@ cmake -G Xcode ..
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">81</span>
+                    <span class="site-state-item-count">86</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -857,7 +855,7 @@ cmake -G Xcode ..
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
 
 
 

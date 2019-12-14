@@ -15,7 +15,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -213,7 +213,7 @@
     </div>
     
       
-        <p class="site-subtitle">计算机硕士，音视频，机器学习方向。GitHub：https://github.com/depthlove</p>
+        <p class="site-subtitle">计算机硕士，音视频方向。GitHub：https://github.com/depthlove</p>
       
     
     
@@ -532,17 +532,22 @@
 <h3 id="1-fork-Github-上的-tensorflow-repo"><a href="#1-fork-Github-上的-tensorflow-repo" class="headerlink" title="1. fork Github 上的 tensorflow repo"></a>1. fork Github 上的 tensorflow repo</h3><p>tensorflow 的仓库 repo 位于 Github 上，我们作为开发者要在其基础上做开发，首先就需要 fork 一份 repo 到自己的 Github 账户下。</p>
 <h3 id="2-参考-tensorflow-的官方使用文档编译（使用-tensorflow-r1-0-版本）"><a href="#2-参考-tensorflow-的官方使用文档编译（使用-tensorflow-r1-0-版本）" class="headerlink" title="2. 参考 tensorflow 的官方使用文档编译（使用 tensorflow r1.0 版本）"></a>2. 参考 tensorflow 的官方使用文档编译（使用 tensorflow r1.0 版本）</h3><p>参考<a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/contrib/makefile/README.md" target="_blank" rel="noopener">tensorflow 的官方使用文档</a>编译 iOS 平台上的 tensorflow 库。</p>
 <a id="more"></a>
-<p><strong>_Note: To use this library in an iOS application, see related instructions in<br>the <a href="../ios_examples/">iOS examples</a> directory._</strong></p>
+
+<p><strong><em>Note: To use this library in an iOS application, see related instructions in<br>the <a href="../ios_examples/">iOS examples</a> directory.</em></strong></p>
 <p>Install XCode 7.3 or more recent. If you have not already, you will need to<br>install the command-line tools using <code>xcode-select</code>:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcode-select --install</span><br></pre></td></tr></table></figure>
+
 <p>If this is a new install, you will need to run XCode once to agree to the<br>license before continuing.</p>
 <p>Then install <a href="https://en.wikipedia.org/wiki/Automake" target="_blank" rel="noopener">automake</a>/<a href="https://en.wikipedia.org/wiki/GNU_Libtool" target="_blank" rel="noopener">libtool</a>:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew install automake</span><br><span class="line">brew install libtool</span><br></pre></td></tr></table></figure>
+
 <p>Also, download the graph if you haven’t already:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/graphs</span><br><span class="line">curl -o ~/graphs/inception.zip \</span><br><span class="line"> https://storage.googleapis.com/download.tensorflow.org/models/inception5h.zip \</span><br><span class="line"> &amp;&amp; unzip ~/graphs/inception.zip -d ~/graphs/inception</span><br></pre></td></tr></table></figure>
+
 <p><strong><em>Note: Building all at once.</em></strong></p>
 <p>If you just want to get the libraries compiled in a hurry, you can run this<br>from the root of your TensorFlow source folder:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tensorflow/contrib/makefile/build_all_ios.sh</span><br></pre></td></tr></table></figure>
+
 <p>This process will take around twenty minutes on a modern MacBook Pro.</p>
 <p>When it completes, you will have a library for a single architecture and the<br>benchmark program. Although successfully compiling the benchmark program is a<br>sign of success, the program is not a complete iOS app.</p>
 <p>To see TensorFlow running on iOS, the example Xcode project in<br><a href="../ios_examples">tensorflow/contrib/ios_examples</a> shows how to use the static<br>library in a simple app.</p>
@@ -559,14 +564,20 @@
 <p><img src="http://images2015.cnblogs.com/blog/719115/201701/719115-20170116143445255-1618884987.png" alt="tf_ios_makefile_example.xcodeproj 运行出现的错误"></p>
 <p>参考<a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/contrib/ios_examples/README.md" target="_blank" rel="noopener">TensorFlow iOS Examples 文档</a> 加载 iOS demo 工程所需要的数据模型，需要操作的命令如下</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/graphs</span><br><span class="line">curl -o ~/graphs/inception5h.zip \</span><br><span class="line"> https://storage.googleapis.com/download.tensorflow.org/models/inception5h.zip \</span><br><span class="line"> &amp;&amp; unzip ~/graphs/inception5h.zip -d ~/graphs/inception5h</span><br><span class="line">cp ~/graphs/inception5h/* tensorflow/contrib/ios_examples/benchmark/data/</span><br><span class="line">cp ~/graphs/inception5h/* tensorflow/contrib/ios_examples/camera/data/</span><br><span class="line">cp ~/graphs/inception5h/* tensorflow/contrib/ios_examples/simple/data/</span><br></pre></td></tr></table></figure>
+
 <p>具体操作：先进入 tensorflow 的根目录，然后依次执行上面的命令。</p>
 <p><img src="http://images2015.cnblogs.com/blog/719115/201701/719115-20170116150401130-1501991403.png" alt="运行 ios examples 要执行的命令"></p>
 <p>此时，在 Xcode 中 clean（快捷键是 command + shift + k） 下 tf_ios_makefile_example.xcodeproj 工程。运行 run（快捷键是 command + r），success 后 iOS 设备出现的界面和点击按钮 Run Model 后的界面如下图所示：</p>
-<p><img src="http://images2015.cnblogs.com/blog/719115/201701/719115-20170116150927114-514982468.png" width="250" height="445"></p>
-<p><img src="http://images2015.cnblogs.com/blog/719115/201701/719115-20170116152640786-773711415.png" width="250" height="445"></p>
-<h4 id="3-2-camera-example-xcodeproj-可以识别出物体"><a href="#3-2-camera-example-xcodeproj-可以识别出物体" class="headerlink" title="3.2 camera_example.xcodeproj 可以识别出物体"></a>3.2 camera_example.xcodeproj 可以识别出物体</h4><p><img src="http://images2015.cnblogs.com/blog/719115/201701/719115-20170116161341255-1424145846.png" width="250" height="445"></p>
-<h4 id="3-3-benchmark-xcodeproj"><a href="#3-3-benchmark-xcodeproj" class="headerlink" title="3.3 benchmark.xcodeproj"></a>3.3 benchmark.xcodeproj</h4><p><img src="http://images2015.cnblogs.com/blog/719115/201701/719115-20170116161942833-341355774.png" width="250" height="445"></p>
-<p><img src="http://images2015.cnblogs.com/blog/719115/201701/719115-20170116161955317-1079763651.png" width="250" height="445"></p>
+<img src="http://images2015.cnblogs.com/blog/719115/201701/719115-20170116150927114-514982468.png" width="250" height="445">
+
+<img src="http://images2015.cnblogs.com/blog/719115/201701/719115-20170116152640786-773711415.png" width="250" height="445">
+
+<h4 id="3-2-camera-example-xcodeproj-可以识别出物体"><a href="#3-2-camera-example-xcodeproj-可以识别出物体" class="headerlink" title="3.2 camera_example.xcodeproj 可以识别出物体"></a>3.2 camera_example.xcodeproj 可以识别出物体</h4><img src="http://images2015.cnblogs.com/blog/719115/201701/719115-20170116161341255-1424145846.png" width="250" height="445">
+
+<h4 id="3-3-benchmark-xcodeproj"><a href="#3-3-benchmark-xcodeproj" class="headerlink" title="3.3 benchmark.xcodeproj"></a>3.3 benchmark.xcodeproj</h4><img src="http://images2015.cnblogs.com/blog/719115/201701/719115-20170116161942833-341355774.png" width="250" height="445">
+
+<img src="http://images2015.cnblogs.com/blog/719115/201701/719115-20170116161955317-1079763651.png" width="250" height="445">
+
 
       
     </div>
@@ -705,7 +716,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">81</span>
+                    <span class="site-state-item-count">86</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -884,7 +895,7 @@
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
 
 
 

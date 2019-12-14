@@ -15,7 +15,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -199,7 +199,7 @@
     </div>
     
       
-        <p class="site-subtitle">计算机硕士，音视频，机器学习方向。GitHub：https://github.com/depthlove</p>
+        <p class="site-subtitle">计算机硕士，音视频方向。GitHub：https://github.com/depthlove</p>
       
     
     
@@ -521,16 +521,18 @@
 <h1 id="一、排查问题"><a href="#一、排查问题" class="headerlink" title="一、排查问题"></a>一、排查问题</h1><p>（1）访问 <a href="https://bwh88.net" target="_blank" rel="noopener">搬瓦工 (BandwagonHost)</a> 主页，登录之后，查看主机的运行状态。</p>
 <p>结果：主机处在正常运行中。</p>
 <a id="more"></a>
+
 <p>（2）Mac 终端下通过 <code>ssh</code> 命令访问主机</p>
 <p>在终端输入命令 <strong>ssh root@IP地址 -p ssh端口</strong>，其中 IP 地址和 SSH 端口换成你自己的 VPS 信息</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ssh</span> <span class="selector-tag">root</span>@<span class="keyword">111</span>.<span class="keyword">11</span>.<span class="keyword">111</span>.<span class="keyword">111</span> -p <span class="number">1111</span></span><br></pre></td></tr></table></figure>
+
 <p>结果：多次尝试都表现为超时</p>
 <p>（3）Mac 终端下使用 <code>ping</code> 命令检查 IP 地址的连通性</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ping</span> 111<span class="selector-class">.11</span><span class="selector-class">.111</span><span class="selector-class">.111</span></span><br></pre></td></tr></table></figure>
+
 <p>结果：多次尝试都表现为超时，丢包率 100%</p>
 <p>（4）Mac 终端下使用 <code>ping</code> 命令访问 <code>baidu.com</code></p>
-<pre><code>ping baidu.com
-</code></pre><p>结果：正常访问，丢包率为 0.0%</p>
+<pre><code>ping baidu.com</code></pre><p>结果：正常访问，丢包率为 0.0%</p>
 <p>在这种情况下，我百度了下 <code>vps ssh 无法连接</code>，浏览了几篇文章后，确定了问题所在 <strong>IP 被墙</strong>。</p>
 <h1 id="二、检测-IP-地址被墙"><a href="#二、检测-IP-地址被墙" class="headerlink" title="二、检测 IP 地址被墙"></a>二、检测 IP 地址被墙</h1><p>访问网址 <a href="http://ping.chinaz.com" target="_blank" rel="noopener">http://ping.chinaz.com</a>，输入要检测的 IP 地址。</p>
 <p>（1）如果国内、国外监测点都超时，那么该 IP 地址被墙的可能性较小，可以试试开机或者重启 VPS，或联系 VPS 供应商的客服。 </p>
@@ -677,7 +679,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">81</span>
+                    <span class="site-state-item-count">86</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -856,7 +858,7 @@
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
 
 
 

@@ -15,7 +15,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -206,7 +206,7 @@
     </div>
     
       
-        <p class="site-subtitle">计算机硕士，音视频，机器学习方向。GitHub：https://github.com/depthlove</p>
+        <p class="site-subtitle">计算机硕士，音视频方向。GitHub：https://github.com/depthlove</p>
       
     
     
@@ -529,6 +529,7 @@
 </li>
 </ul>
 <a id="more"></a>
+
 <p>H.264 的基本流（elementary stream,ES）的结构分为两层，包括视频编码层（VCL）和网络适配层（NAL）。视频编码层负责高效的视频内容表示，而网络适配层负责以网络所要求的恰当的方式对数据进行打包和传送。引入NAL并使之与VCL分离带来的好处包括两方面：其一、使信号处理和网络传输分离，VCL 和NAL 可以在不同的处理平台上实现；其二、VCL 和NAL 分离设计，使得在不同的网络环境内，网关不需要因为网络环境不同而对VCL比特流进行重构和重编码。</p>
 <p>H.264 的基本流由一系列NALU （Network Abstraction Layer Unit ）组成，不同的NALU数据量各不相同。H.264 草案指出，当数据流是储存在介质上时，<strong>在每个NALU 前添加起始码：0x000001 或 0x00000001，用来指示一个NALU 的起始和终止位置</strong>。在这样的机制下，在码流中检测起始码，作为一个NALU得起始标识，当检测到下一个起始码时，当前NALU结束。</p>
 <p><strong>H.264 码流中每个帧的开头的3~4个字节是H.264 的start_code（起始码），0x00000001或者0x000001。3字节的0x000001只有一种场合下使用，就是一个完整的帧被编为多个slice（片）的时候，包含这些slice的NALU 使用3字节起始码。其余场合都是4字节0x00000001的。</strong></p>
@@ -566,8 +567,7 @@
 <th>类型</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>forbidden_bit</td>
 <td>1</td>
 <td>0</td>
@@ -588,8 +588,7 @@
 <td>7</td>
 <td>序列参数集，sps</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <ul>
 <li><h4 id="00-00-00-01-68"><a href="#00-00-00-01-68" class="headerlink" title="00 00 00 01 68"></a><strong>00 00 00 01 68</strong></h4></li>
 </ul>
@@ -605,8 +604,7 @@
 <th>类型</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>forbidden_bit</td>
 <td>1</td>
 <td>0</td>
@@ -627,8 +625,7 @@
 <td>8</td>
 <td>图像参数集，pps</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <ul>
 <li><h4 id="00-00-03-00"><a href="#00-00-03-00" class="headerlink" title="00 00 03 00"></a><strong>00 00 03 00</strong></h4></li>
 </ul>
@@ -654,8 +651,7 @@
 <th>类型</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>forbidden_bit</td>
 <td>1</td>
 <td>0</td>
@@ -676,8 +672,7 @@
 <td>5</td>
 <td>IDR图像中的片</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>IDR图像中的片，即 I帧。</p>
 <p>我在用UITraEdit打开的<a href="https://github.com/depthlove/X264-Encode-for-iOS/blob/master/myRecordH264Vieo/2015-09-17%2018:05:20.h264" target="_blank" rel="noopener">2015-09-17 18:05:20.h264</a>文件中搜索 00 00 00 01 65，没有找到该标志。搜索 00 00 01 65，存在该标志，说明一个完整的帧被编为多个slice（片）。</p>
 <h3 id="分析第三段数据："><a href="#分析第三段数据：" class="headerlink" title="分析第三段数据："></a><strong>分析第三段数据：</strong></h3><p><img src="http://images2015.cnblogs.com/blog/719115/201509/719115-20150923170450522-678610212.png" alt="img"></p>
@@ -696,8 +691,7 @@
 <th>类型</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>forbidden_bit</td>
 <td>1</td>
 <td>0</td>
@@ -718,8 +712,7 @@
 <td>1</td>
 <td>不分区，非IDR图像的片</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>在baseline的档次中nal_unit_type表示的就是P帧，因为baseline没有B帧。</p>
 <p>以上，就是对H264的结构和机制的一些分析。</p>
 <ul>
@@ -863,7 +856,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">81</span>
+                    <span class="site-state-item-count">86</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1042,7 +1035,7 @@
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
 
 
 

@@ -15,7 +15,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -199,7 +199,7 @@
     </div>
     
       
-        <p class="site-subtitle">计算机硕士，音视频，机器学习方向。GitHub：https://github.com/depthlove</p>
+        <p class="site-subtitle">计算机硕士，音视频方向。GitHub：https://github.com/depthlove</p>
       
     
     
@@ -517,9 +517,12 @@
         <p>在iOS平台上使用iOS8及以上系统的VideoToolbox进行硬编码，会涉及到CMTime，CMTimeMake，CMTimeMakeWithSeconds的使用。下面说下这几个结构体的作用。</p>
 <p>CoreMedia.framework的CMTime.h中CMTime，CMTimeMake，CMTimeMakeWithSeconds的定义如下：</p>
 <a id="more"></a>
+
 <p>（备注：关于CMTime可翻看下苹果官网api文档<br><a href="http://developer.apple.com/library/mac/#documentation/CoreMedia/Reference/CMTime/Reference/reference.html" target="_blank" rel="noopener">http://developer.apple.com/library/mac/#documentation/CoreMedia/Reference/CMTime/Reference/reference.html</a>）</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*!</span></span><br><span class="line"><span class="comment">	<span class="doctag">@typedef</span>	CMTime</span></span><br><span class="line"><span class="comment">	<span class="doctag">@abstract</span>	Rational time value represented as int64/int32.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">typedef struct</span><br><span class="line">&#123;</span><br><span class="line">	CMTimeValue	value;		<span class="comment">/*! <span class="doctag">@field</span> value The value of the CMTime. value/timescale = seconds. */</span></span><br><span class="line">	CMTimeScale	timescale;	<span class="comment">/*! <span class="doctag">@field</span> timescale The timescale of the CMTime. value/timescale = seconds.  */</span></span><br><span class="line">	CMTimeFlags	flags;		<span class="comment">/*! <span class="doctag">@field</span> flags The flags, eg. kCMTimeFlags_Valid, kCMTimeFlags_PositiveInfinity, etc. */</span></span><br><span class="line">	CMTimeEpoch	epoch;		<span class="comment">/*! <span class="doctag">@field</span> epoch Differentiates between equal timestamps that are actually different because</span></span><br><span class="line"><span class="comment">												 of looping, multi-item sequencing, etc.  </span></span><br><span class="line"><span class="comment">												 Will be used during comparison: greater epochs happen after lesser ones. </span></span><br><span class="line"><span class="comment">												 Additions/subtraction is only possible within a single epoch,</span></span><br><span class="line"><span class="comment">												 however, since epoch length may be unknown/variable. */</span></span><br><span class="line">&#125; CMTime;</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*!</span></span><br><span class="line"><span class="comment">	<span class="doctag">@function</span>	CMTimeMake</span></span><br><span class="line"><span class="comment">	<span class="doctag">@abstract</span>	Make a valid CMTime with value and timescale.  Epoch is implied to be 0.</span></span><br><span class="line"><span class="comment">	<span class="doctag">@result</span>		The resulting CMTime.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">CM_EXPORT </span><br><span class="line">CMTime CMTimeMake(</span><br><span class="line">				int64_t value,		<span class="comment">/*! <span class="doctag">@param</span> value		Initializes the value field of the resulting CMTime. */</span></span><br><span class="line">				int32_t timescale)	<span class="comment">/*! <span class="doctag">@param</span> timescale	Initializes the timescale field of the resulting CMTime. */</span></span><br><span class="line">							__OSX_AVAILABLE_STARTING(__MAC_10_7,__IPHONE_4_0);</span><br></pre></td></tr></table></figure>
+
 <pre><code>/*!
     @function    CMTimeMakeWithSeconds
     @abstract    Make a CMTime from a Float64 number of seconds, and a preferred timescale.
@@ -535,18 +538,15 @@ CM_EXPORT
 CMTime CMTimeMakeWithSeconds(
                 Float64 seconds,
                 int32_t preferredTimeScale)
-                            __OSX_AVAILABLE_STARTING(__MAC_10_7,__IPHONE_4_0);
-</code></pre><pre><code>CMTime firstframe=CMTimeMake(1,10);
-CMTime lastframe=CMTimeMake(10, 10);
-</code></pre><p>CMTime是专门用来表示影片事件用的类别，用法为：CMTimeMake(time, timeScale)。其中，time指的是时间，而不是秒，而时间要换算成秒，此时就要用到第二个参数timeScale。timeScale指的是1秒需要有几个frame构成（可以看作为fps），因此真正要表达的时间就是 time/timeScale，才会是秒。</p>
+                            __OSX_AVAILABLE_STARTING(__MAC_10_7,__IPHONE_4_0);</code></pre><pre><code>CMTime firstframe=CMTimeMake(1,10);
+CMTime lastframe=CMTimeMake(10, 10);</code></pre><p>CMTime是专门用来表示影片事件用的类别，用法为：CMTimeMake(time, timeScale)。其中，time指的是时间，而不是秒，而时间要换算成秒，此时就要用到第二个参数timeScale。timeScale指的是1秒需要有几个frame构成（可以看作为fps），因此真正要表达的时间就是 time/timeScale，才会是秒。</p>
 <p>上面的代码可以理解为，视频的fps（帧率）是10，firstframe是第一帧，在视频中的时间为0.1秒，lastframe是第10帧，在视频中的时间为1秒。</p>
 <p>或者换种写法：CMTime curFrame = CMTimeMake(第几帧， 帧率）。看看另一篇博客的写法：<a href="http://blog.riaproject.com/objective-c/1745/解釋何謂ios中的cmtimemake.html" target="_blank" rel="noopener">解釋何謂iOS中的CMTimeMake</a>， 要使用VPN翻墙才能打开这篇文章。这么看，CMTime firstframe=CMTimeMake(32，16);<br>CMTime lastframe=CMTimeMake(48, 24); 这两个都表示2秒的时间。但是帧率是完全不同的。</p>
 <p>CMTimeMakeWithSeconds和CMTimeMake区别在于，第一个函数的第一个参数可以是float，其他一样。</p>
 <p>以上解释的比较清楚了，为加深印象，可看下stackoverflow上<a href="http://stackoverflow.com/questions/12902410/trying-to-understand-cmtime" target="_blank" rel="noopener">Trying to understand CMTime</a>一文。</p>
 <p>综述如下：</p>
 <pre><code>CMTimeMake(a,b)                   a当前第几帧, b每秒钟多少帧.当前播放时间a/b
-CMTimeMakeWithSeconds(a,b)    a当前时间,b每秒钟多少帧.
-</code></pre>
+CMTimeMakeWithSeconds(a,b)    a当前时间,b每秒钟多少帧.</code></pre>
       
     </div>
 
@@ -675,7 +675,7 @@ CMTimeMakeWithSeconds(a,b)    a当前时间,b每秒钟多少帧.
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">81</span>
+                    <span class="site-state-item-count">86</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -837,7 +837,7 @@ CMTimeMakeWithSeconds(a,b)    a当前时间,b每秒钟多少帧.
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
 
 
 
