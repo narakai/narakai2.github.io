@@ -25,11 +25,11 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="WebRTC 开发（三）架构设计剖析">
 <meta property="og:url" content="https://depthlove.github.io/2019/05/04/webrtc-development-3-analysis-of-architectural-design/index.html">
-<meta property="og:site_name" content="Minmin.Sun Blog">
+<meta property="og:site_name" content="Depth Love Blog">
 <meta property="og:description" content="上一篇写的是 WebRTC 源码的下载和编译，为什么不先剖析 WebRTC 的架构设计而是先讲编译过程呢？原因是通过观察 WebRTC 的编译过程，能看到 WebRTC 里有什么。很多人觉得编译过程耗时长，就去干点其它的事坐等编译过程结束。我喜欢观察编译过程的打印信息，通过观察，可以看到 WebRTC 里面有什么，形成对 WebRTC 源码库有基本的认识。接触一个东西时，最初都是从局部到整体。知道">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/depthlove/depthloveBlog/8c991266c4350b1b66dc277d7576903824013017/source/images/webrtc-development-3-analysis-of-architectural-design/webrtc-architecture.png">
-<meta property="og:updated_time" content="2019-05-16T16:50:51.614Z">
+<meta property="og:updated_time" content="2020-05-17T01:50:02.919Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WebRTC 开发（三）架构设计剖析">
 <meta name="twitter:description" content="上一篇写的是 WebRTC 源码的下载和编译，为什么不先剖析 WebRTC 的架构设计而是先讲编译过程呢？原因是通过观察 WebRTC 的编译过程，能看到 WebRTC 里有什么。很多人觉得编译过程耗时长，就去干点其它的事坐等编译过程结束。我喜欢观察编译过程的打印信息，通过观察，可以看到 WebRTC 里面有什么，形成对 WebRTC 源码库有基本的认识。接触一个东西时，最初都是从局部到整体。知道">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>WebRTC 开发（三）架构设计剖析 | Minmin.Sun Blog</title>
+  <title>WebRTC 开发（三）架构设计剖析 | Depth Love Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140292689-1"></script>
     <script>
@@ -117,7 +117,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">Minmin.Sun Blog</h1>
+      <h1 class="site-title">Depth Love Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
       <p class="site-subtitle" itemprop="description">计算机硕士，音视频方向。GitHub：https://github.com/depthlove</p>
@@ -221,12 +221,12 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="Minmin.Sun">
+      <meta itemprop="name" content="Depth Love">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Minmin.Sun Blog">
+      <meta itemprop="name" content="Depth Love Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -272,6 +272,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
+
+        <!-- Google Ads Embed -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <ins class="adsbygoogle"
+            style="display:block; text-align:center;"
+            data-ad-layout="in-article"
+            data-ad-format="fluid"
+            data-ad-client="ca-pub-2304335236058241"
+            data-ad-slot="8930971915"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+
         <p>上一篇写的是 WebRTC 源码的下载和编译，为什么不先剖析 WebRTC 的架构设计而是先讲编译过程呢？原因是通过观察 WebRTC 的编译过程，能看到 WebRTC 里有什么。很多人觉得编译过程耗时长，就去干点其它的事坐等编译过程结束。我喜欢观察编译过程的打印信息，通过观察，可以看到 WebRTC 里面有什么，形成对 WebRTC 源码库有基本的认识。接触一个东西时，最初都是从局部到整体。知道 WebRTC 里面存在一些东西，但这些东西是如何组织在一起形成一个完整的解决方案的呢？那就要分析 WebRTC 的架构和设计了。</p>
 <a id="more"></a>
 
@@ -302,15 +315,9 @@
 <ul>
 <li><strong>音频设备 audio_device</strong></li>
 </ul>
-<p>源代码在 webrtc\modules\audio_device\main 目录下，包含接口和各个平台的源代码。</p>
+<p>源代码在 webrtc/src/modules/audio_device 目录下，包含接口和各个平台的源代码。</p>
 <p>在 Windows 平台上，WebRTC 采用的是 Windows Core Audio 和 Windows Wave 技术来管理音频设备，还提供了一个混音管理器。</p>
 <p>利用音频设备，可以实现声音输出，音量控制等功能。</p>
-<ul>
-<li><strong>声音文件 media_file</strong></li>
-</ul>
-<p>源代码在 webrtc\modules\media_file 目录下。</p>
-<p>该功能是可以用本地文件作为音频源，支持的格式有 PCM 和 WAV。</p>
-<p>同样，WebRTC 也可以录制音频到本地文件。</p>
 <ul>
 <li><strong>声音处理 audio_processing</strong></li>
 </ul>
@@ -319,9 +326,9 @@
 <ul>
 <li><strong>音频编解码 audio_coding</strong></li>
 </ul>
-<p>源代码在 webrtc\modules\audio_coding 目录下。</p>
-<p>WebRTC 采用 Opus/iLIBC/iSAC/G722/PCM16/RED/AVT 编解码技术。</p>
-<p>WebRTC 还提供 NetEQ 功能 — 抖动缓冲器及丢包补偿模块，能够提高音质，并把延迟减至最小。</p>
+<p>源代码在 webrtc/src/modules/audio_coding 目录下。</p>
+<p>WebRTC 采用 CNG/G711/G722/iLBC/iSAC/Opus/PCM16b/Red 编解码技术。</p>
+<p>webrtc/src/modules/audio_coding/NetEQ 还提供 neteq 功能 — 抖动缓冲器及丢包补偿模块，能够提高音质，并把延迟减至最小。</p>
 <p>另外一个核心功能是基于语音会议的混音处理。</p>
 <ul>
 <li><strong>声音加密 voice_engine_encryption</strong></li>
@@ -330,29 +337,23 @@
 <h2 id="2-视频模块"><a href="#2-视频模块" class="headerlink" title="(2) 视频模块"></a>(2) 视频模块</h2><ul>
 <li><strong>视频采集 video_capture</strong></li>
 </ul>
-<p>源代码在 webrtc\modules\video_capture\main 目录下，包含接口和各个平台的源代码。</p>
+<p>源代码在 webrtc/src/modules/video_capture 目录下，包含接口和各个平台的源代码。</p>
 <p>在 Windows 平台上，WebRTC 采用的是 dshow 技术，来实现枚举视频的设备信息和视频数据的采集，这意味着可以支持大多数的视频采集设备。对那些需要单独驱动程序的视频采集卡（比如海康高清卡）就无能为力了。</p>
 <p>视频采集支持多种媒体类型，比如 I420、YUY2、RGB、UYUY 等，并可以进行帧大小和帧率控制。</p>
 <ul>
-<li><strong>视频媒体文件 media_file</strong></li>
-</ul>
-<p>源代码在 webrtc\modules\media_file 目录下。</p>
-<p>该功能是可以用本地文件作为视频源，有点类似虚拟摄像头的功能；支持的格式有 AVI。</p>
-<p>另外，WebRTC 还可以录制音视频到本地文件，比较实用的功能。</p>
-<ul>
 <li><strong>视频图像处理 video_processing</strong></li>
 </ul>
-<p>源代码在 webrtc\modules\video_processing 目录下。</p>
+<p>源代码在 webrtc/src/modules/video_processing 目录下。</p>
 <p>视频图像处理针对每一帧的图像进行处理，包括明暗度检测、颜色增强、降噪处理等功能，用来提升视频质量。</p>
 <ul>
 <li><strong>视频显示 video_render</strong></li>
 </ul>
-<p>源代码在 webrtc\modules\video_render 目录下。</p>
-<p>在 Windows 平台，WebRTC 采用 direct3d9 和 directdraw 的方式来显示视频，只能这样，必须这样。</p>
+<p>源代码在 /webrtc/src/sdk 目录下。</p>
+<p>在 Windows 平台，WebRTC 采用 direct3d9 和 directdraw 的方式来显示视频。</p>
 <ul>
 <li><strong>视频编解码 video_coding</strong></li>
 </ul>
-<p>源代码在 webrtc\modules\video_coding 目录下。</p>
+<p>源代码在 webrtc/src/modules/video_coding 目录下。</p>
 <p>WebRTC 采用 I420/VP8 编解码技术。VP8 是 google 收购 ON2 后的开源实现，并且也用在 WebM 项目中。VP8 能以更少的数据提供更高质量的视频，特别适合视频会议这样的需求。</p>
 <ul>
 <li><strong>视频加密 video_engine_encryption</strong></li>
@@ -459,9 +460,9 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Minmin.Sun"
+    <img class="site-author-image" itemprop="image" alt="Depth Love"
       src="/uploads/avatar.jpg">
-  <p class="site-author-name" itemprop="name">Minmin.Sun</p>
+  <p class="site-author-name" itemprop="name">Depth Love</p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap motion-element">
@@ -500,17 +501,17 @@
 
       </div>
 
+      <!-- Google Ads -->
       <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- BlogAd -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-2304335236058241"
-     data-ad-slot="8084137562"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-2304335236058241"
+          data-ad-slot="8084137562"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
 
     </div>
   </aside>
@@ -533,7 +534,7 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Minmin.Sun</span>
+  <span class="author" itemprop="copyrightHolder">Depth Love</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
