@@ -28,12 +28,12 @@
 <meta property="og:site_name" content="Depth Love Blog">
 <meta property="og:description" content="上一篇写的是 WebRTC 源码的下载和编译，为什么不先剖析 WebRTC 的架构设计而是先讲编译过程呢？原因是通过观察 WebRTC 的编译过程，能看到 WebRTC 里有什么。很多人觉得编译过程耗时长，就去干点其它的事坐等编译过程结束。我喜欢观察编译过程的打印信息，通过观察，可以看到 WebRTC 里面有什么，形成对 WebRTC 源码库有基本的认识。接触一个东西时，最初都是从局部到整体。知道">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://raw.githubusercontent.com/depthlove/depthloveBlog/8c991266c4350b1b66dc277d7576903824013017/source/images/webrtc-development-3-analysis-of-architectural-design/webrtc-architecture.png">
-<meta property="og:updated_time" content="2020-05-17T03:39:01.043Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/depthlove/depthloveBlog/master/source/images/webrtc-development-3-analysis-of-architectural-design/webrtc-architecture.png">
+<meta property="og:updated_time" content="2020-05-17T07:16:36.934Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WebRTC 开发（三）架构设计剖析">
 <meta name="twitter:description" content="上一篇写的是 WebRTC 源码的下载和编译，为什么不先剖析 WebRTC 的架构设计而是先讲编译过程呢？原因是通过观察 WebRTC 的编译过程，能看到 WebRTC 里有什么。很多人觉得编译过程耗时长，就去干点其它的事坐等编译过程结束。我喜欢观察编译过程的打印信息，通过观察，可以看到 WebRTC 里面有什么，形成对 WebRTC 源码库有基本的认识。接触一个东西时，最初都是从局部到整体。知道">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/depthlove/depthloveBlog/8c991266c4350b1b66dc277d7576903824013017/source/images/webrtc-development-3-analysis-of-architectural-design/webrtc-architecture.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/depthlove/depthloveBlog/master/source/images/webrtc-development-3-analysis-of-architectural-design/webrtc-architecture.png">
 
 <link rel="canonical" href="https://depthlove.github.io/2019/05/04/webrtc-development-3-analysis-of-architectural-design/">
 
@@ -290,7 +290,7 @@
 
 <blockquote>
 <h3 id="整体架构图"><a href="#整体架构图" class="headerlink" title="整体架构图"></a>整体架构图</h3></blockquote>
-<p><img src="https://raw.githubusercontent.com/depthlove/depthloveBlog/8c991266c4350b1b66dc277d7576903824013017/source/images/webrtc-development-3-analysis-of-architectural-design/webrtc-architecture.png" alt="WebRTC 整体架构图"></p>
+<p><img src="https://raw.githubusercontent.com/depthlove/depthloveBlog/master/source/images/webrtc-development-3-analysis-of-architectural-design/webrtc-architecture.png" alt="WebRTC 整体架构图"></p>
 <blockquote>
 <h3 id="组件介绍"><a href="#组件介绍" class="headerlink" title="组件介绍"></a>组件介绍</h3></blockquote>
 <h4 id="1-Your-Web-App"><a href="#1-Your-Web-App" class="headerlink" title="(1) Your Web App"></a>(1) Your Web App</h4><h4 id="2-Web-API"><a href="#2-Web-API" class="headerlink" title="(2) Web API"></a>(2) Web API</h4><h4 id="3-WebRTC-Native-C-API"><a href="#3-WebRTC-Native-C-API" class="headerlink" title="(3) WebRTC Native C++ API"></a>(3) WebRTC Native C++ API</h4><h4 id="4-Transport-Session"><a href="#4-Transport-Session" class="headerlink" title="(4) Transport / Session"></a>(4) Transport / Session</h4><ul>
@@ -312,7 +312,7 @@
 <blockquote>
 <h3 id="代码结构"><a href="#代码结构" class="headerlink" title="代码结构"></a>代码结构</h3></blockquote>
 <p>webrtc/src 目录下的代码结构如下：</p>
-<p><a href>src-code-structure.txt</a></p>
+<p><a href="https://raw.githubusercontent.com/depthlove/depthloveBlog/master/source/images/webrtc-development-3-analysis-of-architectural-design/src-code-structure.txt" target="_blank" rel="noopener">src-code-structure</a></p>
 <blockquote>
 <h3 id="功能模块"><a href="#功能模块" class="headerlink" title="功能模块"></a>功能模块</h3></blockquote>
 <h4 id="1-音频模块"><a href="#1-音频模块" class="headerlink" title="(1) 音频模块"></a>(1) 音频模块</h4><p>WebRTC 的音频部分，包含设备、编解码(Opus/iLIBC/iSAC/G722/PCM16/RED/AVT、NetEQ)、加密、声音文件、声音处理、声音输出、音量控制、音视频同步、网络传输与流控(RTP/RTCP)等功能。</p>
