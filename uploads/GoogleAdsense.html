@@ -1,4 +1,28 @@
 <blockquote>
+<h1 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h1></blockquote>
+<p>下面所有的用 {% include ‘../_custom/google_adsense.swig’ %} 的地方，都用广告代码的替换，避免 <code>hexo g</code> 报错，即使用</p>
+<pre><code>&lt;!-- Google Ads --&gt;
+&lt;script async src=&quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+&lt;ins class=&quot;adsbygoogle&quot;
+     style=&quot;display:block&quot;
+     data-ad-client=&quot;ca-pub-2304335236058241&quot;
+     data-ad-slot=&quot;8084137562&quot;
+     data-ad-format=&quot;auto&quot;
+     data-full-width-responsive=&quot;true&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+     (adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;</code></pre><p>或者广告的内嵌模式代码</p>
+<pre><code>&lt;!-- Google Ads Embed --&gt;
+&lt;script async src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+&lt;ins class=&quot;adsbygoogle&quot;
+     style=&quot;display:block; text-align:center;&quot;
+     data-ad-layout=&quot;in-article&quot;
+     data-ad-format=&quot;fluid&quot;
+     data-ad-client=&quot;ca-pub-2304335236058241&quot;
+     data-ad-slot=&quot;8930971915&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+     (adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;</code></pre><blockquote>
 <h1 id="添加广告-ads-txt-文件"><a href="#添加广告-ads-txt-文件" class="headerlink" title="添加广告 ads.txt 文件"></a>添加广告 ads.txt 文件</h1></blockquote>
 <p>添加 ~/depthloveBlog/themes/next/source/ads.txt 文件。该文件来至于 Google Adsense 网站下的个人账号。</p>
 <blockquote>
@@ -14,10 +38,8 @@
      data-full-width-responsive=&quot;true&quot;&gt;&lt;/ins&gt;
 &lt;script&gt;
      (adsbygoogle = window.adsbygoogle || []).push({});
-&lt;/script&gt;</code></pre><p>新建 ~/depthloveBlog/themes/next/layout/_custom/head.swig 空白文件</p>
-<p>新建 ~/depthloveBlog/themes/next/layout/_custom/header.swig 空白文件</p>
-<p>新建 ~/depthloveBlog/themes/next/layout/_custom/sidebar.swig 空白文件</p>
-<p>备注：不新建 head.swig，header.swig，sidebar.swig 这3个空白文档，在执行 hexo g 命令时会报错。</p>
+&lt;/script&gt;</code></pre><p>新建 ~/depthloveBlog/themes/next/layout/_custom/sidebar.swig 空白文件</p>
+<p>备注：不新建 sidebar.swig 这3个空白文档，在执行 hexo g 命令时会报错。</p>
 <blockquote>
 <h1 id="插入广告"><a href="#插入广告" class="headerlink" title="插入广告"></a>插入广告</h1></blockquote>
 <h2 id="博客顶部广告"><a href="#博客顶部广告" class="headerlink" title="博客顶部广告"></a>博客顶部广告</h2><p>往 ~/depthloveBlog/themes/next/layout/_partials/head/head.swig 引入 google_adsense.swig 文件，引入方式为 {% include ‘../_custom/google_adsense.swig’ %}</p>

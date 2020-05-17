@@ -29,7 +29,7 @@
 <meta property="og:description" content="上一篇写的是 WebRTC 源码的下载和编译，为什么不先剖析 WebRTC 的架构设计而是先讲编译过程呢？原因是通过观察 WebRTC 的编译过程，能看到 WebRTC 里有什么。很多人觉得编译过程耗时长，就去干点其它的事坐等编译过程结束。我喜欢观察编译过程的打印信息，通过观察，可以看到 WebRTC 里面有什么，形成对 WebRTC 源码库有基本的认识。接触一个东西时，最初都是从局部到整体。知道">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/depthlove/depthloveBlog/8c991266c4350b1b66dc277d7576903824013017/source/images/webrtc-development-3-analysis-of-architectural-design/webrtc-architecture.png">
-<meta property="og:updated_time" content="2020-05-17T01:50:02.919Z">
+<meta property="og:updated_time" content="2020-05-17T03:39:01.043Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WebRTC 开发（三）架构设计剖析">
 <meta name="twitter:description" content="上一篇写的是 WebRTC 源码的下载和编译，为什么不先剖析 WebRTC 的架构设计而是先讲编译过程呢？原因是通过观察 WebRTC 的编译过程，能看到 WebRTC 里有什么。很多人觉得编译过程耗时长，就去干点其它的事坐等编译过程结束。我喜欢观察编译过程的打印信息，通过观察，可以看到 WebRTC 里面有什么，形成对 WebRTC 源码库有基本的认识。接触一个东西时，最初都是从局部到整体。知道">
@@ -289,29 +289,33 @@
 <a id="more"></a>
 
 <blockquote>
-<h1 id="整体架构图"><a href="#整体架构图" class="headerlink" title="整体架构图"></a>整体架构图</h1></blockquote>
+<h3 id="整体架构图"><a href="#整体架构图" class="headerlink" title="整体架构图"></a>整体架构图</h3></blockquote>
 <p><img src="https://raw.githubusercontent.com/depthlove/depthloveBlog/8c991266c4350b1b66dc277d7576903824013017/source/images/webrtc-development-3-analysis-of-architectural-design/webrtc-architecture.png" alt="WebRTC 整体架构图"></p>
 <blockquote>
-<h1 id="组件介绍"><a href="#组件介绍" class="headerlink" title="组件介绍"></a>组件介绍</h1></blockquote>
-<h2 id="1-Your-Web-App"><a href="#1-Your-Web-App" class="headerlink" title="(1) Your Web App"></a>(1) Your Web App</h2><h2 id="2-Web-API"><a href="#2-Web-API" class="headerlink" title="(2) Web API"></a>(2) Web API</h2><h2 id="3-WebRTC-Native-C-API"><a href="#3-WebRTC-Native-C-API" class="headerlink" title="(3) WebRTC Native C++ API"></a>(3) WebRTC Native C++ API</h2><h2 id="4-Transport-Session"><a href="#4-Transport-Session" class="headerlink" title="(4) Transport / Session"></a>(4) Transport / Session</h2><ul>
+<h3 id="组件介绍"><a href="#组件介绍" class="headerlink" title="组件介绍"></a>组件介绍</h3></blockquote>
+<h4 id="1-Your-Web-App"><a href="#1-Your-Web-App" class="headerlink" title="(1) Your Web App"></a>(1) Your Web App</h4><h4 id="2-Web-API"><a href="#2-Web-API" class="headerlink" title="(2) Web API"></a>(2) Web API</h4><h4 id="3-WebRTC-Native-C-API"><a href="#3-WebRTC-Native-C-API" class="headerlink" title="(3) WebRTC Native C++ API"></a>(3) WebRTC Native C++ API</h4><h4 id="4-Transport-Session"><a href="#4-Transport-Session" class="headerlink" title="(4) Transport / Session"></a>(4) Transport / Session</h4><ul>
 <li><strong>RTP Stack</strong></li>
 <li><strong>STUN / ICE</strong></li>
 <li><strong>Session Management</strong></li>
 </ul>
-<h2 id="5-VoiceEngine"><a href="#5-VoiceEngine" class="headerlink" title="(5) VoiceEngine"></a>(5) VoiceEngine</h2><ul>
+<h4 id="5-VoiceEngine"><a href="#5-VoiceEngine" class="headerlink" title="(5) VoiceEngine"></a>(5) VoiceEngine</h4><ul>
 <li><strong>iSAC / iLBC / Opus</strong></li>
 <li><strong>NetEQ for Voice</strong></li>
 <li><strong>Acoustic Echo Canceler (AEC)</strong></li>
 <li><strong>Noise Reduction (NR)</strong></li>
 </ul>
-<h2 id="6-VideoEngine"><a href="#6-VideoEngine" class="headerlink" title="(6) VideoEngine"></a>(6) VideoEngine</h2><ul>
+<h4 id="6-VideoEngine"><a href="#6-VideoEngine" class="headerlink" title="(6) VideoEngine"></a>(6) VideoEngine</h4><ul>
 <li><strong>VP8</strong></li>
 <li><strong>Video Jitter Buffer</strong></li>
 <li><strong>Image enhancements</strong></li>
 </ul>
 <blockquote>
-<h1 id="功能模块"><a href="#功能模块" class="headerlink" title="功能模块"></a>功能模块</h1></blockquote>
-<h2 id="1-音频模块"><a href="#1-音频模块" class="headerlink" title="(1) 音频模块"></a>(1) 音频模块</h2><p>WebRTC 的音频部分，包含设备、编解码(Opus/iLIBC/iSAC/G722/PCM16/RED/AVT、NetEQ)、加密、声音文件、声音处理、声音输出、音量控制、音视频同步、网络传输与流控(RTP/RTCP)等功能。</p>
+<h3 id="代码结构"><a href="#代码结构" class="headerlink" title="代码结构"></a>代码结构</h3></blockquote>
+<p>webrtc/src 目录下的代码结构如下：</p>
+<p><a href>src-code-structure.txt</a></p>
+<blockquote>
+<h3 id="功能模块"><a href="#功能模块" class="headerlink" title="功能模块"></a>功能模块</h3></blockquote>
+<h4 id="1-音频模块"><a href="#1-音频模块" class="headerlink" title="(1) 音频模块"></a>(1) 音频模块</h4><p>WebRTC 的音频部分，包含设备、编解码(Opus/iLIBC/iSAC/G722/PCM16/RED/AVT、NetEQ)、加密、声音文件、声音处理、声音输出、音量控制、音视频同步、网络传输与流控(RTP/RTCP)等功能。</p>
 <ul>
 <li><strong>音频设备 audio_device</strong></li>
 </ul>
@@ -328,13 +332,13 @@
 </ul>
 <p>源代码在 webrtc/src/modules/audio_coding 目录下。</p>
 <p>WebRTC 采用 CNG/G711/G722/iLBC/iSAC/Opus/PCM16b/Red 编解码技术。</p>
-<p>webrtc/src/modules/audio_coding/NetEQ 还提供 neteq 功能 — 抖动缓冲器及丢包补偿模块，能够提高音质，并把延迟减至最小。</p>
+<p>webrtc/src/modules/audio_coding/neteq 还提供 NetEQ 功能 — 抖动缓冲器及丢包补偿模块，能够提高音质，并把延迟减至最小。</p>
 <p>另外一个核心功能是基于语音会议的混音处理。</p>
 <ul>
 <li><strong>声音加密 voice_engine_encryption</strong></li>
 </ul>
 <p>和视频一样，WebRTC 也提供声音加密功能。</p>
-<h2 id="2-视频模块"><a href="#2-视频模块" class="headerlink" title="(2) 视频模块"></a>(2) 视频模块</h2><ul>
+<h4 id="2-视频模块"><a href="#2-视频模块" class="headerlink" title="(2) 视频模块"></a>(2) 视频模块</h4><ul>
 <li><strong>视频采集 video_capture</strong></li>
 </ul>
 <p>源代码在 webrtc/src/modules/video_capture 目录下，包含接口和各个平台的源代码。</p>
@@ -361,12 +365,12 @@
 <p>视频加密是 WebRTC 的 video_engine 一部分，相当于视频应用层面的功能，给点对点的视频双方提供了数据上的安全保证，可以防止在 Web 上出现视频数据的泄漏。</p>
 <p>视频加密在发送端和接收端进行加解密视频数据，密钥由视频双方协商，代价是会影响视频数据处理的性能；也可以不使用视频加密功能，这样在性能上会好些。</p>
 <p>视频加密的数据源可能是原始的数据流，也可能是编码后的数据流。估计是编码后的数据流，这样加密代价会小一些。</p>
-<h2 id="3-传输模块"><a href="#3-传输模块" class="headerlink" title="(3) 传输模块"></a>(3) 传输模块</h2><ul>
+<h4 id="3-传输模块"><a href="#3-传输模块" class="headerlink" title="(3) 传输模块"></a>(3) 传输模块</h4><ul>
 <li><strong>网络传输与流控</strong></li>
 </ul>
 <p>对于网络音视频，数据的传输与控制是核心价值。WebRTC 采用的是成熟的 RTP/RTCP 协议来传输音视频数据。</p>
 <blockquote>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1></blockquote>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3></blockquote>
 <p><a href="https://webrtc.org/architecture/" target="_blank" rel="noopener">WebRTC Architecture</a></p>
 <p><a href="https://princiya777.wordpress.com/2017/08/19/webrtc-architecture-protocols/" target="_blank" rel="noopener">WebRTC – architecture &amp; protocols</a></p>
 
@@ -454,7 +458,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#整体架构图"><span class="nav-number">1.</span> <span class="nav-text">整体架构图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#组件介绍"><span class="nav-number">2.</span> <span class="nav-text">组件介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Your-Web-App"><span class="nav-number">2.1.</span> <span class="nav-text">(1) Your Web App</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Web-API"><span class="nav-number">2.2.</span> <span class="nav-text">(2) Web API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-WebRTC-Native-C-API"><span class="nav-number">2.3.</span> <span class="nav-text">(3) WebRTC Native C++ API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Transport-Session"><span class="nav-number">2.4.</span> <span class="nav-text">(4) Transport / Session</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-VoiceEngine"><span class="nav-number">2.5.</span> <span class="nav-text">(5) VoiceEngine</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-VideoEngine"><span class="nav-number">2.6.</span> <span class="nav-text">(6) VideoEngine</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#功能模块"><span class="nav-number">3.</span> <span class="nav-text">功能模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-音频模块"><span class="nav-number">3.1.</span> <span class="nav-text">(1) 音频模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-视频模块"><span class="nav-number">3.2.</span> <span class="nav-text">(2) 视频模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-传输模块"><span class="nav-number">3.3.</span> <span class="nav-text">(3) 传输模块</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#整体架构图"><span class="nav-number">1.</span> <span class="nav-text">整体架构图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件介绍"><span class="nav-number">2.</span> <span class="nav-text">组件介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Your-Web-App"><span class="nav-number">2.1.</span> <span class="nav-text">(1) Your Web App</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Web-API"><span class="nav-number">2.2.</span> <span class="nav-text">(2) Web API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-WebRTC-Native-C-API"><span class="nav-number">2.3.</span> <span class="nav-text">(3) WebRTC Native C++ API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Transport-Session"><span class="nav-number">2.4.</span> <span class="nav-text">(4) Transport / Session</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-VoiceEngine"><span class="nav-number">2.5.</span> <span class="nav-text">(5) VoiceEngine</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-VideoEngine"><span class="nav-number">2.6.</span> <span class="nav-text">(6) VideoEngine</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码结构"><span class="nav-number">3.</span> <span class="nav-text">代码结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#功能模块"><span class="nav-number">4.</span> <span class="nav-text">功能模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-音频模块"><span class="nav-number">4.1.</span> <span class="nav-text">(1) 音频模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-视频模块"><span class="nav-number">4.2.</span> <span class="nav-text">(2) 视频模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-传输模块"><span class="nav-number">4.3.</span> <span class="nav-text">(3) 传输模块</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文献"><span class="nav-number">5.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

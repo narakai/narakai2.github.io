@@ -25,7 +25,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="分析 H.265 + AAC 的 FLV 文件">
 <meta property="og:url" content="https://depthlove.github.io/2017/07/01/analyse-h265-flv/index.html">
-<meta property="og:site_name" content="Minmin.Sun Blog">
+<meta property="og:site_name" content="Depth Love Blog">
 <meta property="og:description" content="常见的 FLV 文件里封装的是 H.264 和 AAC 数据。对于 H.265(HEVC)，FLV 支不支持呢，答案是官方版本不支持。想用 FLV 封装 H.265 数据，那该怎么搞？首先，需要一套 H.265 的编解码器，其次，就是扩展 FLV 的头 header，其实是增加对 H.265 CodecID 的支持。 今年6月6日苹果开发者大会开放了 iOS 平台的 HEVC API，也就是开发者">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/depthlove/depthloveBlog/cd5e12823ac4e243a62893f9c942fad766a6c908/source/images/analyse-h265-flv/analyse-h265-flv-00.jpg">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>分析 H.265 + AAC 的 FLV 文件 | Minmin.Sun Blog</title>
+  <title>分析 H.265 + AAC 的 FLV 文件 | Depth Love Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140292689-1"></script>
     <script>
@@ -117,7 +117,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">Minmin.Sun Blog</h1>
+      <h1 class="site-title">Depth Love Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
       <p class="site-subtitle" itemprop="description">计算机硕士，音视频方向。GitHub：https://github.com/depthlove</p>
@@ -221,12 +221,12 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="Minmin.Sun">
+      <meta itemprop="name" content="Depth Love">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Minmin.Sun Blog">
+      <meta itemprop="name" content="Depth Love Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -272,6 +272,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
+
+        <!-- Google Ads Embed -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <ins class="adsbygoogle"
+            style="display:block; text-align:center;"
+            data-ad-layout="in-article"
+            data-ad-format="fluid"
+            data-ad-client="ca-pub-2304335236058241"
+            data-ad-slot="8930971915"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+
         <p>常见的 FLV 文件里封装的是 H.264 和 AAC 数据。对于 H.265(HEVC)，FLV 支不支持呢，答案是官方版本不支持。想用 FLV 封装 H.265 数据，那该怎么搞？首先，需要一套 H.265 的编解码器，其次，就是扩展 FLV 的头 header，其实是增加对 H.265 CodecID 的支持。</p>
 <p>今年6月6日苹果开发者大会开放了 iOS 平台的 HEVC API，也就是开发者可以调用 iOS 系统的 API 进行 H.265 硬编码了，但是只能在 iOS 11.0 及以上版本使用。目前，iOS 11.0 正式版还未正式发布，需要等到今年的9月份。不建议开发者将自己的 iOS 设备刷到 iOS 11.0 beta 版，因为升级 beta 版后非常卡。经测试，苹果的 H.265 编码出来的图像质量还是可以的，但是消耗码率较高。</p>
 <p>苹果开放 H.265 编解码 API 势必会影响到整个 H.265 行业的发展，但 H.265 离真正落地和普及还需要时间。明年（2018年）再看 H.265 对整个音视频行业的影响。</p>
@@ -371,9 +384,9 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Minmin.Sun"
+    <img class="site-author-image" itemprop="image" alt="Depth Love"
       src="/uploads/avatar.jpg">
-  <p class="site-author-name" itemprop="name">Minmin.Sun</p>
+  <p class="site-author-name" itemprop="name">Depth Love</p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap motion-element">
@@ -412,17 +425,17 @@
 
       </div>
 
+      <!-- Google Ads -->
       <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- BlogAd -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-2304335236058241"
-     data-ad-slot="8084137562"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-2304335236058241"
+          data-ad-slot="8084137562"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
 
     </div>
   </aside>
@@ -445,7 +458,7 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Minmin.Sun</span>
+  <span class="author" itemprop="copyrightHolder">Depth Love</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

@@ -25,7 +25,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="WebRTC 开发（七）升级 Xcode 11 后 AppRTCMobile 编译报错的解决方案">
 <meta property="og:url" content="https://depthlove.github.io/2019/10/28/webrtc-development-7-solve-build-error-in-xcode-11/index.html">
-<meta property="og:site_name" content="Minmin.Sun Blog">
+<meta property="og:site_name" content="Depth Love Blog">
 <meta property="og:description" content="将 Xcode 升级到 Xcode 11.1 版本后，工程 AppRTCMobile 编译报错 “code object is not signed at all”。详细信息如下： 123456789101112Showing Recent MessagesCodeSign /Users/suntongmian/Documents/workplace/webrtc/src/out/mac/AppR">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/depthlove/depthloveBlog/master/source/images/webrtc-development-7-solve-build-error-in-xcode-11/build-error-info.png">
@@ -51,7 +51,7 @@
   };
 </script>
 
-  <title>WebRTC 开发（七）升级 Xcode 11 后 AppRTCMobile 编译报错的解决方案 | Minmin.Sun Blog</title>
+  <title>WebRTC 开发（七）升级 Xcode 11 后 AppRTCMobile 编译报错的解决方案 | Depth Love Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140292689-1"></script>
     <script>
@@ -120,7 +120,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">Minmin.Sun Blog</h1>
+      <h1 class="site-title">Depth Love Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
       <p class="site-subtitle" itemprop="description">计算机硕士，音视频方向。GitHub：https://github.com/depthlove</p>
@@ -224,12 +224,12 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="Minmin.Sun">
+      <meta itemprop="name" content="Depth Love">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Minmin.Sun Blog">
+      <meta itemprop="name" content="Depth Love Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -275,6 +275,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
+
+        <!-- Google Ads Embed -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <ins class="adsbygoogle"
+            style="display:block; text-align:center;"
+            data-ad-layout="in-article"
+            data-ad-format="fluid"
+            data-ad-client="ca-pub-2304335236058241"
+            data-ad-slot="8930971915"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+
         <p>将 Xcode 升级到 Xcode 11.1 版本后，工程 AppRTCMobile 编译报错 “code object is not signed at all”。详细信息如下：</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Showing Recent Messages</span><br><span class="line">CodeSign <span class="regexp">/Users/</span>suntongmian<span class="regexp">/Documents/</span>workplace<span class="regexp">/webrtc/</span>src<span class="regexp">/out/</span>mac/AppRTCMobile.app (<span class="keyword">in</span> target <span class="string">'AppRTCMobile'</span> from project <span class="string">'products'</span>)</span><br><span class="line">    cd <span class="regexp">/Users/</span>suntongmian<span class="regexp">/Documents/</span>workplace<span class="regexp">/webrtc/</span>src<span class="regexp">/out/</span>mac</span><br><span class="line">    export CODESIGN_ALLOCATE=<span class="regexp">/Applications/</span>Xcode.app<span class="regexp">/Contents/</span>Developer<span class="regexp">/Toolchains/</span>XcodeDefault.xctoolchain<span class="regexp">/usr/</span>bin/codesign_allocate</span><br><span class="line">    </span><br><span class="line">Signing <span class="string">Identity:</span>     <span class="string">"-"</span></span><br><span class="line"></span><br><span class="line">    <span class="regexp">/usr/</span>bin<span class="regexp">/codesign --force --sign - --entitlements /</span>Users<span class="regexp">/suntongmian/</span>Library<span class="regexp">/Developer/</span>Xcode<span class="regexp">/DerivedData/</span>all-cnckbsrgoylvrsaprwpepbkuujvx<span class="regexp">/Build/</span>Intermediates.noindex<span class="regexp">/products.build/</span>mac<span class="regexp">/AppRTCMobile.build/</span>AppRTCMobile.app.xcent --timestamp=none <span class="regexp">/Users/</span>suntongmian<span class="regexp">/Documents/</span>workplace<span class="regexp">/webrtc/</span>src<span class="regexp">/out/</span>mac/AppRTCMobile.app</span><br><span class="line"></span><br><span class="line"><span class="regexp">/Users/</span>suntongmian<span class="regexp">/Documents/</span>workplace<span class="regexp">/webrtc/</span>src<span class="regexp">/out/</span>mac/AppRTCMobile.<span class="string">app:</span> code object is not signed at all</span><br><span class="line">In <span class="string">subcomponent:</span> <span class="regexp">/Users/</span>suntongmian<span class="regexp">/Documents/</span>workplace<span class="regexp">/webrtc/</span>src<span class="regexp">/out/</span>mac<span class="regexp">/AppRTCMobile.app/</span>Contents<span class="regexp">/Frameworks/</span>WebRTC.framework</span><br><span class="line">Command CodeSign failed with a nonzero exit code</span><br></pre></td></tr></table></figure>
 
@@ -380,9 +393,9 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Minmin.Sun"
+    <img class="site-author-image" itemprop="image" alt="Depth Love"
       src="/uploads/avatar.jpg">
-  <p class="site-author-name" itemprop="name">Minmin.Sun</p>
+  <p class="site-author-name" itemprop="name">Depth Love</p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap motion-element">
@@ -421,17 +434,17 @@
 
       </div>
 
+      <!-- Google Ads -->
       <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- BlogAd -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-2304335236058241"
-     data-ad-slot="8084137562"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-2304335236058241"
+          data-ad-slot="8084137562"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
 
     </div>
   </aside>
@@ -454,7 +467,7 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Minmin.Sun</span>
+  <span class="author" itemprop="copyrightHolder">Depth Love</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
